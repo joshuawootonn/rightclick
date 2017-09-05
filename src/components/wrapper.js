@@ -1,19 +1,23 @@
 import React from 'react';
 
-import SearchBar from './search_bar';
+import Intro from './intro'
+import Loading from './loading';
+import Content from './content';
 
 class Wrapper extends React.Component{
   constructor(props){
     super(props);
-
-    this.state = {}
+    this.state = {
+      currentTab: 1
+    };
+    
   }
   render(){
     return(
-      <div className="hero-body">
-        <div className="container has-text-centered">              
-          <SearchBar />              
-        </div>
+      <div>
+        {(this.props.wrapperState == 1) ? <Intro /> : null}
+        {(this.props.wrapperState == 2) ? <Loading /> : null}
+        {(this.props.wrapperState == 3) ? <Content /> : null}
       </div>
     );
   }
