@@ -13,15 +13,12 @@ class Header extends React.Component{
   }
   render(){
     return(
-      <div className="hero-head">
-        <header className="nav">
-          <div className="container">
-            <div className="nav-left">
-              <a className="nav-item">
-                <img alt="RIGHTCLICK.GG"/>
-              </a>
-            </div>
-           <div className="nav-right nav-menu">
+        <div>            
+          <nav className="navbar has-shadow">
+            <a className="navbar-item">
+              <img  alt="Right Click" />
+            </a>
+            <div className="nav-right nav-menu">
               <span className="nav-item">          
                 <div className="field has-addons has-addons-centered">
                   <form className="control" onSubmit={this.handleSubmit}>         
@@ -39,15 +36,16 @@ class Header extends React.Component{
                   </p>
                 </div>
               </span>
-            </div>        
-          </div>
-        </header>
-      </div>
+            </div>       
+          </nav>        
+        </div>
     )
   }
    handleSubmit(event){
     event.preventDefault();
     this.props.onSearch(this.state.term);
+    
+    
   }
   handleChange(event){
     this.setState({term: event.target.value});    

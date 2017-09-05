@@ -1,7 +1,15 @@
 import React from 'react';
 import Header from './components/header';
-import Wrapper from './components/wrapper';
+
+
+import Intro from './components/intro'
+import Loading from './components/loading';
+import Data from './components/data';
+
 import axios from 'axios';
+
+const API_KEY = 'RGAPI-7ca8f529-2e0a-42db-90f5-e304193cbcfd';
+const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 class App extends React.Component{
   constructor(props){
@@ -9,44 +17,72 @@ class App extends React.Component{
 
     this.state = {
       player: {},
-      wrapperState: 1
+      recent_matches:[],
+      currentPage: 1,
     };
     this.playerSearch = this.playerSearch.bind(this);  
+    this.matchSearch = this.matchSearch.bind(this);  
+
   }
   
   
   playerSearch(term){
-    this.setState({wrapperState: 2});
-    const API_KEY = 'RGAPI-7ca8f529-2e0a-42db-90f5-e304193cbcfd';
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    this.setState({currentPage: 2});    
     const url = `https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/${term}?api_key=${API_KEY}`; 
     const request = axios.get(proxyurl+url)
     .then((response) => {
       if(response.data){
+
         this.setState({ player: response.data,
-                        wrapperState:3});
+                        currentPage:3});
+        this.matchSearch();
       }else{
         console.log("error");
       }      
-    })
+    })    
+  }
+
+
+  matchSearch(){
+    const url = `https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/${this.state.player.accountId}/recent?api_key=${API_KEY}`; 
+    
+    const request = axios.get(proxyurl+url)
+    .then((response) => {
+
+      if(response.data){
+        response.data.matches.forEach((element)=>{
+          const subUrl = `https://na1.api.riotgames.com/lol/match/v3/matches/${element.gameId}?api_key=${API_KEY}`;
+          const subRequest = axios.get(proxyurl+subUrl).
+          then((subResponse) => {
+            if(subResponse.data){
+              var array = this.state.recent_matches.slice();
+              array.push(subResponse.data);
+              this.setState({recent_matches: array})
+            }
+          })  
+       
+        },this);
+        
+      }else{
+        console.log("error");
+      }      
+      console.log(this.state);
+    }) 
     
   }
+
   render(){
     const playerSearch = this.playerSearch;
-    const data = {player: this.state.player};
-    const wrapperState = this.state.wrapperState;
+    const matchSearch = this.matchSearch;
+    const data = {player: this.state.player,
+                  recent_matches: this.state.recent_matches};
     return(
-      <div>        
-        <section className="hero is-fullheight">
-          <Header onSearch={playerSearch} />       
-          <div className="hero-body">
-            <div className="container has-text-centered">           
-
-              <Wrapper  wrapperState={wrapperState} data={data}/>  
-
-            </div>
-          </div>    
-        </section>
+      <div className="container">     
+           
+          <Header onSearch={playerSearch}/> 
+          {(this.state.currentPage == 1) ? <Intro /> : null}
+          {(this.state.currentPage == 2) ? <Loading /> : null}
+          {(this.state.currentPage == 3) ? <Data data={data} /> : null}
       </div>
     ) 
   }
