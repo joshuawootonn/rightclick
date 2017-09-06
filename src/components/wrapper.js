@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Tabs from './tabs';
-import Content from './content';
+import Tabs from './wrapper/tabs';
+import Content from './wrapper/content';
 
 var tabData = [
   { name: 'Summary', isActive: true },
@@ -15,10 +15,8 @@ var tabData = [
 class Data extends React.Component{
   constructor(props){
     super(props); 
-
     this.state = {
-      activeTab: tabData[0]
-      
+      activeTab: tabData[0]      
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -26,11 +24,13 @@ class Data extends React.Component{
     this.setState({activeTab: tab});
   }
   render(){
+    const data = {player: this.props.data.player,
+                  recent_matches: this.props.data.recent_matches}
     return(
       <div>
         
         <Tabs tabData={tabData} activeTab={this.state.activeTab} changeTab={this.handleClick} />
-        <Content activeTab={this.state.activeTab} />        
+        <Content data={data} activeTab={this.state.activeTab} />        
       </div>
         
     );

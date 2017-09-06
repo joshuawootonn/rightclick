@@ -4,11 +4,11 @@ import Header from './components/header';
 
 import Intro from './components/intro'
 import Loading from './components/loading';
-import Data from './components/data';
+import Wrapper from './components/wrapper';
 
 import axios from 'axios';
 
-const API_KEY = 'RGAPI-7ca8f529-2e0a-42db-90f5-e304193cbcfd';
+const API_KEY = 'RGAPI-12c9efd5-c4ac-472b-bb4c-48459fd24009';
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 class App extends React.Component{
@@ -82,7 +82,7 @@ class App extends React.Component{
           <Header onSearch={playerSearch}/> 
           {(this.state.currentPage == 1) ? <Intro /> : null}
           {(this.state.currentPage == 2) ? <Loading /> : null}
-          {(this.state.currentPage == 3) ? <Data data={data} /> : null}
+          {(this.state.currentPage == 3) ? <Wrapper data={data} /> : null}
       </div>
     ) 
   }
