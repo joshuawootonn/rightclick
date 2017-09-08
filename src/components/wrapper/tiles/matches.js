@@ -1,94 +1,78 @@
 import React from 'react';
 
-class Matches extends React.Component{
-  constructor(props){
-    super(props)
+import axios from 'axios';
 
-    this.state ={matches:[]}
+const API_KEY = 'RGAPI-1b273f01-3d75-4db2-957c-8adb457e1ee2';
+const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-    
-    this.initializedata = this.initializedata.bind(this);
-    
+
+class Matches extends React.Component{ 
+  fetchImages(){
+
   }
-  // componentDidMount(){
-  //   this.initializedata();
-  // }
-  initializedata(){    
-    
-      var data, teamId,championId,spell1Id,spell2Id;
-      this.props.data.recent_matches.map((match)=>{
+  render() {     
         
+    const tiles = this.props.data.recent_matches.map((match,i)=>{
+        var participantData,participantIdentityData,playerlist=[],championlist=[],playerChampion;
         if(match.gameMode == "CLASSIC"){
-          match.participantIdentities.forEach(function(element,index) {
+
+          match.participantIdentities.forEach(function(element) {
             if(element.player.accountId == this.props.data.player.accountId){
-              data = match.participants[element.participantId];
+              participantData = match.participants[element.participantId-1];
+              participantIdentityData = element.player;              
             }
+            playerlist.push(element.player.summonerName);
           }, this);
-        }
-        if (data != null){
-          var matches = this.state.matches.slice()
-          matches.push(data)
-          this.setState({ matches })
-        }
-      });
-      
 
-      
+          
+          match.participants.forEach(function(element) {            
+            championlist.push(element.championId)
+          }, this);
 
-      console.log(data,teamId,championId,spell1Id,spell2Id);
-       
-  }
-
-
-  render() {
-    return (        
-        <div className="tile is-ancestor">  
-          <div className="tile is-parent is-vertical is-12">
-            {this.state.matches.map((match,index)=>{
+          playerChampion = playerlist.map((player,i)=>{
+            return(<tr><td>{playerlist[i]}</td><td>{championlist[i]}</td></tr>);
+          })
+          return(
+            
+            <article key={i} className={participantData.stats.win == true ? "is-success tile is-child notification" : "is-danger tile is-child notification"}>
+              <div className="columns">
+                <div className="column">
+                  <p className="title">{new Date(match.gameDuration * 1000).toISOString().substr(14, 5)}</p>
+                  <p className="title">{participantData.stats.kills}/{participantData.stats.deaths}/{participantData.stats.assists}</p>
+                </div>
+                <div className="column"></div>
+                <div className="column">
+                  <table>   
+                    <tbody>
+                      {playerChampion}     
+                    </tbody>
+                  </table>               
+                </div>
+              </div>
               
-              return(     
-                
-                <article key={index} 
-                         className="tile is-child notification is-success"                      
-                         >
-                  <p className="title">{this.props.data.player.name}....</p>
-                  <p className="subtitle">Top tile</p>
-                </article> 
-              );
-            })}
-          </div>
-        </div>       
+
+             
+            </article> 
+          );
+
+        }else{
+
+          return null;
+
+        }
+        
+    })
+              
+    return(
+      <div className="tile is-ancestor">  
+        <div className="tile is-parent is-vertical is-12"> 
+          {tiles}
+        </div>
+      </div> 
+
     );
+   
   }
 };
 export default Matches;
 
-
-// getParticipantId(match){
-//   match.participantIdentities.forEach(function(element,index) {
-//     if(element.player.accountId == this.props.data.player.accountId){
-     
-//       return element.participantId;
-//     }        
-//   }, this); 
-
-// }
-// getTeamId(match){
-//   var p = this.getParticipantId(match);
-//   var data = match.participants.findIndex(function(element){
-//     console.log(element.participantId , p);
-//     return element.participantId == p;
-//   })
-//   console.log("team" +match.participants[data].teamId);
-//   return match.participants[data].teamId;
-
-// }
-// getWin(match){
-//   var teamId = this.getTeamId(match);
-//   var data = match.teams.findIndex(function(element){
-//     return element.teamId == teamId;
-//   })
-//   console.log("win" +match.teams[data].win);
-//   return match.teams[data].win;
-
-// }

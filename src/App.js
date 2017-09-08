@@ -8,7 +8,7 @@ import Wrapper from './components/wrapper';
 
 import axios from 'axios';
 
-const API_KEY = 'RGAPI-6944fdb7-dada-4c6d-8867-95ceb107f006';
+const API_KEY = 'RGAPI-1b273f01-3d75-4db2-957c-8adb457e1ee2';
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 class App extends React.Component{
@@ -48,7 +48,7 @@ class App extends React.Component{
     
     const request = axios.get(proxyurl+url)
     .then((response) => {
-
+      this.setState({recent_matches: []})
       if(response.data){
         response.data.matches.forEach((element)=>{
           const subUrl = `https://na1.api.riotgames.com/lol/match/v3/matches/${element.gameId}?api_key=${API_KEY}`;
@@ -68,6 +68,8 @@ class App extends React.Component{
       }      
       console.log(this.state);
     }) 
+    console.log(this.state);
+    
     
   }
 
