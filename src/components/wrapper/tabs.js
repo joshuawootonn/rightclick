@@ -9,9 +9,10 @@ class Tabs extends React.Component{
       <div className="navbar has-shadow">
         <div className="container is-fluid">
           <div className="navbar-brand">
-          {this.props.tabData.map(function(tab){
+          {this.props.tabData.map(function(tab,index){
             return (
               <Tab data={tab}
+              key={index}
               isActive={this.props.activeTab == tab} 
               handleClick={this.props.changeTab.bind(this,tab)} 
               />

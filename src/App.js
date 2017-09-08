@@ -8,7 +8,7 @@ import Wrapper from './components/wrapper';
 
 import axios from 'axios';
 
-const API_KEY = 'RGAPI-12c9efd5-c4ac-472b-bb4c-48459fd24009';
+const API_KEY = 'RGAPI-6944fdb7-dada-4c6d-8867-95ceb107f006';
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 class App extends React.Component{

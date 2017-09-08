@@ -10,9 +10,9 @@ class Matches extends React.Component{
     this.initializedata = this.initializedata.bind(this);
     
   }
-  componentDidMount(){
-    this.initializedata();
-  }
+  // componentDidMount(){
+  //   this.initializedata();
+  // }
   initializedata(){    
     
       var data, teamId,championId,spell1Id,spell2Id;
@@ -45,12 +45,11 @@ class Matches extends React.Component{
         <div className="tile is-ancestor">  
           <div className="tile is-parent is-vertical is-12">
             {this.state.matches.map((match,index)=>{
-              console.log(match);
+              
               return(     
                 
                 <article key={index} 
-                         className="tile is-child notification is-success"
-                        
+                         className="tile is-child notification is-success"                      
                          >
                   <p className="title">{this.props.data.player.name}....</p>
                   <p className="subtitle">Top tile</p>
