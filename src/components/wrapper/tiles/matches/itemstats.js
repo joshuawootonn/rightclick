@@ -12,32 +12,36 @@ class ItemStats extends React.Component{
       }           
     }, this);
     
+    var items = [participantData.stats.item0,participantData.stats.item1,participantData.stats.item2,
+      participantData.stats.item3,participantData.stats.item4,participantData.stats.item5]
+    var items1, items2;
+    items1 = items.map((item,i)=>{
+        if(i<3){
+          return(<td>{items[i]}</td>);
+        }else{
+          return null;
+        }      
+      })
+    items2 = items.map((item,i)=>{
+      if(i>2){
+        return(<td>{items[i]}</td>);
+      }else{
+        return null;
+      }      
+    })
     
-    
-              
     return(
       <div className="column">
-        <figure class="image is-24x24">
-          <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/Lux.png" alt="item-1"/>
-        </figure>
-        <figure class="image is-24x24">
-          <img src="" alt="item-2"/>
-        </figure>
-        <figure class="image is-24x24">
-          <img src="http://bulma.io/images/placeholders/128x128.png" alt="item-3"/>
-        </figure>
-        <figure class="image is-24x24">
-          <img src="http://bulma.io/images/placeholders/128x128.png" alt="item-4"/>
-        </figure>
-        <figure class="image is-24x24">
-          <img src="http://bulma.io/images/placeholders/128x128.png" alt="item-5"/>
-        </figure>
-        <figure class="image is-24x24">
-          <img src="http://bulma.io/images/placeholders/128x128.png" alt="item-6"/>
-        </figure>
-        <figure class="image is-24x24">
-          <img src="http://bulma.io/images/placeholders/128x128.png" alt="totem"/>
-        </figure>
+        <div className="columns ">
+        <div className="column">
+          <table>   
+            <tbody>
+              <tr>{items1}</tr>
+              <tr>{items2}</tr>
+            </tbody>
+          </table> 
+        </div>          
+      </div>   
       </div>
     );   
   }
