@@ -13,7 +13,7 @@ class PlayerStats extends React.Component {
         participantIdentityData = element.player;
       }
     }, this);
-
+    
     var cs = (participantData.stats.totalMinionsKilled + participantData.stats.neutralMinionsKilled)
     var csPerMin = (cs / (this.props.match.gameDuration / 60)).toFixed(1);
 
@@ -29,7 +29,7 @@ class PlayerStats extends React.Component {
     var deaths = participantData.stats.deaths;
     var kp = ((kills / totalKills) * 100).toFixed(0);
     var kda = ((kills + assists) / deaths).toFixed(2);
-
+    
     var championName = this.props.data.champions.keys[participantData.championId];
 
     var spell1, spell2;

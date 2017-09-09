@@ -15,10 +15,9 @@ class ItemStats extends React.Component {
     var items = [participantData.stats.item0, participantData.stats.item1, participantData.stats.item2,
     participantData.stats.item3, participantData.stats.item4, participantData.stats.item5]
     var items1, items2;
-    console.log(items, participantData);
     items1 = items.map((item, i) => {
       if (i < 3) {
-        return (<td>
+        return (<td key={i}>
           <figure className="image is-32x32 ">
             {(items[i] == null || items[i] == 0) ? null : <img src={`http://ddragon.leagueoflegends.com/cdn/${this.props.data.versions[0]}/img/item/${items[i]}.png `} />}
           </figure>
@@ -29,7 +28,7 @@ class ItemStats extends React.Component {
     })
     items2 = items.map((item, i) => {
       if (i > 2) {
-        return (<td>
+        return (<td key={i}>
           <figure className="image is-32x32">
             {(items[i] == null || items[i] == 0) ? null : <img src={`http://ddragon.leagueoflegends.com/cdn/${this.props.data.versions[0]}/img/item/${items[i]}.png `} />}
           </figure>

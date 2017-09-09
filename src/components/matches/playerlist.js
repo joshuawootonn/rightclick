@@ -19,7 +19,7 @@ class PlayerList extends React.Component {
 
     redTeam = playerlist.map((player, i) => {
       if (i < 5) {
-        return (<tr><td width="30%">
+        return (<tr key={i}><td width="30%">
           <figure className="image is-24x24">
             <img src={`http://ddragon.leagueoflegends.com/cdn/${this.props.data.versions[0]}/img/champion/${championlist[i]}.png`} />
           </figure>
@@ -30,7 +30,7 @@ class PlayerList extends React.Component {
     })
     blueTeam = playerlist.map((player, i) => {
       if (i >= 5) {
-        return (<tr><td width="30%">
+        return (<tr key={i}><td width="30%">
           <figure className="image is-24x24">
             <img src={`http://ddragon.leagueoflegends.com/cdn/${this.props.data.versions[0]}/img/champion/${championlist[i]}.png`} />
           </figure>

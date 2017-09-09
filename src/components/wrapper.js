@@ -1,46 +1,71 @@
 import React from 'react';
 
-import Tabs from './wrapper/tabs';
-import Content from './wrapper/content';
-import Matches from './wrapper/tiles/matches';
 
-var tabData = [
-  { name: 'Summary', isActive: true },
-  { name: 'Matches', isActive: false },
-  { name: 'Champions', isActive: false },
-  { name: 'Highlights', isActive: false },
-  { name: 'Current Game', isActive: false }
-];
+import PlayerList from './matches/playerlist';
+import GameStats from './matches/gamestats';
+import PlayerStats from './matches/playerstats';
+import ItemStats from './matches/itemstats';
 
 
-class Data extends React.Component{
-  constructor(props){
-    super(props); 
-    this.state = {
-      activeTab: tabData[0]      
-    };
-    this.handleClick = this.handleClick.bind(this);
+
+
+class Wrapper extends React.Component {
+  constructor(props) {
+    super(props)
+
   }
-  handleClick(tab){
-    this.setState({activeTab: tab});
-  }
-  render(){
-    const data = {player: this.props.data.player,
-                  recent_matches: this.props.data.recent_matches,
-                  versions: this.props.data.versions,
-                  champions: this.props.data.champions,
-                  items: this.props.data.items,
-                  summoners:this.props.data.summoners}
-                  // <Tabs tabData={tabData} activeTab={this.state.activeTab} changeTab={this.handleClick} />
-                  // <Content data={data} activeTab={this.state.activeTab} />
-    return(
-      <div>
-        
-          <Matches data={data} />
+  render() {
+    console.log(this.props)
+    const tiles = this.props.data.recent_matches.map((match, i) => {
+      var participantData, participantIdentityData;
+      if (match.gameMode == "CLASSIC") {
+        match.participantIdentities.forEach(function (element) {
+          if (element.player.accountId == this.props.data.player.accountId) {
+            participantData = match.participants[element.participantId - 1];
+            participantIdentityData = element.player;
+          }
+        }, this);
+
+
+        const data = {
+          player: this.props.data.player,
+          versions: this.props.data.versions,
+          champions: this.props.data.champions,
+          items: this.props.data.items,
+          summoners: this.props.data.summoners
+        }
+        return (
+
+          <article key={i} className="tile is-child box match" >
+            <div className="columns">
+              <GameStats match={match} data={data} />
+              <PlayerStats match={match} data={data} />
+              <ItemStats match={match} data={data} />
+              <PlayerList match={match} data={data} />
+            </div>
+          </article>
+        );
+
+      } else {
+
+        return null;
+
+      }
+
+    })
+
+    return (
+      <div className="tile  is-ancestor">
+        <div className="tile is-parent is-vertical is-3">
+
+        </div>
+        <div className="tile is-parent is-vertical is-9">
+          {tiles}
+        </div>
       </div>
-        
-    );
-  }
-}
 
-export default Data;
+    );
+
+  }
+};
+export default Wrapper;

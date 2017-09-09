@@ -131,6 +131,25 @@ class App extends React.Component{
       }      
     })  
   }
+  profileSearch(){
+    const cachedSummoners = localStorage.getItem("riot_summoners");
+    if(cachedSummoners){
+      this.setState({ summoners: JSON.parse(cachedSummoners)});
+      return;
+    }
+
+    const url = `https://na1.api.riotgames.com/lol/static-data/v3/summoner-spells?api_key=${API_KEY}&locale=en_US&dataById=false`; 
+    const request = axios.get(proxyurl+url)
+    .then((response) => {
+      if(response.data){      
+        localStorage.setItem("riot_summoners", JSON.stringify(response.data));
+        this.setState({summoners: response.data});
+        
+      }else{
+        console.log("Error retrieving summoners.");
+      }      
+    })  
+  }
 
 
   matchSearch(){
