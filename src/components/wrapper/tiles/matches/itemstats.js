@@ -19,7 +19,6 @@ class ItemStats extends React.Component{
         if(i<3){
           return(<td>
             <figure class="image is-128x128">        
-              {console.log((items[i]==null || items[i]==0),items[i])} 
               { (items[i]==null || items[i]==0) ? null : <img src={`http://ddragon.leagueoflegends.com/cdn/${this.props.data.versions[0]}/img/item/${items[i]}.png `} />}               
             </figure>            
             </td>);

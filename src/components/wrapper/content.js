@@ -12,7 +12,8 @@ class Content extends React.Component{
                 recent_matches: this.props.data.recent_matches,
                 versions: this.props.data.versions,
                 champions: this.props.data.champions,
-                items: this.props.data.items}
+                items: this.props.data.items,
+                summoners:this.props.data.summoners}
     return (
 
       <div>

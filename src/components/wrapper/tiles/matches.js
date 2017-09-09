@@ -22,12 +22,14 @@ class Matches extends React.Component{
               participantIdentityData = element.player;              
             }           
           }, this);
+          console.log(match);
 
           
           const data={player: this.props.data.player,
                       versions: this.props.data.versions,
                       champions: this.props.data.champions,
-                      items: this.props.data.items}
+                      items: this.props.data.items,
+                      summoners:this.props.data.summoners}
           return(
             
             <article key={i} className={participantData.stats.win == true ? "is-success tile is-child notification" : "is-danger tile is-child notification"}>
@@ -35,7 +37,7 @@ class Matches extends React.Component{
                 <GameStats match={match} data={data} />
                 <PlayerStats match={match} data={data} />
                 <ItemStats match={match} data={data} />
-                <PlayerList match={match} />
+                <PlayerList match={match} data={data} />
               </div>    
             </article> 
           );

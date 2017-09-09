@@ -48,6 +48,7 @@ class App extends React.Component{
         this.versionSearch();
         this.championSearch();
         this.itemsSearch();
+        this.summonerSearch();
       }else{
         console.log("error");
       }      
@@ -112,21 +113,21 @@ class App extends React.Component{
     })  
   }
   summonerSearch(){
-    const cachedChampions = localStorage.getItem("riot_champions");
-    if(cachedChampions){
-      this.setState({ champions: JSON.parse(cachedChampions)});
+    const cachedSummoners = localStorage.getItem("riot_summoners");
+    if(cachedSummoners){
+      this.setState({ summoners: JSON.parse(cachedSummoners)});
       return;
     }
 
-    const url = `https://na1.api.riotgames.com/lol/static-data/v3/champions?api_key=${API_KEY}&locale=en_US&tags=keys&dataById=true`; 
+    const url = `https://na1.api.riotgames.com/lol/static-data/v3/summoner-spells?api_key=${API_KEY}&locale=en_US&dataById=false`; 
     const request = axios.get(proxyurl+url)
     .then((response) => {
       if(response.data){      
-        localStorage.setItem("riot_champions", JSON.stringify(response.data));
-        this.setState({champions: response.data});
+        localStorage.setItem("riot_summoners", JSON.stringify(response.data));
+        this.setState({summoners: response.data});
         
       }else{
-        console.log("Error retrieving champions.");
+        console.log("Error retrieving summoners.");
       }      
     })  
   }
@@ -169,7 +170,8 @@ class App extends React.Component{
                   recent_matches: this.state.recent_matches,
                   versions: this.state.versions,
                   champions: this.state.champions,
-                  items: this.state.items};
+                  items: this.state.items,
+                  summoners:this.state.summoners};
     return(
       <div className="container">     
            

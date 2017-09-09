@@ -32,6 +32,16 @@ class PlayerStats extends React.Component{
 
     var championName = this.props.data.champions.keys[participantData.championId];
     
+    var spell1, spell2;
+    for(var prop in this.props.data.summoners.data){
+      
+      if( this.props.data.summoners.data[prop].id == participantData.spell1Id){
+        spell1 = prop;
+      }else if(this.props.data.summoners.data[prop].id == participantData.spell2Id){
+        spell2 = prop;
+      }
+    }
+    
     return(
       <div className="column">
           <div className="columns">
@@ -39,10 +49,14 @@ class PlayerStats extends React.Component{
               <figure class="image is-128x128">
                 { championName!=null ?  <img src={`http://ddragon.leagueoflegends.com/cdn/${this.props.data.versions[0]}/img/champion/${championName}.png`} /> : null }               
               </figure>
+              <figure class="image is-128x128">   
+                { spell1!=null ?  <img src={`http://ddragon.leagueoflegends.com/cdn/${this.props.data.versions[0]}/img/spell/${spell1}.png`} /> : null }               
+              </figure>
+              <figure class="image is-128x128">
+                { spell2!=null ?  <img src={`http://ddragon.leagueoflegends.com/cdn/${this.props.data.versions[0]}/img/spell/${spell2}.png`} /> : null }               
+              </figure>
+            
               
-              <p className="title is-6">{participantData.championId}</p>
-              <p className="subtitle is-6">{participantData.spell1Id},{participantData.spell2Id},{participantData.masteries[5].masteryId}</p>
-
             </div>
             <div className="column">
               <p className="subtitle is-6">{kills}/{deaths}/{assists}</p>        
