@@ -3,10 +3,11 @@ import moment from 'moment';
 
 class PlayerStats extends React.Component{ 
  
-  render() {     
+  render() {   
+    
     var participantData,participantIdentityData, index;
     this.props.match.participantIdentities.forEach(function(element) {
-      if(element.player.accountId == this.props.player.accountId){
+      if(element.player.accountId == this.props.data.player.accountId){
         index = element.participantId-1;
         participantData = this.props.match.participants[index];
         participantIdentityData = element.player;              
@@ -26,13 +27,19 @@ class PlayerStats extends React.Component{
     var kills = participantData.stats.kills;
     var assists = participantData.stats.assists;
     var deaths = participantData.stats.deaths;
-    console.log("kills: "+kills+" totalkills: "+totalKills);
     var kp = ((kills/totalKills) * 100).toFixed(0);
     var kda = ((kills+assists)/deaths).toFixed(2);
+
+    var championName = this.props.data.champions.keys[participantData.championId];
+    
     return(
       <div className="column">
           <div className="columns">
             <div className="column">
+              <figure class="image is-128x128">
+                { championName!=null ?  <img src={`http://ddragon.leagueoflegends.com/cdn/${this.props.data.versions[0]}/img/champion/${championName}.png`} /> : null }               
+              </figure>
+              
               <p className="title is-6">{participantData.championId}</p>
               <p className="subtitle is-6">{participantData.spell1Id},{participantData.spell2Id},{participantData.masteries[5].masteryId}</p>
 

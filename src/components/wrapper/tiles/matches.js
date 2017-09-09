@@ -4,12 +4,11 @@ import PlayerList from './matches/playerlist';
 import GameStats from './matches/gamestats';
 import PlayerStats from './matches/playerstats';
 import ItemStats from './matches/itemstats';
-const API_KEY = 'RGAPI-1b273f01-3d75-4db2-957c-8adb457e1ee2';
-const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 
 class Matches extends React.Component{ 
-  fetchImages(){
+  constructor(props){
+    super(props)
 
   }
   render() {     
@@ -25,19 +24,19 @@ class Matches extends React.Component{
           }, this);
 
           
-          
+          const data={player: this.props.data.player,
+                      versions: this.props.data.versions,
+                      champions: this.props.data.champions,
+                      items: this.props.data.items}
           return(
             
             <article key={i} className={participantData.stats.win == true ? "is-success tile is-child notification" : "is-danger tile is-child notification"}>
-              <div className="columns ">
-                <GameStats match={match} player={this.props.data.player} />
-                <PlayerStats match={match} player={this.props.data.player} />
-                <ItemStats match={match} player={this.props.data.player} />
+              <div className="columns">
+                <GameStats match={match} data={data} />
+                <PlayerStats match={match} data={data} />
+                <ItemStats match={match} data={data} />
                 <PlayerList match={match} />
-              </div>
-              
-
-             
+              </div>    
             </article> 
           );
 

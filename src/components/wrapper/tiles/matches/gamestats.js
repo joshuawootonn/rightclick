@@ -6,7 +6,7 @@ class GameStats extends React.Component{
   render() {     
     var participantData,participantIdentityData;
     this.props.match.participantIdentities.forEach(function(element) {
-      if(element.player.accountId == this.props.player.accountId){
+      if(element.player.accountId == this.props.data.player.accountId){
         participantData = this.props.match.participants[element.participantId-1];
         participantIdentityData = element.player;              
       }           

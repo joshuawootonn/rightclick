@@ -9,7 +9,10 @@ class Content extends React.Component{
 
   render() {
     const data={player: this.props.data.player,
-                recent_matches: this.props.data.recent_matches}
+                recent_matches: this.props.data.recent_matches,
+                versions: this.props.data.versions,
+                champions: this.props.data.champions,
+                items: this.props.data.items}
     return (
 
       <div>

@@ -6,7 +6,7 @@ class ItemStats extends React.Component{
   render() {     
     var participantData,participantIdentityData;
     this.props.match.participantIdentities.forEach(function(element) {
-      if(element.player.accountId == this.props.player.accountId){
+      if(element.player.accountId == this.props.data.player.accountId){
         participantData = this.props.match.participants[element.participantId-1];
         participantIdentityData = element.player;              
       }           
@@ -17,14 +17,23 @@ class ItemStats extends React.Component{
     var items1, items2;
     items1 = items.map((item,i)=>{
         if(i<3){
-          return(<td>{items[i]}</td>);
+          return(<td>
+            <figure class="image is-128x128">        
+              {console.log((items[i]==null || items[i]==0),items[i])} 
+              { (items[i]==null || items[i]==0) ? null : <img src={`http://ddragon.leagueoflegends.com/cdn/${this.props.data.versions[0]}/img/item/${items[i]}.png `} />}               
+            </figure>            
+            </td>);
         }else{
           return null;
         }      
       })
     items2 = items.map((item,i)=>{
       if(i>2){
-        return(<td>{items[i]}</td>);
+        return(<td>
+          <figure class="image is-128x128">            
+          { (items[i]==null || items[i]==0) ? null : <img src={`http://ddragon.leagueoflegends.com/cdn/${this.props.data.versions[0]}/img/item/${items[i]}.png `} />}              
+            </figure> 
+        </td>);
       }else{
         return null;
       }      
