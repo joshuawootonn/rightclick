@@ -6,7 +6,7 @@ class Tabs extends React.Component{
  
   render() {
     return (
-      <div className="navbar has-shadow">
+      <div className="navbar has-shadow tabs">
         <div className="container is-fluid">
           <div className="navbar-brand">
           {this.props.tabData.map(function(tab,index){
@@ -22,6 +22,7 @@ class Tabs extends React.Component{
         </div>
       </div>
     );
+
   }
 };
 

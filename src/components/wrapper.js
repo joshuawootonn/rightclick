@@ -2,6 +2,7 @@ import React from 'react';
 
 import Tabs from './wrapper/tabs';
 import Content from './wrapper/content';
+import Matches from './wrapper/tiles/matches';
 
 var tabData = [
   { name: 'Summary', isActive: true },
@@ -30,11 +31,12 @@ class Data extends React.Component{
                   champions: this.props.data.champions,
                   items: this.props.data.items,
                   summoners:this.props.data.summoners}
+                  // <Tabs tabData={tabData} activeTab={this.state.activeTab} changeTab={this.handleClick} />
+                  // <Content data={data} activeTab={this.state.activeTab} />
     return(
       <div>
         
-        <Tabs tabData={tabData} activeTab={this.state.activeTab} changeTab={this.handleClick} />
-        <Content data={data} activeTab={this.state.activeTab} />        
+          <Matches data={data} />
       </div>
         
     );

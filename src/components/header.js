@@ -14,7 +14,7 @@ class Header extends React.Component{
   render(){
     return(
         <div>            
-          <nav className="navbar has-shadow">
+          <nav className="navbar is-warning has-shadow">
             <a className="navbar-item">
               <img  alt="Right Click" />
             </a>

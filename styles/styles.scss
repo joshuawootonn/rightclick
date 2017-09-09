@@ -3,22 +3,91 @@
 
 // 2. Set your own initial variables
 // Update blue
-$blue: #72d0eb;
+
 // Add pink and its invert
-$pink: #ffb3b3;
-$pink-invert: #fff;
+
 // Add a serif family
 $family-serif: "Merriweather", "Georgia", serif;
 
 // 3. Set the derived variables 
 // Use the new pink as the primary color
-$primary: $pink;
-$primary-invert: $pink-invert;
-// Use the existing orange as the danger color
-$danger: $orange;
+
+$primary: #5C1734;
+$primary-invert:#fff;
+$info: #004C83;
+$danger: #EA3C4C;
+$warning: #FFCA06;
+$light: #fff;
 // Use the new serif family
 $family-primary: $family-serif;
 
+$table-cell-border-width: 0px;
+$table-background-color: inherit;
+
 // 4. Import the rest of Bulma
 @import "../node_modules/bulma/bulma.sass";
+
+.match{
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+  border-radius: 0;
+}
+
+.tabs{
+  margin-bottom: 1.5rem;
+}
+
+.match{
+  border-radius: 0;
+}
+
+
+.gamestats{
+  text-align: center;
+  height: 100%;
+  p{padding-bottom: .1em}
+}
+
+.playerstats{
+  text-align: center;
+}
+.playerstats .champion-img img{
+  border-radius: 50%;
+}
+.playerstats .summoner-img img{
+  border-radius: 10%;
+}  
+.playerstats figure {
+  display: inline-block;
+}
+
+.itemstats td{
+  padding: .2em;
+}
+.itemstats table{
+  margin: 0 auto;
+}
+.itemstats{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.playerlist table {
+  table-layout: fixed;
+  width: 100%;
+  white-space: nowrap;
+  margin-bottom:0;
+}
+.playerlist td  {
+  padding: .2em .30em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.playerlist div div {
+  width: 50%;
+  padding: 0;
+}
+
 

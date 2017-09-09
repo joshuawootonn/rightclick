@@ -19,22 +19,22 @@ class PlayerList extends React.Component {
 
     redTeam = playerlist.map((player, i) => {
       if (i < 5) {
-        return (<tr><td>
-          <figure class="image is-24x24">
+        return (<tr><td width="30%">
+          <figure className="image is-24x24">
             <img src={`http://ddragon.leagueoflegends.com/cdn/${this.props.data.versions[0]}/img/champion/${championlist[i]}.png`} />
           </figure>
-        </td><td>{playerlist[i]}</td></tr>);
+        </td><td width="70%">{playerlist[i]}</td></tr>);
       } else {
         return null;
       }
     })
     blueTeam = playerlist.map((player, i) => {
       if (i >= 5) {
-        return (<tr><td>
-          <figure class="image is-24x24">
+        return (<tr><td width="30%">
+          <figure className="image is-24x24">
             <img src={`http://ddragon.leagueoflegends.com/cdn/${this.props.data.versions[0]}/img/champion/${championlist[i]}.png`} />
           </figure>
-        </td><td>{playerlist[i]}</td></tr>);
+        </td><td width="70%">{playerlist[i]}</td></tr>);
       } else {
         return null;
       }
@@ -42,25 +42,28 @@ class PlayerList extends React.Component {
 
 
     return (
-      <div className="column">
-        <div className="columns ">
+      <div className="column playerlist is-4">
+        <div className="columns">
           <div className="column">
-            <table>
+            <table className="table">
               <tbody>
                 {redTeam}
               </tbody>
             </table>
+
           </div>
           <div className="column">
-            <table>
+            <table className="table">
               <tbody>
                 {blueTeam}
               </tbody>
             </table>
+
           </div>
 
         </div>
       </div>
+      
 
     );
 

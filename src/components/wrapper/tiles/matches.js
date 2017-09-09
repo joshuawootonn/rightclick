@@ -6,59 +6,63 @@ import PlayerStats from './matches/playerstats';
 import ItemStats from './matches/itemstats';
 
 
-class Matches extends React.Component{ 
-  constructor(props){
+class Matches extends React.Component {
+  constructor(props) {
     super(props)
 
   }
-  render() {     
-        
-    const tiles = this.props.data.recent_matches.map((match,i)=>{
-        var participantData,participantIdentityData;
-        if(match.gameMode == "CLASSIC"){
-          match.participantIdentities.forEach(function(element) {
-            if(element.player.accountId == this.props.data.player.accountId){
-              participantData = match.participants[element.participantId-1];
-              participantIdentityData = element.player;              
-            }           
-          }, this);
-          console.log(match);
+  render() {
 
-          
-          const data={player: this.props.data.player,
-                      versions: this.props.data.versions,
-                      champions: this.props.data.champions,
-                      items: this.props.data.items,
-                      summoners:this.props.data.summoners}
-          return(
-            
-            <article key={i} className={participantData.stats.win == true ? "is-success tile is-child notification" : "is-danger tile is-child notification"}>
-              <div className="columns">
-                <GameStats match={match} data={data} />
-                <PlayerStats match={match} data={data} />
-                <ItemStats match={match} data={data} />
-                <PlayerList match={match} data={data} />
-              </div>    
-            </article> 
-          );
+    const tiles = this.props.data.recent_matches.map((match, i) => {
+      var participantData, participantIdentityData;
+      if (match.gameMode == "CLASSIC") {
+        match.participantIdentities.forEach(function (element) {
+          if (element.player.accountId == this.props.data.player.accountId) {
+            participantData = match.participants[element.participantId - 1];
+            participantIdentityData = element.player;
+          }
+        }, this);
 
-        }else{
 
-          return null;
-
+        const data = {
+          player: this.props.data.player,
+          versions: this.props.data.versions,
+          champions: this.props.data.champions,
+          items: this.props.data.items,
+          summoners: this.props.data.summoners
         }
-        
+        return (
+
+          <article key={i} className={participantData.stats.win ? "tile is-child box match" : "tile is-child box match"}>
+            <div className="columns">
+              <GameStats match={match} data={data} />
+              <PlayerStats match={match} data={data} />
+              <ItemStats match={match} data={data} />
+              <PlayerList match={match} data={data} />
+            </div>
+          </article>
+        );
+
+      } else {
+
+        return null;
+
+      }
+
     })
-              
-    return(
-      <div className="tile is-ancestor">  
-        <div className="tile is-parent is-vertical is-12"> 
+
+    return (
+      <div className="tile  is-ancestor">
+        <div className="tile is-parent is-vertical is-3">
+          
+        </div>
+        <div className="tile is-parent is-vertical is-9">
           {tiles}
         </div>
-      </div> 
+      </div>
 
     );
-   
+
   }
 };
 export default Matches;

@@ -173,7 +173,7 @@ class App extends React.Component{
                   items: this.state.items,
                   summoners:this.state.summoners};
     return(
-      <div className="container">     
+      <div className="container wrapper">     
            
           <Header onSearch={playerSearch}/> 
           {(this.state.currentPage == 1) ? <Intro /> : null}

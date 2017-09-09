@@ -16,7 +16,7 @@ class Content extends React.Component{
                 summoners:this.props.data.summoners}
     return (
 
-      <div>
+      <div className="is-ancestor">
         {this.props.activeTab.name == 'Summary' ? 
 
 
