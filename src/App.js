@@ -8,7 +8,7 @@ import Wrapper from './components/wrapper';
 
 import axios from 'axios';
 
-const API_KEY = 'RGAPI-6bac5dbd-d6c4-4c67-b702-e2e3300dc294';
+const API_KEY = 'RGAPI-2899c220-57ad-4ef6-9e71-c545cd8e03cd';
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 class App extends React.Component{
@@ -32,6 +32,7 @@ class App extends React.Component{
     this.versionSearch = this.versionSearch.bind(this);
     this.itemsSearch = this.itemsSearch.bind(this);
     this.summonerSearch = this.summonerSearch.bind(this);
+    this.profileSearch = this.profileSearch.bind(this);
    }
   
   
@@ -49,6 +50,7 @@ class App extends React.Component{
         this.championSearch();
         this.itemsSearch();
         this.summonerSearch();
+        this.profileSearch();
       }else{
         console.log("error");
       }      
@@ -132,9 +134,9 @@ class App extends React.Component{
     })  
   }
   profileSearch(){
-    const cachedSummoners = localStorage.getItem("riot_summoners");
-    if(cachedSummoners){
-      this.setState({ summoners: JSON.parse(cachedSummoners)});
+    const cachedProfiles = localStorage.getItem("riot_profiles");
+    if(cachedProfiles){
+      this.setState({ profiles: JSON.parse(cachedProfiles)});
       return;
     }
 
@@ -142,8 +144,8 @@ class App extends React.Component{
     const request = axios.get(proxyurl+url)
     .then((response) => {
       if(response.data){      
-        localStorage.setItem("riot_summoners", JSON.stringify(response.data));
-        this.setState({summoners: response.data});
+        localStorage.setItem("riot_profiles", JSON.stringify(response.data));
+        this.setState({profiles: response.data});
         
       }else{
         console.log("Error retrieving summoners.");

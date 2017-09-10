@@ -5,7 +5,7 @@ import PlayerList from './matches/playerlist';
 import GameStats from './matches/gamestats';
 import PlayerStats from './matches/playerstats';
 import ItemStats from './matches/itemstats';
-
+import Profile from './stats/profile';
 
 
 
@@ -15,8 +15,7 @@ class Wrapper extends React.Component {
 
   }
   render() {
-    console.log(this.props)
-    const tiles = this.props.data.recent_matches.map((match, i) => {
+    const matches = this.props.data.recent_matches.map((match, i) => {
       var participantData, participantIdentityData;
       if (match.gameMode == "CLASSIC") {
         match.participantIdentities.forEach(function (element) {
@@ -53,14 +52,21 @@ class Wrapper extends React.Component {
       }
 
     })
+    const data = {
+      player: this.props.data.player,
+      versions: this.props.data.versions,
+      champions: this.props.data.champions,
+      items: this.props.data.items,
+      summoners: this.props.data.summoners
+    }
 
     return (
       <div className="tile  is-ancestor">
         <div className="tile is-parent is-vertical is-3">
-
+          <Profile data={data} />
         </div>
         <div className="tile is-parent is-vertical is-9">
-          {tiles}
+          {matches}
         </div>
       </div>
 
