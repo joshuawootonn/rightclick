@@ -16,7 +16,7 @@ class Header extends React.Component{
         <div>            
           <nav className="navbar is-warning has-shadow">
             <a className="navbar-item">
-              <img  alt="Right Click" />
+              <p className="title logo is-4" >RightClick.GG</p>
             </a>
             <div className="nav-right nav-menu">
               <span className="nav-item">          

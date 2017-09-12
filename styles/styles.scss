@@ -12,12 +12,13 @@ $family-serif: "Merriweather", "Georgia", serif;
 // 3. Set the derived variables 
 // Use the new pink as the primary color
 
-$primary: #5C1734;
+$primary: #808080;
 $primary-invert:#fff;
 $info: #004C83;
 $danger: #EA3C4C;
 $warning: #FFCA06;
 $light: #fff;
+$light-invert: $primary;
 // Use the new serif family
 $family-primary: $family-serif;
 
@@ -33,10 +34,74 @@ $table-background-color: inherit;
 }
 body{
   background-color: #F7F7F7;
+  color: $primary;
+  min-height: 100vh;
 }
 .navbar{
   margin-bottom: 1.5rem;
 }
+.hero{
+  text-align: center;
+}
+.logo{
+  color:$primary;
+}
+//Intro Page 
+
+.intro{
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+  border-radius: 0;
+}
+
+//Loading Page
+
+// I did not write this animation!
+// It was made by Tobias Ahlin (https://twitter.com/tobiasahlin)
+// I got it here: http://tobiasahlin.com/spinkit/
+.spinner {
+  width: 40px;
+  height: 40px;
+
+  position: relative;
+  margin: 0 auto;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: $primary;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+
+
+//Stats Page
 
 .profile-img{
   width: 100%;
@@ -49,15 +114,6 @@ body{
     margin: auto;
   }
 }
-
-
-
-
-
-
-
-
-
 
 
 .match{
@@ -112,4 +168,5 @@ body{
   padding: 0;
 }
 
+//Not Found Page
 

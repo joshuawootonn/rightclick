@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Intro extends React.Component {
+class NotFound extends React.Component {
   constructor(props) {
     super(props);
 
@@ -11,10 +11,10 @@ class Intro extends React.Component {
         <div className="hero-body">
           <div className="container">
             <h1 className="title">
-              Welcome To RightClick.GG 
+              Oops! 
             </h1>
-            <h2 className="subtitle">
-              When you are ready search your favorite League of Legends player above!
+            <h2>
+              Check your spelling. Looks like that's not a player
             </h2>
           </div>
         </div>
@@ -23,4 +23,4 @@ class Intro extends React.Component {
   }
 }
 
-export default Intro;
+export default NotFound;

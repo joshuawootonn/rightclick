@@ -14,6 +14,8 @@ class Wrapper extends React.Component {
     super(props)
 
   }
+
+  
   render() {
     const data = {
       player: this.props.data.player,

@@ -1,10 +1,12 @@
 import React from 'react';
+import {Switch,Route} from 'react-router-dom';
 import Header from './components/header';
 
 
 import Intro from './components/intro'
 import Loading from './components/loading';
 import Wrapper from './components/wrapper';
+import NotFound from './components/notfound';
 
 import axios from 'axios';
 
@@ -53,9 +55,10 @@ class App extends React.Component{
         this.itemsSearch();
         this.summonerSearch();
         this.profileSearch();
-        this.setState({ currentPage: 3 });
+        
       }    
     },(error) => {
+      console.log("heafdasf")
       this.setState({ currentPage: 4 });
     })    
   }
@@ -190,7 +193,7 @@ class App extends React.Component{
           })  
        
         },this);
-        
+        this.setState({ currentPage: 3 });
       }else{
         console.log("error");
       }      
@@ -214,10 +217,11 @@ class App extends React.Component{
       <div className="container wrapper">     
            
           <Header onSearch={playerSearch}/> 
+          
           {(this.state.currentPage == 1) ? <Intro /> : null}
           {(this.state.currentPage == 2) ? <Loading /> : null}
           {(this.state.currentPage == 3) ? <Wrapper data={data} /> : null}
-          {(this.state.currentPage == 4) ? <}
+          {(this.state.currentPage == 4) ? <NotFound /> : null}
       </div>
     ) 
   }
