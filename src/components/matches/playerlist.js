@@ -16,7 +16,6 @@ class PlayerList extends React.Component {
       championlist[index] = this.props.data.champions.keys[element];
     }, this)
 
-
     redTeam = playerlist.map((player, i) => {
       if (i < 5) {
         return (<tr key={i}><td width="30%">

@@ -8,7 +8,7 @@ import Wrapper from './components/wrapper';
 
 import axios from 'axios';
 
-const API_KEY = 'RGAPI-2899c220-57ad-4ef6-9e71-c545cd8e03cd';
+const API_KEY = 'RGAPI-63fc9612-8caa-4f5f-b6b3-90d89a330abc';
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 class App extends React.Component{
@@ -18,6 +18,7 @@ class App extends React.Component{
     this.state = {
       player: {},
       recent_matches:[],
+      league: {},
       currentPage: 1,
       champions: null,
       versions:null,
@@ -33,6 +34,7 @@ class App extends React.Component{
     this.itemsSearch = this.itemsSearch.bind(this);
     this.summonerSearch = this.summonerSearch.bind(this);
     this.profileSearch = this.profileSearch.bind(this);
+    this.leagueSearch = this.leagueSearch.bind(this);
    }
   
   
@@ -43,17 +45,18 @@ class App extends React.Component{
     .then((response) => {
       if(response.data){
 
-        this.setState({ player: response.data,
-                        currentPage:3});
+        this.setState({ player: response.data });
         this.matchSearch();
+        this.leagueSearch();
         this.versionSearch();
         this.championSearch();
         this.itemsSearch();
         this.summonerSearch();
         this.profileSearch();
-      }else{
-        console.log("error");
-      }      
+        this.setState({ currentPage: 3 });
+      }    
+    },(error) => {
+      this.setState({ currentPage: 4 });
     })    
   }
   versionSearch(){
@@ -153,6 +156,19 @@ class App extends React.Component{
     })  
   }
 
+  leagueSearch(){
+    const url = `https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/${this.state.player.id}?api_key=${API_KEY}`;
+    const request = axios.get( url)
+    .then((response) => {
+      if (response.data) {
+        this.setState({league: response.data});
+        console.log("hey there")
+      } else {
+        console.log("Error retrieving league.");
+      }
+    })
+  }
+
 
   matchSearch(){
     const url = `https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/${this.state.player.accountId}/recent?api_key=${API_KEY}`; 
@@ -192,7 +208,8 @@ class App extends React.Component{
                   versions: this.state.versions,
                   champions: this.state.champions,
                   items: this.state.items,
-                  summoners:this.state.summoners};
+                  summoners:this.state.summoners,
+                  league: this.state.league};
     return(
       <div className="container wrapper">     
            
@@ -200,6 +217,7 @@ class App extends React.Component{
           {(this.state.currentPage == 1) ? <Intro /> : null}
           {(this.state.currentPage == 2) ? <Loading /> : null}
           {(this.state.currentPage == 3) ? <Wrapper data={data} /> : null}
+          {(this.state.currentPage == 4) ? <}
       </div>
     ) 
   }

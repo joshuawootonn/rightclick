@@ -6,7 +6,7 @@ import GameStats from './matches/gamestats';
 import PlayerStats from './matches/playerstats';
 import ItemStats from './matches/itemstats';
 import Profile from './stats/profile';
-
+import Ladder from './stats/ladder';
 
 
 class Wrapper extends React.Component {
@@ -15,6 +15,15 @@ class Wrapper extends React.Component {
 
   }
   render() {
+    const data = {
+      player: this.props.data.player,
+      versions: this.props.data.versions,
+      champions: this.props.data.champions,
+      items: this.props.data.items,
+      summoners: this.props.data.summoners,
+      league: this.props.data.league
+    }
+    var m = null;
     const matches = this.props.data.recent_matches.map((match, i) => {
       var participantData, participantIdentityData;
       if (match.gameMode == "CLASSIC") {
@@ -24,15 +33,12 @@ class Wrapper extends React.Component {
             participantIdentityData = element.player;
           }
         }, this);
-
-
-        const data = {
-          player: this.props.data.player,
-          versions: this.props.data.versions,
-          champions: this.props.data.champions,
-          items: this.props.data.items,
-          summoners: this.props.data.summoners
+        if(i == 0 ){
+          m = match;
         }
+        
+
+       
         return (
 
           <article key={i} className="tile is-child box match" >
@@ -50,23 +56,22 @@ class Wrapper extends React.Component {
         return null;
 
       }
-
+      
     })
-    const data = {
-      player: this.props.data.player,
-      versions: this.props.data.versions,
-      champions: this.props.data.champions,
-      items: this.props.data.items,
-      summoners: this.props.data.summoners
-    }
+    console.log(this.props.data);
 
     return (
-      <div className="tile  is-ancestor">
-        <div className="tile is-parent is-vertical is-3">
-          <Profile data={data} />
+      <div className="columns">
+        <div className="column is-3">
+          <div className="tile is-vertical">
+            <Profile data={data} />
+            {this.props.data.league  ? <Ladder data={data} /> : null }
+          </div>
         </div>
-        <div className="tile is-parent is-vertical is-9">
-          {matches}
+        <div className="column is 9">
+          <div className="tile is-vertical">
+            {matches}
+          </div>
         </div>
       </div>
 

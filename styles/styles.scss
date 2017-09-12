@@ -31,16 +31,38 @@ $table-background-color: inherit;
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
   border-radius: 0;
 }
-
+body{
+  background-color: #F7F7F7;
+}
 .navbar{
   margin-bottom: 1.5rem;
 }
 
-.match{
-  border-radius: 0;
+.profile-img{
+  width: 100%;
+  padding: 0;
+}
+.ladder, .profile{
+  text-align: center;
+  figure{
+    display: block;
+    margin: auto;
+  }
 }
 
 
+
+
+
+
+
+
+
+
+
+.match{
+  border-radius: 0;
+}
 .gamestats{
   text-align: center;
   height: 100%;

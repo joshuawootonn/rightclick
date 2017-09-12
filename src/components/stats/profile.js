@@ -3,23 +3,18 @@ import React from 'react';
 class Profile extends React.Component {
 
   render() {
-    console.log(this.props.data.versions)
-    var version = '7.17.2';
-    version = this.prop.data.verions[0];
-
-
-
-
 
     return (
-      <div  className="tile is-child box match" >
-        <figure className="image is-48x48 champion-img">
-          <img src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/Annie.png`} /> 
+      <div className="media tile is-child box profile">
+        <figure className="image is-128x128">
+          <img src={`http://ddragon.leagueoflegends.com/cdn/${this.props.data.versions[0]}/img/profileicon/${this.props.data.player.profileIconId}.png `} />
         </figure>
-    
- 
+        <p>
+          <strong>{this.props.data.player.name}</strong>
+          <br />
+        </p>        
       </div>
-      
+
     );
   }
 };
