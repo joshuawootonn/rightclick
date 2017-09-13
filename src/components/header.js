@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 class Header extends React.Component{
@@ -15,9 +16,9 @@ class Header extends React.Component{
     return(
         <div>            
           <nav className="navbar is-warning has-shadow">
-            <a className="navbar-item">
+            <Link className="navbar-item" to="/">
               <p className="title logo is-4" >RightClick.GG</p>
-            </a>
+            </Link>            
             <div className="nav-right nav-menu">
               <span className="nav-item">          
                 <div className="field has-addons has-addons-centered">
@@ -28,7 +29,7 @@ class Header extends React.Component{
                       placeholder="Summoner"
                       onChange={this.handleChange}
                     />  
-                  </form> 
+                  </form>  
                   <p className="control">
                     <a onClick={this.handleSubmit} className="button is-primary">
                       Search
