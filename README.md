@@ -17,4 +17,5 @@ was using this project to learn some new technologies. These include:
 
 
 Unfortunely I am super busy at the moment and am still learning Webpack. So hosting will come soon!
+
 ~~Check out the project [here!](https://joshuawootonn.com/RightClick.GG/)~~
