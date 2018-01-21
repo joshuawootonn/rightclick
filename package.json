@@ -1,31 +1,21 @@
 {
-  "name": "RightClick.GG",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "devDependencies": {
-    "react-scripts": "0.1.0"
-  },
-  "scripts": {
-    "build": "react-scripts build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "webpack-dev-server"
-  },
-  "homepage": "https://joshuawootonn.com/RightClick.GG/",
-  "author": "",
-  "license": "ISC",
+  "name": "rightclick.gg",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "axios": "^0.16.2",
-    "bulma": "^0.5.1",
-    "datejs": "^1.0.0-rc3",
-    "gh-pages": "^1.0.0",
-    "moment": "^2.18.1",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "^0.1.0",
-    "redux": "^3.7.2"
+    "react-scripts": "1.1.0",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "spectre.css": "^0.5.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
