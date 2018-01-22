@@ -4,11 +4,11 @@ import * as actions from '../actions';
 import NavContainer from './nav-container';
 class IndexContainer extends Component {
   componentDidMount(){
-    this
+    
   }
   render() {
     return (
-        <NavContainer />
+      <NavContainer />
     );
   }
 }

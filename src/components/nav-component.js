@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import SearchContainer from '../containers/search-container'
 const NavComponent = props => {
   return (
     <div className="container">
@@ -19,10 +19,7 @@ const NavComponent = props => {
           </a>
         </section>
         <section className="navbar-section">
-          <div className="input-group input-inline">
-            <input className="form-input" type="text" placeholder="search" />
-            <button className="btn btn-primary input-group-btn">Search</button>
-          </div>
+          <SearchContainer />
         </section>
       </header>
     </div>
