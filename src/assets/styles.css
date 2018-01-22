@@ -2735,7 +2735,10 @@ a.text-error:focus, a.text-error:hover {
   width: 100%;
   text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center; }
+  .hero h1 {
+    font-size: 6rem; }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,4 +1,9 @@
 import { combineReducers } from "redux";
 import player from "./player";
-const rootReducer = combineReducers({ player });
+import {reducer as formReducer } from 'redux-form';
+
+const rootReducer = combineReducers({ 
+  player: player,
+  form: formReducer
+});
 export default rootReducer;
