@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const Search = (props) => {  
+const SearchComponent = (props) => {  
   return (
     <div className="input-group">
       <input className="form-input" type="text" placeholder="search" {...props.input}/>
@@ -9,4 +9,4 @@ const Search = (props) => {
   );  
 }
 
-export default Search;
+export default SearchComponent;

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
-import Search from '../components/component-search';
+import SearchComponent from '../components/search-component';
 import {withRouter} from 'react-router';
-class Intro extends Component {
+class IntroContainer extends Component {
   handleSearch = event => {
     this.props.history.push(`/${event.search}`);
   };
@@ -15,7 +15,7 @@ class Intro extends Component {
       <div className="hero">
         <h1 className="">rightclick.gg</h1>
         <form onSubmit={handleSubmit(this.handleSearch)}>
-          <Field name="search" component={Search} />  
+          <Field name="search" component={SearchComponent} />  
         </form>           
       </div>
     );
@@ -24,4 +24,4 @@ class Intro extends Component {
 
 export default withRouter(reduxForm({
   form: "PlayerSearch"
-})(Intro));
+})(IntroContainer));

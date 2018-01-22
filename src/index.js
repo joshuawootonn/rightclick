@@ -8,7 +8,8 @@ import thunk from "redux-thunk";
 //CSS
 import "./assets/styles.css";
 //JS
-import Intro from './containers/container-intro';
+import IntroContainer from './containers/intro-container';
+import IndexContainer from './containers/index-container';
 import reducers from './reducers';
 export const store = createStore(reducers, applyMiddleware(thunk));
 
@@ -16,7 +17,8 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>        
-        <Route path="/" component={Intro} />
+        <Route path="/:player" component={IndexContainer} />
+        <Route path="/" component={IntroContainer} />
       </Switch>
     </BrowserRouter>
   </Provider>,

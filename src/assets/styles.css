@@ -2730,6 +2730,14 @@ a.text-error:focus, a.text-error:hover {
   word-break: break-word;
   word-wrap: break-word; }
 
+html, body {
+  margin: 0;
+  height: 100%; }
+
+.navbar-defualt {
+  padding: 1rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+
 .hero {
   height: 100vh;
   width: 100%;
