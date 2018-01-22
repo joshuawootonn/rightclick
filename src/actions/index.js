@@ -1,8 +1,8 @@
-export const TOGGLE_FETCHING = "toggle_fetching";
+export const TOGGLE_LOADING = "toggle_loading";
 // Api Buffers For loading
-export function toggleFetching(stateToAdjust){
+export function toggleLoading(stateToAdjust){
   return{
-  type: TOGGLE_FETCHING,
+  type: TOGGLE_LOADING,
   payload: stateToAdjust
   }
 }

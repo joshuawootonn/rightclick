@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import Search from '../components/component-search';
+import {withRouter} from 'react-router';
 class Intro extends Component {
   handleSearch = event => {
-    
+    this.props.history.push(`/${event.search}`);
   };
   
   render() {
@@ -21,6 +22,6 @@ class Intro extends Component {
   }
 }
 
-export default reduxForm({
+export default withRouter(reduxForm({
   form: "PlayerSearch"
-})(Intro);
+})(Intro));
