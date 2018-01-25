@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
+import {connect} from 'react-redux';
+import * as actions from '../actions';
 import SearchComponent from '../components/search-component';
 import {withRouter} from 'react-router';
 import SearchContainer from './search-container'
 class IntroContainer extends Component { 
-  
+  componentDidMount(){
+    
+      this.props.getVersion();
+    
+  }
   render() {    
     return (
       <div className="hero">
@@ -14,5 +20,9 @@ class IntroContainer extends Component {
     );
   }
 }
-
-export default IntroContainer;
+const mapStateToProps = (state, ownProps) => {
+  return {    
+    static: state.static
+  }
+}
+export default connect(mapStateToProps,actions)(IntroContainer);

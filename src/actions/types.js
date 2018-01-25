@@ -1,5 +1,6 @@
 // Static
 
+export const GET_VERSION_LOCAL = "get_version_local";
 export const GET_VERSION_REQUEST = "get_version_request";
 export const GET_VERSION_SUCCESS = "get_version_success";
 export const GET_VERSION_FAILURE = "get_version_failure";

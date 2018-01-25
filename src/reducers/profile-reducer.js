@@ -1,8 +1,8 @@
 import * as actions from "../actions/types";
-const nameInitialState = {
+const initialState = {
   loading: false
 };
-export const profileReducer = (state = nameInitialState, action) => {
+export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.GET_PLAYER_REQUEST:
       return {

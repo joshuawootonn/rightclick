@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as type from "./types";
+import * as types from "./types";
 import * as api from "../api";
 
 export const getProfile = playerName => { 
@@ -14,13 +14,13 @@ export const getProfile = playerName => {
 const getLeague = id => { 
   const leagueRequest = api.fetchLeague(id);
   return dispatch => {
-    dispatch({ type: type.GET_LEAGUE_REQUEST });
+    dispatch({ type: types.GET_LEAGUE_REQUEST });
     return leagueRequest.then(
       response => {
-        dispatch({ type: type.GET_LEAGUE_SUCCESS, payload: response })
+        dispatch({ type: types.GET_LEAGUE_SUCCESS, payload: response })
       },
       error => {
-        dispatch({ type: type.GET_LEAGUE_FAILURE, payload:error})
+        dispatch({ type: types.GET_LEAGUE_FAILURE, payload: error})
         throw error
       }
     )
@@ -29,13 +29,13 @@ const getLeague = id => {
 const getPlayer = playerName =>{
   const playerRequest = api.fetchPlayer(playerName);
   return dispatch => {
-    dispatch({ type: type.GET_PLAYER_REQUEST });
+    dispatch({ type: types.GET_PLAYER_REQUEST });
     return playerRequest.then(
       response => {
-        dispatch({ type: type.GET_PLAYER_SUCCESS, payload: response })
+        dispatch({ type: types.GET_PLAYER_SUCCESS, payload: response })
       },
       error => {
-        dispatch({ type: type.GET_PLAYER_FAILURE, payload: error})
+        dispatch({ type: types.GET_PLAYER_FAILURE, payload: error})
         throw error
       }
     )
