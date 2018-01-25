@@ -2,9 +2,17 @@ import axios from "axios";
 import * as types from "./types";
 import * as api from "../api";
 
+export const getStatic = () => {
+ 
+  return dispatch => {
+    dispatch(getVersion()) 
+    dispatch(getChampion()) 
+    dispatch(getSummoner()) 
+    dispatch(getItem())      
+  };
+}
 
-
-export const getVersion = () => {
+const getVersion = () => {
   // Checking local storage for the cached static data
   const versionCache = localStorage.getItem("riot_version");
   if (versionCache) {    
@@ -37,7 +45,7 @@ export const getVersion = () => {
   };
 };
 
-export const getChampion = () => {
+const getChampion = () => {
   // Checking local storage for the cached static data
   const championCache = localStorage.getItem("riot_champion");
   if (championCache) {    
@@ -70,7 +78,7 @@ export const getChampion = () => {
   };
 };
 
-export const getItem = () => {
+const getItem = () => {
   // Checking local storage for the cached static data
   const itemCache = localStorage.getItem("riot_item");
   if (itemCache) {    
@@ -103,7 +111,7 @@ export const getItem = () => {
   };
 };
 
-export const getSummoner = () => {
+const getSummoner = () => {
   // Checking local storage for the cached static data
   const summonerCache = localStorage.getItem("riot_summoner");
   if (summonerCache) {    
