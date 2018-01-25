@@ -1,1 +1,1 @@
-export * from './player-actions';
+export * from './profile-actions';

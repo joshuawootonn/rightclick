@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import {playerReducer} from "./player-reducer";
+import {profileReducer} from "./profile-reducer";
 import {reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers({ 
-  player: playerReducer,
+  profile: profileReducer,
   form: formReducer
 });
 export default rootReducer;

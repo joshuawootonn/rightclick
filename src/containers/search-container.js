@@ -7,7 +7,7 @@ import * as actions from '../actions';
 class SearchContainer extends Component {
   handleSearch = event => {    
     this.props.history.push(`/${event.search}`);
-    this.props.fetchPlayer(event.search);
+    this.props.getProfile(event.search);
   };
   render() {
     // Handle Submit is given to us by redux form. 
