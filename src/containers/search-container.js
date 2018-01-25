@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import SearchComponent from "../components/search-component";
 import { withRouter } from "react-router";
+import {connect} from 'react-redux';
+import * as actions from '../actions';
 class SearchContainer extends Component {
   handleSearch = event => {    
     this.props.history.push(`/${event.search}`);
+    this.props.fetchPlayer(event.search);
   };
   render() {
     // Handle Submit is given to us by redux form. 
@@ -18,8 +21,8 @@ class SearchContainer extends Component {
   }
 }
 
-export default withRouter(
+export default connect(null,actions)(withRouter(
   reduxForm({
     form: "PlayerSearch"
   })(SearchContainer)
-);
+));

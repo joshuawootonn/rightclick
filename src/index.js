@@ -11,7 +11,8 @@ import "./assets/styles.css";
 import IntroContainer from './containers/intro-container';
 import IndexContainer from './containers/index-container';
 import reducers from './reducers';
-export const store = createStore(reducers, applyMiddleware(thunk));
+import {devToolsEnhancer, composeWithDevTools} from 'redux-devtools-extension'
+export const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>

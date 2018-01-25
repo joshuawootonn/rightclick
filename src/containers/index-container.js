@@ -3,9 +3,7 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 import NavContainer from './nav-container';
 class IndexContainer extends Component {
-  componentDidMount(){
-    
-  }
+  
   render() {
     return (
       <NavContainer />
