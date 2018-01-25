@@ -2,9 +2,7 @@ import axios from "axios";
 import * as type from "./types";
 import * as api from "../api";
 
-export const getProfile = playerName => {
-  
- 
+export const getProfile = playerName => { 
   return (dispatch, getState) => {
     // Remember I told you dispatch() can now handle thunks?
     return dispatch(getPlayer(playerName)).then(() => {
