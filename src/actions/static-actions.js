@@ -4,18 +4,23 @@ import * as api from "../api";
 
 export const getStatic = () => { 
   return dispatch => {
-    dispatch(toggleFetching());   
+    dispatch(onFetching());   
     dispatch(getVersion()) 
     dispatch(getChampion()) 
     dispatch(getSummoner()) 
     dispatch(getItem())
-    dispatch(toggleFetching()); 
+    dispatch(offFetching()); 
          
   };
 }
-const toggleFetching = () => {
+const onFetching = () => {
   return {
-    type: types.TOGGLE_STATIC_FETCHING
+    type: types.STATIC_FETCHING_ON
+  };
+};
+const offFetching = () => {
+  return {
+    type: types.STATIC_FETCHING_OFF
   };
 };
 const getVersion = () => {

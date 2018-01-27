@@ -5,18 +5,23 @@ import {getPlayer} from './player-actions';
 
 export const getMatch = playerName => {
   return (dispatch, getState) => {
-    dispatch(toggleFetching());
+    dispatch(onFetching());
     return dispatch(getPlayer(playerName)).then(() => {
       const accountId = getState().player.accountId;
       return dispatch(getMatches(accountId)).then(() => {      
-        return dispatch(toggleFetching());
+        return dispatch(offFetching());
       });
     })
   };
 };
-const toggleFetching = () => {
+const onFetching = () => {
   return {
-    type: types.TOGGLE_MATCH_FETCHING
+    type: types.MATCH_FETCHING_ON
+  };
+};
+const offFetching = () => {
+  return {
+    type: types.MATCH_FETCHING_OFF
   };
 };
 const getMatches = accountId => {

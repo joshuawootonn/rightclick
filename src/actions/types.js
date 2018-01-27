@@ -1,12 +1,14 @@
 // Player
-export const TOGGLE_PLAYER_FETCHING = "toggle_player_fetching";
+export const PLAYER_FETCHING_ON = "player_fetching_on";
+export const PLAYER_FETCHING_OFF = "player_fetching_off";
 
 export const GET_PLAYER_REQUEST = "get_player_request";
 export const GET_PLAYER_SUCCESS = "get_player_success";
 export const GET_PLAYER_FAILURE = "get_player_failure";
 
 // Static
-export const TOGGLE_STATIC_FETCHING = "toggle_static_fetching";
+export const STATIC_FETCHING_ON = "static_fetching_on";
+export const STATIC_FETCHING_OFF = "static_fetching_off";
 
 export const GET_VERSION_LOCAL = "get_version_local";
 export const GET_VERSION_REQUEST = "get_version_request";
@@ -30,7 +32,8 @@ export const GET_SUMMONER_FAILURE = "get_summoner_failure";
 
 // League
 
-export const TOGGLE_LEAGUE_FETCHING = "toggle_league_fetching";
+export const LEAGUE_FETCHING_ON = "league_fetching_on";
+export const LEAGUE_FETCHING_OFF = "league_fetching_off";
 
 export const GET_LEAGUE_REQUEST = "get_league_request";
 export const GET_LEAGUE_SUCCESS = "get_league_success";
@@ -38,7 +41,8 @@ export const GET_LEAGUE_FAILURE = "get_league_failure";
 
 // Match
 
-export const TOGGLE_MATCH_FETCHING = "toggle_match_fetching";
+export const MATCH_FETCHING_ON = "match_fetching_on";
+export const MATCH_FETCHING_OFF = "match_fetching_off";
 
 export const GET_MATCHES_REQUEST = "get_matches_request";
 export const GET_MATCHES_SUCCESS = "get_matches_success";

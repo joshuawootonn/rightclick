@@ -4,10 +4,15 @@ const initialState = {
 };
 export const staticReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actions.TOGGLE_STATIC_FETCHING:
+    case actions.STATIC_FETCHING_ON:
       return{
         ...state,
-        loading: !state.loading
+        loading: true
+      }
+    case actions.STATIC_FETCHING_OFF:
+      return{
+        ...state,
+        loading: false
       }
     case actions.GET_VERSION_LOCAL:
       return {

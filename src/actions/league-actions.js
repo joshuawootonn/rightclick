@@ -5,18 +5,23 @@ import { getPlayer } from "./player-actions";
 
 export const getLeague = playerName => {
     return (dispatch, getState) => {
-      dispatch(toggleFetching());
+      dispatch(onFetching());
       return dispatch(getPlayer(playerName)).then(() => {
         const id = getState().player.id;
         return dispatch(getLeagueData(id)).then(() => {
-          return dispatch(toggleFetching());
+          return dispatch(offFetching());
         });
       });
     };
 };
-const toggleFetching = () => {
+const onFetching = () => {
   return {
-    type: types.TOGGLE_LEAGUE_FETCHING
+    type: types.LEAGUE_FETCHING_ON
+  };
+};
+const offFetching = () => {
+  return {
+    type: types.LEAGUE_FETCHING_OFF
   };
 };
 const getLeagueData = id => {

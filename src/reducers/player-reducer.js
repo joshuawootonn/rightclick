@@ -4,11 +4,16 @@ const initialState = {
 };
 export const playerReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actions.TOGGLE_PLAYER_FETCHING:
+    case actions.PLAYER_FETCHING_ON:
       return{
         ...state,
-        loading: !state.loading
-      } 
+        loading: true
+      }
+    case actions.PLAYER_FETCHING_OFF:
+      return{
+        ...state,
+        loading: false
+      }
     case actions.GET_PLAYER_REQUEST:
       return {
         loading: true

@@ -4,12 +4,17 @@ const initialState = {
 };
 
 export const leagueReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case actions.TOGGLE_LEAGUE_FETCHING:
-      return {
+  switch (action.type) {    
+    case actions.LEAGUE_FETCHING_ON:
+      return{
         ...state,
-        loading: !state.loading
-      };
+        loading: true
+      }
+    case actions.LEAGUE_FETCHING_OFF:
+      return{
+        ...state,
+        loading: false
+      }
     case actions.GET_LEAGUE_REQUEST:
       return {
         loading:true
@@ -18,12 +23,14 @@ export const leagueReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.payload.data[0],
-        error: null
+        error: null,
+        loading: false
       };
     case actions.GET_LEAGUE_FAILURE:
       return {
         ...state,
-        error: "Failed retreiving league data"
+        error: "Failed retreiving league data",
+        loading: false
       };
     default:
       return state;

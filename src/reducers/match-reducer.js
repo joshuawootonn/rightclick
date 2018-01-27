@@ -4,10 +4,15 @@ const initialState = {
 };
 export const matchReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actions.TOGGLE_MATCH_FETCHING:
+    case actions.MATCH_FETCHING_ON:
       return{
         ...state,
-        loading: !state.loading
+        loading: true
+      }
+    case actions.MATCH_FETCHING_OFF:
+      return{
+        ...state,
+        loading: false
       }
     case actions.GET_MATCHES_REQUEST:
       return{
