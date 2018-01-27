@@ -1,6 +1,6 @@
 import * as actions from "../actions/types";
 const initialState = {
-  loading: false
+  loading: true
 };
 
 export const leagueReducer = (state = initialState, action) => {
@@ -23,14 +23,12 @@ export const leagueReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.payload.data[0],
-        error: null,
-        loading: false
+        error: null
       };
     case actions.GET_LEAGUE_FAILURE:
       return {
         ...state,
-        error: "Failed retreiving league data",
-        loading: false
+        error: "Failed retreiving league data"
       };
     default:
       return state;

@@ -29,7 +29,10 @@ class IndexContainer extends Component {
     let content = null;
     switch(this.state.tab){
       case "League":
-        content = <LeagueContainer />
+        if(this.props.league.loading)
+          content = <div>loading</div>
+        else
+          content = <LeagueContainer />
     }
     return content;
   }
@@ -46,7 +49,8 @@ class IndexContainer extends Component {
 }
 const mapStateToProps = (state, ownProps) => {
   return {
-    player: state.player
+    player: state.player,
+    league: state.league
   };
 };
 export default connect(mapStateToProps, actions)(IndexContainer);
