@@ -1,17 +1,19 @@
-import axios from "axios";
 import * as types from "./types";
 import * as api from "../api";
-import {getPlayer} from './player-actions';
+import { getPlayer } from "./player-actions";
 
 export const getMatch = playerName => {
   return (dispatch, getState) => {
     dispatch(onFetching());
     return dispatch(getPlayer(playerName)).then(() => {
       const accountId = getState().player.accountId;
-      return dispatch(getMatches(accountId)).then(() => {      
+      return dispatch(getMatches(accountId)).then(() => {
+        getState().match.matches.forEach((ele, i) => {
+          dispatch(getMatchData(ele.gameId, i));
+        });
         return dispatch(offFetching());
       });
-    })
+    });
   };
 };
 const onFetching = () => {
@@ -39,13 +41,17 @@ const getMatches = accountId => {
     );
   };
 };
-const getMatchData = gameId => {
+const getMatchData = (gameId, i) => {
   const matchRequest = api.fetchMatch(gameId);
   return dispatch => {
     dispatch({ type: types.GET_MATCH_REQUEST });
     return matchRequest.then(
       response => {
-        dispatch({ type: types.GET_MATCH_SUCCESS, payload: response });
+        dispatch({
+          type: types.GET_MATCH_SUCCESS,
+          payload: response,
+          index: i
+        });
       },
       error => {
         dispatch({ type: types.GET_MATCH_FAILURE, payload: error });

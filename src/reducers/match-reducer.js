@@ -21,13 +21,12 @@ export const matchReducer = (state = initialState, action) => {
     case actions.GET_MATCHES_SUCCESS:
       return {
         ...state,
-        ...action.payload.data.matches,
+        matches: action.payload.data.matches,
         error: null
       };
     case actions.GET_MATCHES_FAILURE:
       return {
         ...state,
-        matches: null,
         error: "Failed retreiving player data"
       };
     case actions.GET_MATCH_REQUEST:
@@ -36,8 +35,13 @@ export const matchReducer = (state = initialState, action) => {
         error: null
       };
     case actions.GET_MATCH_SUCCESS:
+      console.log(action.index)
+      console.log(state.matches)
       return {
         ...state,
+        matches: state.matches.map((match,i) =>{     
+          return i == action.index ? {...match, ...action.payload.data} : match
+        }),
         error: null
       };
     case actions.GET_MATCH_FAILURE:

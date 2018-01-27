@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import { Field, reduxForm } from "redux-form";
 import {connect} from 'react-redux';
 import * as actions from '../actions';
-import SearchComponent from '../components/search-component';
-import {withRouter} from 'react-router';
 import SearchContainer from './search-container'
 class IntroContainer extends Component { 
   componentDidMount(){
