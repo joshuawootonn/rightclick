@@ -1,32 +1,25 @@
 import * as actions from "../actions/types";
+import * as status from './status';
 const initialState = {
-  loading: false
+  status: status.INIT
 };
 export const playerReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actions.PLAYER_FETCHING_ON:
-      return{
-        ...state,
-        loading: true
-      }
-    case actions.PLAYER_FETCHING_OFF:
-      return{
-        ...state,
-        loading: false
-      }
+    
     case actions.GET_PLAYER_REQUEST:
       return {
-        loading: true
+        status: status.LOADING
       };
     case actions.GET_PLAYER_SUCCESS:
       return {
         ...state, 
-        ...action.payload.data,        
-        error: null
+        ...action.payload.data,
+        status: status.SUCCESS
       };
     case actions.GET_PLAYER_FAILURE:
       return {
         ...state,
+        status: status.ERROR,
         error: "Failed retreiving player data"
       };
     default:

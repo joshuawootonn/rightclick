@@ -2,26 +2,13 @@ import * as types from "./types";
 import * as api from "../api";
 
 export const getStatic = () => { 
-  return dispatch => {
-    dispatch(onFetching());   
+  return dispatch => { 
     dispatch(getVersion()) 
     dispatch(getChampion()) 
     dispatch(getSummoner()) 
-    dispatch(getItem())
-    dispatch(offFetching()); 
-         
+    dispatch(getItem())         
   };
 }
-const onFetching = () => {
-  return {
-    type: types.STATIC_FETCHING_ON
-  };
-};
-const offFetching = () => {
-  return {
-    type: types.STATIC_FETCHING_OFF
-  };
-};
 const getVersion = () => {
   // Checking local storage for the cached static data
   const versionCache = localStorage.getItem("riot_version");

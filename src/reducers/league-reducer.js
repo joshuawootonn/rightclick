@@ -1,33 +1,25 @@
 import * as actions from "../actions/types";
+import * as status from './status';
 const initialState = {
-  loading: true
+  status: status.INIT
 };
 
 export const leagueReducer = (state = initialState, action) => {
-  switch (action.type) {    
-    case actions.LEAGUE_FETCHING_ON:
-      return{
-        ...state,
-        loading: true
-      }
-    case actions.LEAGUE_FETCHING_OFF:
-      return{
-        ...state,
-        loading: false
-      }
+  switch (action.type) {        
     case actions.GET_LEAGUE_REQUEST:
       return {
-        loading:true
+        status: status.LOADING
       };
     case actions.GET_LEAGUE_SUCCESS:
       return {
         ...state,
         ...action.payload.data[0],
-        error: null
+        status: status.SUCCESS
       };
     case actions.GET_LEAGUE_FAILURE:
       return {
         ...state,
+        status: status.ERROR,
         error: "Failed retreiving league data"
       };
     default:

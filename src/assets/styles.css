@@ -2730,7 +2730,8 @@ a.text-error:focus, a.text-error:hover {
   word-break: break-word;
   word-wrap: break-word; }
 
-html, body {
+html,
+body {
   margin: 0;
   height: 100%; }
 
@@ -2747,5 +2748,18 @@ html, body {
   justify-content: center; }
   .hero h1 {
     font-size: 6rem; }
+
+.container {
+  position: relative;
+  margin-right: auto;
+  /* 1 */
+  margin-left: auto;
+  /* 1 */
+  max-width: 960px;
+  /* 2 */
+  padding-right: 10px;
+  /* 3 */
+  padding-left: 10px;
+  /* 3 */ }
 
 /*# sourceMappingURL=styles.css.map */

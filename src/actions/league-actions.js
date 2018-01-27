@@ -4,24 +4,11 @@ import { getPlayer } from "./player-actions";
 
 export const getLeague = playerName => {
     return (dispatch, getState) => {
-      dispatch(onFetching());
       return dispatch(getPlayer(playerName)).then(() => {
         const id = getState().player.id;
-        return dispatch(getLeagueData(id)).then(() => {
-          return dispatch(offFetching());
-        });
+        return dispatch(getLeagueData(id))
       });
     };
-};
-const onFetching = () => {
-  return {
-    type: types.LEAGUE_FETCHING_ON
-  };
-};
-const offFetching = () => {
-  return {
-    type: types.LEAGUE_FETCHING_OFF
-  };
 };
 const getLeagueData = id => {
   const leagueRequest = api.fetchLeague(id);

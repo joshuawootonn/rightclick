@@ -4,26 +4,14 @@ import { getPlayer } from "./player-actions";
 
 export const getMatch = playerName => {
   return (dispatch, getState) => {
-    dispatch(onFetching());
     return dispatch(getPlayer(playerName)).then(() => {
       const accountId = getState().player.accountId;
       return dispatch(getMatches(accountId)).then(() => {
         getState().match.matches.forEach((ele, i) => {
           dispatch(getMatchData(ele.gameId, i));
         });
-        return dispatch(offFetching());
       });
     });
-  };
-};
-const onFetching = () => {
-  return {
-    type: types.MATCH_FETCHING_ON
-  };
-};
-const offFetching = () => {
-  return {
-    type: types.MATCH_FETCHING_OFF
   };
 };
 const getMatches = accountId => {

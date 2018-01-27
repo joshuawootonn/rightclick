@@ -28,10 +28,7 @@ class IndexContainer extends Component {
   getIndexContent = () => {
     let content = null;
     switch(this.state.tab){
-      case "League":
-        if(this.props.league.loading)
-          content = <div>loading</div>
-        else
+      case "League":        
           content = <LeagueContainer />
     }
     return content;
@@ -42,7 +39,10 @@ class IndexContainer extends Component {
       <div>
         <NavContainer />
         <TabContainer current={this.state.tab} handleTabChange={this.handleTabChange} />
-        {this.getIndexContent()}
+        <div className="container">
+          {this.getIndexContent()}
+        </div>
+       
       </div>
     );
   }
