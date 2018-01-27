@@ -5,19 +5,22 @@ import NavContainer from './nav-container';
 import * as api from "../api";
 class IndexContainer extends Component {
   componentDidMount(){
-    console.log(this.props.match.params.player);
-    const playerName = this.props.match.params.player;
-    const playerRequest = api.fetchPlayer(playerName);
     // If state not present from a past search get it.
+    console.log(this.props);
+    const playerName = this.props.match.params.player;    
     if(this.props.player){
       this.props.getStatic();
-      this.props.getLeague();
-      this.props.getMatch();
+      this.props.getLeague(playerName);
+      this.props.getMatch(playerName);
     }
   }
   render() {
     return (
+      <div>
       <NavContainer />
+      {(this.player) ? this.player.name : null}
+      </div>
+      
     );
   }
 }

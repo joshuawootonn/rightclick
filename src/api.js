@@ -5,8 +5,7 @@ const API_KEY = "RGAPI-ba9adb39-0154-48ed-80a7-027bd1ae68ab";
 
 // Player
 
-export function fetchPlayer(term){
-  
+export function fetchPlayer(term){  
   return axios.get(`${PROXY}https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/${term}?api_key=${API_KEY}`);
 }
 

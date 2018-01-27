@@ -7,7 +7,7 @@ export const getMatch = playerName => {
   return (dispatch, getState) => {
     dispatch(toggleFetching());
     return dispatch(getPlayer(playerName)).then(() => {
-      const accountId = getState().player.accountId;
+      const accountId = getState().player.player.accountId;
       return dispatch(getMatches(accountId)).then(() => {      
         return dispatch(toggleFetching());
       });
