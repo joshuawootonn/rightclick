@@ -11,20 +11,17 @@ export const playerReducer = (state = initialState, action) => {
       } 
     case actions.GET_PLAYER_REQUEST:
       return {
-        ...state,
-        player: null,
-        error: null
+        loading: true
       };
     case actions.GET_PLAYER_SUCCESS:
       return {
-        ...state,   
-        player: action.payload.data,        
+        ...state, 
+        ...action.payload.data,        
         error: null
       };
     case actions.GET_PLAYER_FAILURE:
       return {
         ...state,
-        player: null,
         error: "Failed retreiving player data"
       };
     default:

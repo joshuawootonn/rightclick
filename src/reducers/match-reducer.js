@@ -2,7 +2,6 @@ import * as actions from "../actions/types";
 const initialState = {
   loading: false
 };
-
 export const matchReducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.TOGGLE_MATCH_FETCHING:
@@ -12,14 +11,12 @@ export const matchReducer = (state = initialState, action) => {
       }
     case actions.GET_MATCHES_REQUEST:
       return{
-        ...state,
-        matches: null,
-        error:null
+        loading:true
       }
     case actions.GET_MATCHES_SUCCESS:
       return {
         ...state,
-        matches: action.payload.data.matches,
+        ...action.payload.data.matches,
         error: null
       };
     case actions.GET_MATCHES_FAILURE:

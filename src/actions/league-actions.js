@@ -7,7 +7,7 @@ export const getLeague = playerName => {
     return (dispatch, getState) => {
       dispatch(toggleFetching());
       return dispatch(getPlayer(playerName)).then(() => {
-        const id = getState().player.player.id;
+        const id = getState().player.id;
         return dispatch(getLeagueData(id)).then(() => {
           return dispatch(toggleFetching());
         });
