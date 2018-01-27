@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import NavContainer from "./nav-container";
 import TabContainer from './tab-container';
-import * as api from "../api";
+import LeagueContainer from './league/league-container';
 class IndexContainer extends Component {
   constructor(props){
     super(props);
@@ -25,11 +25,21 @@ class IndexContainer extends Component {
       tab: tab
     });
   }
+  getIndexContent = () => {
+    let content = null;
+    switch(this.state.tab){
+      case "League":
+        content = <LeagueContainer />
+    }
+    return content;
+  }
   render = () => {
+    
     return (
       <div>
         <NavContainer />
         <TabContainer current={this.state.tab} handleTabChange={this.handleTabChange} />
+        {this.getIndexContent()}
       </div>
     );
   }

@@ -35,12 +35,10 @@ export const matchReducer = (state = initialState, action) => {
         error: null
       };
     case actions.GET_MATCH_SUCCESS:
-      console.log(action.index)
-      console.log(state.matches)
       return {
         ...state,
         matches: state.matches.map((match,i) =>{     
-          return i == action.index ? {...match, ...action.payload.data} : match
+          return i === action.index ? {...match, ...action.payload.data} : match
         }),
         error: null
       };
