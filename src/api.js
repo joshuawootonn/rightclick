@@ -1,6 +1,14 @@
 import axios from 'axios';
 const PROXY = "https://cors-anywhere.herokuapp.com/";
-const API_KEY = "RGAPI-7a7124cf-66b3-4c07-83f6-df33276b4a2c";
+const API_KEY = "RGAPI-ba9adb39-0154-48ed-80a7-027bd1ae68ab";
+
+
+// Player
+
+export function fetchPlayer(term){
+  
+  return axios.get(`${PROXY}https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/${term}?api_key=${API_KEY}`);
+}
 
 // Static
 
@@ -17,14 +25,17 @@ export function fetchSummoner(){
   return axios.get(`${PROXY}https://na1.api.riotgames.com/lol/static-data/v3/summoner-spells?api_key=${API_KEY}&locale=en_US&dataById=false`);
 }
 
+// League
 
-// Profile
-
-export function fetchPlayer(term){
-  return axios.get(`${PROXY}https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/${term}?api_key=${API_KEY}`);
-}
 export function fetchLeague(id){
   return axios.get(`${PROXY}https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/${id}?api_key=${API_KEY}`);
 }
 
 // Match
+
+export function fetchMatches(accountId){
+  return axios.get(`${PROXY}https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/${accountId}/recent?api_key=${API_KEY}`);
+}
+export function fetchMatch(gameId){
+  return axios.get(`${PROXY}https://na1.api.riotgames.com/lol/match/v3/matches/${gameId}?api_key=${API_KEY}`);
+}

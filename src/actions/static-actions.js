@@ -2,16 +2,22 @@ import axios from "axios";
 import * as types from "./types";
 import * as api from "../api";
 
-export const getStatic = () => {
- 
+export const getStatic = () => { 
   return dispatch => {
+    dispatch(toggleFetching());   
     dispatch(getVersion()) 
     dispatch(getChampion()) 
     dispatch(getSummoner()) 
-    dispatch(getItem())      
+    dispatch(getItem())
+    dispatch(toggleFetching()); 
+         
   };
 }
-
+const toggleFetching = () => {
+  return {
+    type: types.TOGGLE_STATIC_FETCHING
+  };
+};
 const getVersion = () => {
   // Checking local storage for the cached static data
   const versionCache = localStorage.getItem("riot_version");
@@ -90,7 +96,7 @@ const getItem = () => {
     };
   }
   // If none is found retreive it
-  const itemRequest = api.fetchVersion();
+  const itemRequest = api.fetchItem();
   return dispatch => {
     dispatch({ type: types.GET_ITEM_REQUEST });
     return itemRequest.then(
@@ -123,7 +129,7 @@ const getSummoner = () => {
     };
   }
   // If none is found retreive it
-  const summonerRequest = api.fetchVersion();
+  const summonerRequest = api.fetchSummoner();
   return dispatch => {
     dispatch({ type: types.GET_SUMMONER_REQUEST });
     return summonerRequest.then(

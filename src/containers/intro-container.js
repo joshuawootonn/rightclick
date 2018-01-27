@@ -8,7 +8,7 @@ import SearchContainer from './search-container'
 class IntroContainer extends Component { 
   componentDidMount(){
     
-      this.props.getStatic();
+      
     
   }
   render() {    
