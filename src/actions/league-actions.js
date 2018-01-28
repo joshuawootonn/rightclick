@@ -6,7 +6,10 @@ export const getLeague = playerName => {
     return (dispatch, getState) => {
       return dispatch(getPlayer(playerName)).then(() => {
         const id = getState().player.id;
-        return dispatch(getLeagueData(id))
+        return dispatch(getLeagueData(id)).then(() => {
+          const leagueId = getState().league.leagueId
+          return dispatch(getDivisionData(leagueId));
+        })
       });
     };
 };
@@ -25,3 +28,18 @@ const getLeagueData = id => {
     );
   };
 };
+const getDivisionData = id => {
+  const divisionRequest = api.fetchDivision(id);
+  return dispatch => {
+    dispatch({ type: types.GET_DIVISION_REQUEST });
+    return divisionRequest.then(
+      response => {
+        dispatch({ type: types.GET_DIVISION_SUCCESS, payload: response });
+      },
+      error => {
+        dispatch({ type: types.GET_DIVISION_FAILURE, payload: error });
+        throw error;
+      }
+    );
+  };
+}

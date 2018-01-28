@@ -39,6 +39,10 @@ export const GET_LEAGUE_REQUEST = "get_league_request";
 export const GET_LEAGUE_SUCCESS = "get_league_success";
 export const GET_LEAGUE_FAILURE = "get_league_failure";
 
+export const GET_DIVISION_REQUEST = "get_division_request";
+export const GET_DIVISION_SUCCESS = "get_division_success";
+export const GET_DIVISION_FAILURE = "get_division_failure";
+
 // Match
 
 export const MATCH_FETCHING_ON = "match_fetching_on";

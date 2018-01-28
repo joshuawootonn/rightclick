@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import * as status from "../../reducers/status";
 import LeagueOverViewComponent from "../../components/league/league-overview-component";
 import LeagueUnrankedComponent from "../../components/league/league-unranked-component";
+import LeagueTableComponent from '../../components/league/league-table-component';
 class LeagueContainer extends Component {
 
   componentDidMount = () =>{
@@ -33,7 +34,12 @@ class LeagueContainer extends Component {
       return <LeagueUnrankedComponent /> ;    
     // If ranked
     if (this.props.league.status === status.SUCCESS)
-      return <LeagueOverViewComponent player={this.props.player} league={this.props.league} rankIconPath={this.getRankIcon()} />;
+      return(
+        <div className="tile is-vertical is-ancestor">
+          <LeagueOverViewComponent player={this.props.player} league={this.props.league} rankIconPath={this.getRankIcon()} />
+          <LeagueTableComponent league={this.props.league} />
+        </div>
+      ) 
     return null;
   }
 }

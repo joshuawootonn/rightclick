@@ -29,6 +29,9 @@ export function fetchSummoner(){
 export function fetchLeague(id){
   return axios.get(`${PROXY}https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/${id}?api_key=${API_KEY}`);
 }
+export function fetchDivision(id){
+  return axios.get(`${PROXY}https://na1.api.riotgames.com/lol/league/v3/leagues/${id}?api_key=${API_KEY}`);
+}
 
 // Match
 
