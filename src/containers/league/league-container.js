@@ -36,7 +36,7 @@ class LeagueContainer extends Component {
   render = () => {
     // If Loading
     if (this.props.league.status === status.LOADING || this.props.player.status === status.LOADING)
-      return <div className="loading loading-lg" />;
+      return <p>loading</p>;
     // If Unranked
     if (this.props.league.status === status.SUCCESS && !this.props.league.tier)
       return <LeagueUnrankedComponent />;
