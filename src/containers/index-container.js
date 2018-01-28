@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import NavContainer from "./nav-container";
 import TabContainer from "./tab-container";
 import LeagueContainer from "./league/league-container";
@@ -9,23 +8,19 @@ class IndexContainer extends Component {
     this.state = {
       tab: "League"
     };
-  }
-  
-
+  } 
   handleTabChange = tab => {
     this.setState({
       tab: tab
     });
   };
   getIndexContent = () => {
-    let content = null;
     switch (this.state.tab) {
       case "League":
-        content = (
-          <LeagueContainer playerName={this.props.match.params.player} />
-        );
+        return <LeagueContainer playerName={this.props.match.params.player} />;
+      default:
+        return <LeagueContainer playerName={this.props.match.params.player} />;
     }
-    return content;
   };
   render = () => {
     return (

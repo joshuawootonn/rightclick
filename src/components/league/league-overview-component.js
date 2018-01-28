@@ -10,7 +10,7 @@ const LeagueOverviewComponent = props => {
     <div className="tile box is-12">
       <div className="columns is-vcentered">
         <div className="column  ">
-          <img className="is-pulled-right" src={props.rankIconPath} />
+          <img alt="rank icon" className="is-pulled-right" src={props.rankIconPath} />
         </div>
         <div className="column ">
           <h1>

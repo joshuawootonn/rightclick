@@ -25,7 +25,7 @@ export const leagueReducer = (state = initialState, action) => {
       return state;
     case actions.GET_DIVISION_SUCCESS:
 
-      const sortedDivision = action.payload.data.entries.sort((a,b) =>{
+      action.payload.data.entries.sort((a,b) =>{
         if(a.leaguePoints < b.leaguePoints)
           return 1;
         else if(b.leaguePoints < a.leaguePoints)
