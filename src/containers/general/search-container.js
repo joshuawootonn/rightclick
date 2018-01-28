@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
-import SearchComponent from "../components/search-component";
+import SearchComponent from "../../components/general/search-component";
 import { withRouter } from "react-router";
 import {connect} from 'react-redux';
-import * as actions from '../actions';
+import * as actions from '../../actions';
 class SearchContainer extends Component {
   handleSearch = event => {    
-    this.props.history.push(`/${event.search}/league`);
+    this.props.history.push(`/${event.search}`);
     const playerName = event.search;
     this.props.getStatic();
     this.props.getLeague(playerName);

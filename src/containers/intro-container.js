@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
 import * as actions from '../actions';
-import SearchContainer from './search-container'
+import SearchContainer from './general/search-container'
 class IntroContainer extends Component { 
-  componentDidMount(){
-    
-      
-    
-  }
   render() {    
     return (
       <div className="hero">

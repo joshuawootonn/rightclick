@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavComponent from '../components/nav-component';
+import NavComponent from '../../components/general/nav-component';
 class NavContainer extends Component {
   handleSearch = event => {
     

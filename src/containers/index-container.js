@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import NavContainer from "./nav-container";
-import TabContainer from "./tab-container";
+import NavContainer from "./general/nav-container";
+import TabContainer from "./general/tab-container";
 import LeagueContainer from "./league/league-container";
 class IndexContainer extends Component {
   constructor(props) {

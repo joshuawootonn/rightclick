@@ -1,5 +1,5 @@
 import React from "react";
-import SearchContainer from "../containers/search-container";
+import SearchContainer from "../../containers/general/search-container";
 import { Link } from "react-router-dom";
 const NavComponent = props => {
   return (
