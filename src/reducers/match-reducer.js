@@ -12,8 +12,7 @@ export const matchReducer = (state = initialState, action) => {
     case actions.GET_MATCHES_SUCCESS:
       return {
         ...state,
-        matches: action.payload.data.matches,
-        status: status.SUCCESS
+        matches: action.payload.data.matches
       };
     case actions.GET_MATCHES_FAILURE:
       return {
@@ -22,22 +21,26 @@ export const matchReducer = (state = initialState, action) => {
         error: "Failed retreiving matches data"
       };
     case actions.GET_MATCH_REQUEST:
-      return {
-        ...state,
-        
-      };
+      return state;
     case actions.GET_MATCH_SUCCESS:
       return {
         ...state,
-        matches: state.matches.map((match,i) =>{     
-          return i === action.index ? {...match, ...action.payload.data} : match
+        matches: state.matches.map((match,i) =>{
+          //console.log(action.payload.data);     
+          return i === action.index ? Object.assign({},match,{...action.payload.data}) : match
         })
       };
     case actions.GET_MATCH_FAILURE:
       return {
         ...state,
+        status: status.ERROR,
         error: "Failed retreiving match data"
       };
+    case actions.GET_DIVISION_SUCCESS_ALL:
+      return {
+        ...state,
+        status: status.SUCCESS
+      }
     default:
       return state;
   }

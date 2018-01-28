@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import NavContainer from "./general/nav-container";
 import TabContainer from "./general/tab-container";
 import LeagueContainer from "./league/league-container";
-import MatchContainer from './match/match-container';
+import MatchesContainer from './match/matches-container';
 import StatContainer from './stat/stat-container';
 class IndexContainer extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class IndexContainer extends Component {
       case "League":
         return <LeagueContainer playerName={this.props.match.params.player} />;
       case "Matches":
-        return <MatchContainer />
+        return <MatchesContainer />
       case "Stats":
         return <StatContainer />
       default:

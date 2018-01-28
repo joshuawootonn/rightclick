@@ -3,12 +3,18 @@ import * as api from "../api";
 import { getPlayer } from "./player-actions";
 
 export const getMatch = playerName => {
+  let count = 0;
   return (dispatch, getState) => {
     return dispatch(getPlayer(playerName)).then(() => {
       const accountId = getState().player.accountId;
       return dispatch(getMatches(accountId)).then(() => {
         getState().match.matches.forEach((ele, i) => {
-          dispatch(getMatchData(ele.gameId, i));
+          dispatch(getMatchData(ele.gameId, i)).then(()=>{
+            count+= i;
+            if(count === 190){
+              dispatch({type: types.GET_DIVISION_SUCCESS_ALL});
+            }
+          });
         });
       });
     });
