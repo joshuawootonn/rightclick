@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 class SearchContainer extends Component {
   handleSearch = event => {    
-    this.props.history.push(`/${event.search}`);
+    this.props.history.push(`/${event.search}/league`);
     const playerName = event.search;
     this.props.getStatic();
     this.props.getLeague(playerName);

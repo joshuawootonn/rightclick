@@ -3,7 +3,6 @@ import React from "react";
 const LeagueOverviewComponent = props => {
   const player = props.player;
   const league = props.league;
-  console.log(league.wins.toFixed(2));
   const wr = (league.wins.toFixed(2) /
     (league.wins + league.losses).toFixed(2) *
     100).toFixed(2);

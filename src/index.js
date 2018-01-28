@@ -10,6 +10,7 @@ import "./assets/styles.css";
 //JS
 import IntroContainer from './containers/intro-container';
 import IndexContainer from './containers/index-container';
+import LeagueContainer from './containers/league/league-container';
 import reducers from './reducers';
 import {composeWithDevTools} from 'redux-devtools-extension'
 export const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
@@ -17,7 +18,7 @@ export const store = createStore(reducers, composeWithDevTools(applyMiddleware(t
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Switch>        
+      <Switch>       
         <Route path="/:player" component={IndexContainer} />
         <Route path="/" component={IntroContainer} />
       </Switch>
