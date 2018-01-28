@@ -30,7 +30,7 @@ class MatchesContainer extends Component {
     return this.props.match.matches.map((m, i) => {
       //console.log(m.gameMode,i);
       if (m.gameMode === "CLASSIC"){        
-        return <MatchContainer gameId={m.gameId}/>;
+        return <MatchContainer match={m}  />;
       }
       else 
         return null;
@@ -51,7 +51,6 @@ class MatchesContainer extends Component {
       // return (
       //   <MatchComponent />
       // )
-      console.log("in matches render")
       return (
         
         <div className="tile is-vertical is-ancestor">

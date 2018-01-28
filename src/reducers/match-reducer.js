@@ -26,8 +26,7 @@ export const matchReducer = (state = initialState, action) => {
       return {
         ...state,
         matches: state.matches.map((match,i) =>{
-          //console.log(action.payload.data);     
-          return i === action.index ? Object.assign({},match,{...action.payload.data}) : match
+          return i === action.index ? Object.assign({},match,processMatchData({...action.payload.data})) : match
         })
       };
     case actions.GET_MATCH_FAILURE:
@@ -45,3 +44,73 @@ export const matchReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+const getKDA = (data) => {
+  return (data.stats.kills.toFixed(2)+data.stats.assists.toFixed(2))/(data.stats.deaths.toFixed(2))
+}
+const processMatchData = (data) =>{
+  
+  let newData = {
+    general: {
+      gameType: data.gameType,
+      gameId: data.gameId,
+      gameCreation: data.gameCreation,
+      gameDuration: data.gameDuration
+    },
+    goodTeam:{
+      top:{
+        ...data.participants[data.participants.find((ele) => (ele.timeline.lane === "TOP" && ele.stats.win)).participantId-1],
+        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.lane === "TOP" && ele.stats.win)).participantId-1].player,
+        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.lane === "TOP" && ele.stats.win)).participantId-1])
+      },
+      jung:{
+        ...data.participants[data.participants.find((ele) => (ele.timeline.lane === "JUNGLE" && ele.stats.win)).participantId-1],
+        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.lane === "JUNGLE" && ele.stats.win)).participantId-1].player,
+        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.lane === "JUNGLE" && ele.stats.win)).participantId-1])
+      },
+      middle:{
+        ...data.participants[data.participants.find((ele) => (ele.timeline.lane === "MIDDLE" && ele.stats.win)).participantId-1],
+        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.lane === "MIDDLE" && ele.stats.win)).participantId-1].player,
+        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.lane === "MIDDLE" && ele.stats.win)).participantId-1])
+      },
+      bottom:{
+        ...data.participants[data.participants.find((ele) => (ele.timeline.role === "DUO_CARRY" && ele.stats.win)).participantId-1],
+        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.role === "DUO_CARRY" && ele.stats.win)).participantId-1].player,  
+        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.lane === "DUO_CARRY" && ele.stats.win)).participantId-1])
+      },
+      support:{
+        ...data.participants[data.participants.find((ele) => (ele.timeline.role === "DUO_SUPPORT" && ele.stats.win)).participantId-1],
+        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.role === "DUO_SUPPORT" && ele.stats.win)).participantId-1].player,
+        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.lane === "DUO_SUPPORT" && ele.stats.win)).participantId-1])
+      }
+    },
+    badTeam:{
+      top:{
+        ...data.participants[data.participants.find((ele) => (ele.timeline.lane === "TOP" && !ele.stats.win)).participantId-1],
+        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.lane === "TOP" && !ele.stats.win)).participantId-1].player,
+        ...getKDA(data.participants[data.participants.find((ele) =>  (ele.timeline.lane === "TOP" && !ele.stats.win)).participantId-1])
+      },
+      jung:{
+        ...data.participants[data.participants.find((ele) => (ele.timeline.lane === "JUNGLE" && !ele.stats.win)).participantId-1],
+        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.lane === "JUNGLE" && !ele.stats.win)).participantId-1].player,
+        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.lane === "JUNGLE" && !ele.stats.win)).participantId-1])
+      },
+      middle:{
+        ...data.participants[data.participants.find((ele) => (ele.timeline.lane === "MIDDLE" && !ele.stats.win)).participantId-1],
+        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.lane === "MIDDLE" && !ele.stats.win)).participantId-1].player,
+        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.lane === "MIDDLE" && !ele.stats.win)).participantId-1])
+      },
+      bottom:{
+        ...data.participants[data.participants.find((ele) => (ele.timeline.role === "DUO_CARRY" &&  !ele.stats.win)).participantId-1],
+        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.role === "DUO_CARRY" && !ele.stats.win)).participantId-1].player,  
+        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.role === "DUO_CARRY" &&  !ele.stats.win)).participantId-1])
+      },
+      support:{
+        ...data.participants[data.participants.find((ele) => (ele.timeline.role === "DUO_SUPPORT" && !ele.stats.win)).participantId-1],
+        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.role === "DUO_SUPPORT" && !ele.stats.win)).participantId-1].player,  
+        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.role === "DUO_SUPPORT" && !ele.stats.win)).participantId-1])
+      }
+    }
+  }
+  return newData;
+}

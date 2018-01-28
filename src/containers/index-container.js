@@ -8,7 +8,7 @@ class IndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tab: "League"
+      tab: "Matches"
     };
   } 
   handleTabChange = tab => {
@@ -23,9 +23,9 @@ class IndexContainer extends Component {
       case "League":
         return <LeagueContainer playerName={this.props.match.params.player} />;
       case "Matches":
-        return <MatchesContainer />
+        return <MatchesContainer playerName={this.props.match.params.player}/>
       case "Stats":
-        return <StatContainer />
+        return <StatContainer playerName={this.props.match.params.player}/>
       default:
         return <LeagueContainer playerName={this.props.match.params.player} />;
     }

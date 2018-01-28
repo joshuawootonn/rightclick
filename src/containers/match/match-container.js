@@ -4,16 +4,18 @@ import React, { Component } from "react";
 import * as status from "../../reducers/status";
 import MatchComponent from "../../components/match/match-component";
 class MatchContainer extends Component {
-  render = () => {            
+  render = () => { 
+      console.log(this.props.match)   
+      
+      
       return (
-        <MatchComponent />
+        <MatchComponent match={this.props.match}/>
       );
   };
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {
-    match: state.match,
+  return {    
     player: state.player,
     static: state.static,
     own: ownProps
