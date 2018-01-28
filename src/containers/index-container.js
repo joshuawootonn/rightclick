@@ -11,15 +11,7 @@ class IndexContainer extends Component {
       tab: "League"
     }
   }  
-  componentDidMount = () => {
-    // If state not present from a past search get it.
-    const playerName = this.props.match.params.player;
-    if (!this.props.player.loading) {
-      this.props.getStatic();
-      this.props.getLeague(playerName);
-      this.props.getMatch(playerName);
-    }
-  }
+  
   handleTabChange = tab =>{
     this.setState({
       tab: tab
@@ -29,21 +21,21 @@ class IndexContainer extends Component {
     let content = null;
     switch(this.state.tab){
       case "League":        
-          content = <LeagueContainer />
+          content = <LeagueContainer playerName={this.props.match.params.player}/>
     }
     return content;
   }
   render = () => {
     
     return (
-      <div>
+        
+        <div className="container grid-lg">
         <NavContainer />
         <TabContainer current={this.state.tab} handleTabChange={this.handleTabChange} />
-        <div className="container">
-          {this.getIndexContent()}
+        {this.getIndexContent()}
         </div>
        
-      </div>
+     
     );
   }
 }

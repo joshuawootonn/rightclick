@@ -1,12 +1,23 @@
-import React from 'react';
+import React from "react";
 
-const SearchComponent = (props) => {  
+const SearchComponent = props => {
   return (
-    <div className="input-group">
-      <input className="form-input" type="text" placeholder="search" {...props.input}/>
-      <button type="submit" className="btn btn-primary input-group-btn">Search</button>
+    <div className="field has-addons has-addons-right">
+      <p className="control">
+        <input
+          className="input"
+          type="text"
+          placeholder="Summoner"
+          {...props.input}
+        />
+      </p>
+      <p className="control">
+        <button type="submit" className="button is-primary">
+          Search
+        </button>
+      </p>
     </div>
-  );  
-}
+  );
+};
 
 export default SearchComponent;

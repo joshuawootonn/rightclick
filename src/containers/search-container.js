@@ -10,7 +10,7 @@ class SearchContainer extends Component {
     const playerName = event.search;
     this.props.getStatic();
     this.props.getLeague(playerName);
-    this.props.getMatch(playerName);
+    //this.props.getMatch(playerName);
   };
   render() {
     // Handle Submit is given to us by redux form. 

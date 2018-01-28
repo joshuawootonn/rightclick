@@ -1,5 +1,34 @@
-@import '../../node_modules/spectre.css/src/_variables.scss';
-@import '../../node_modules/spectre.css/src/spectre.scss';
+// 1. Import the initial variables
+@import "../../node_modules/bulma/sass/utilities/initial-variables";
+@import "../../node_modules/bulma/sass/utilities/functions";
+//Colors
+
+$slate-grey: #D6DFDE;
+$dark-slate: #214f4b;
+$dark-slate-invert: findColorInvert($dark-slate);
+$linkedin: #0077b5;
+$linkedin-invert: findColorInvert($linkedin);
+$twitter: #55acee;
+$twitter-invert: findColorInvert($twitter);
+$github: #333;
+$github-invert: findColorInvert($github);
+$gold:#F1BF98;
+$gold-invert: findColorInvert($gold);
+$danger: $orange;
+//Fonts
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+$roboto-slab: 'Raleway', serif;   
+$family-primary: $roboto-slab;
+@import "../../node_modules/bulma/sass/utilities/derived-variables.sass";
+
+//Navbar
+$navbar-dropdown-item-hover-color:$slate-grey;
+
+$navbar-item-hover-background-color:transparent;
+$navbar-dropdown-item-hover-background-color:transparent;
+
+//Rest of bulma
+@import "../../node_modules/bulma/bulma.sass";
 html,
 body {
     margin: 0;
@@ -23,17 +52,17 @@ body {
     }
 }
 
-.container {
-    position: relative;
-    margin-right: auto;
-    /* 1 */
-    margin-left: auto;
-    /* 1 */
-    max-width: 960px;
-    /* 2 */
-    padding-right: 10px;
-    /* 3 */
-    padding-left: 10px;
-    /* 3 */
-}
+// .container {
+//     position: relative;
+//     margin-right: auto;
+//     /* 1 */
+//     margin-left: auto;
+//     /* 1 */
+//     max-width: 960px;
+//     /* 2 */
+//     padding-right: 10px;
+//     /* 3 */
+//     padding-left: 10px;
+//     /* 3 */
+// }
 

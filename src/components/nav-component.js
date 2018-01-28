@@ -3,18 +3,28 @@ import SearchContainer from "../containers/search-container";
 import { Link } from "react-router-dom";
 const NavComponent = props => {
   return (
-    <div className="container">
-      <header className="navbar navbar-defualt">
-        <section className="navbar-section">
-          <Link className="navbar-brand mr-2" to="/">
-            RightClick.gg
-          </Link>
-        </section>
-        <section className="navbar-section">
-          <SearchContainer />
-        </section>
-      </header>
-    </div>
+    <nav className="navbar">
+      <div className="navbar-brand">
+        <Link className="navbar-item" to="/">
+          RightClick.gg
+        </Link>
+        <div
+          className="navbar-burger burger"
+          data-target="navbarExampleTransparentExample"
+        >
+          <span />
+          <span />
+          <span />
+        </div>
+      </div>
+      <div className="navbar-end">
+        <div className="navbar-item">
+          <div className="field is-grouped">
+            <SearchContainer />
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 };
 
