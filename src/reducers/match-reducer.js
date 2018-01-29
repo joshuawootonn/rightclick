@@ -46,10 +46,23 @@ export const matchReducer = (state = initialState, action) => {
 };
 
 const getKDA = (data) => {
+ 
   return (data.stats.kills.toFixed(2)+data.stats.assists.toFixed(2))/(data.stats.deaths.toFixed(2))
 }
-const processMatchData = (data) =>{
+const getPosData = (data,lane,pos,isWinner) => {
+  const indexes = data.participants.filter((player) => (player.timeline.lane === lane && player.timeline.role ===pos && player.stats.win === isWinner)).map(a => a.participantId-1);
   
+  let arr = [];
+  indexes.forEach(i => {
+    arr.push({
+      ...data.participants[i],
+      ...data.participantIdentities[i],
+      ...getKDA(data.participants[i])
+    })
+  });
+  return arr;
+}
+const processMatchData = (data) =>{
   let newData = {
     general: {
       gameType: data.gameType,
@@ -57,60 +70,12 @@ const processMatchData = (data) =>{
       gameCreation: data.gameCreation,
       gameDuration: data.gameDuration
     },
-    goodTeam:{
-      top:{
-        ...data.participants[data.participants.find((ele) => (ele.timeline.lane === "TOP" && ele.stats.win)).participantId-1],
-        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.lane === "TOP" && ele.stats.win)).participantId-1].player,
-        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.lane === "TOP" && ele.stats.win)).participantId-1])
-      },
-      jung:{
-        ...data.participants[data.participants.find((ele) => (ele.timeline.lane === "JUNGLE" && ele.stats.win)).participantId-1],
-        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.lane === "JUNGLE" && ele.stats.win)).participantId-1].player,
-        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.lane === "JUNGLE" && ele.stats.win)).participantId-1])
-      },
-      middle:{
-        ...data.participants[data.participants.find((ele) => (ele.timeline.lane === "MIDDLE" && ele.stats.win)).participantId-1],
-        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.lane === "MIDDLE" && ele.stats.win)).participantId-1].player,
-        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.lane === "MIDDLE" && ele.stats.win)).participantId-1])
-      },
-      bottom:{
-        ...data.participants[data.participants.find((ele) => (ele.timeline.role === "DUO_CARRY" && ele.stats.win)).participantId-1],
-        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.role === "DUO_CARRY" && ele.stats.win)).participantId-1].player,  
-        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.lane === "DUO_CARRY" && ele.stats.win)).participantId-1])
-      },
-      support:{
-        ...data.participants[data.participants.find((ele) => (ele.timeline.role === "DUO_SUPPORT" && ele.stats.win)).participantId-1],
-        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.role === "DUO_SUPPORT" && ele.stats.win)).participantId-1].player,
-        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.lane === "DUO_SUPPORT" && ele.stats.win)).participantId-1])
-      }
-    },
-    badTeam:{
-      top:{
-        ...data.participants[data.participants.find((ele) => (ele.timeline.lane === "TOP" && !ele.stats.win)).participantId-1],
-        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.lane === "TOP" && !ele.stats.win)).participantId-1].player,
-        ...getKDA(data.participants[data.participants.find((ele) =>  (ele.timeline.lane === "TOP" && !ele.stats.win)).participantId-1])
-      },
-      jung:{
-        ...data.participants[data.participants.find((ele) => (ele.timeline.lane === "JUNGLE" && !ele.stats.win)).participantId-1],
-        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.lane === "JUNGLE" && !ele.stats.win)).participantId-1].player,
-        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.lane === "JUNGLE" && !ele.stats.win)).participantId-1])
-      },
-      middle:{
-        ...data.participants[data.participants.find((ele) => (ele.timeline.lane === "MIDDLE" && !ele.stats.win)).participantId-1],
-        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.lane === "MIDDLE" && !ele.stats.win)).participantId-1].player,
-        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.lane === "MIDDLE" && !ele.stats.win)).participantId-1])
-      },
-      bottom:{
-        ...data.participants[data.participants.find((ele) => (ele.timeline.role === "DUO_CARRY" &&  !ele.stats.win)).participantId-1],
-        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.role === "DUO_CARRY" && !ele.stats.win)).participantId-1].player,  
-        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.role === "DUO_CARRY" &&  !ele.stats.win)).participantId-1])
-      },
-      support:{
-        ...data.participants[data.participants.find((ele) => (ele.timeline.role === "DUO_SUPPORT" && !ele.stats.win)).participantId-1],
-        ...data.participantIdentities[data.participants.find((ele) => (ele.timeline.role === "DUO_SUPPORT" && !ele.stats.win)).participantId-1].player,  
-        ...getKDA(data.participants[data.participants.find((ele) => (ele.timeline.role === "DUO_SUPPORT" && !ele.stats.win)).participantId-1])
-      }
-    }
+    goodTeam:[...getPosData(data,"TOP","SOLO",true),...getPosData(data,"JUNGLE","NONE",true),...getPosData(data,"MIDDLE","SOLO",true),...getPosData(data,"BOTTOM","DUO",true),...getPosData(data,"BOTTOM","DUO_CARRY",true),...getPosData(data,"BOTTOM","DUO_SUPPORT",true)],
+    badTeam:[...getPosData(data,"TOP","SOLO",false),...getPosData(data,"JUNGLE","NONE",false),...getPosData(data,"MIDDLE","SOLO",false),...getPosData(data,"BOTTOM","DUO",false),...getPosData(data,"BOTTOM","DUO_CARRY",false),...getPosData(data,"BOTTOM","DUO_SUPPORT",false)]
+    
   }
+  console.log(data.participants.map((ele) => ele.timeline.lane));
+  console.log(data.participants.map((ele) => ele.timeline.role))
+  console.log(newData);
   return newData;
 }

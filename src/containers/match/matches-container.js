@@ -28,7 +28,6 @@ class MatchesContainer extends Component {
   };
   generateMatchTiles = () => {
     return this.props.match.matches.map((m, i) => {
-      //console.log(m.gameMode,i);
       if (m.gameMode === "CLASSIC"){        
         return <MatchContainer match={m}  />;
       }

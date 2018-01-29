@@ -4,9 +4,7 @@ import React, { Component } from "react";
 import * as status from "../../reducers/status";
 import MatchComponent from "../../components/match/match-component";
 class MatchContainer extends Component {
-  render = () => { 
-      console.log(this.props.match)   
-      
+  render = () => {     
       
       return (
         <MatchComponent match={this.props.match}/>
