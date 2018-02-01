@@ -6451,4 +6451,9 @@ body {
 .box {
   border-radius: 0px; }
 
+.vertical-center {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
 /*# sourceMappingURL=styles.css.map */
