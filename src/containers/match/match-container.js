@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import React, { Component } from "react";
 
-import MatchGraphsComponent from '../../components/match/match-graphs-component'
+import MatchGraphContainer from './match-graph-container';
 import MatchScoreBoardComponent from '../../components/match/match-scoreboard-component'
 import MatchItemsComponent from '../../components/match/match-items-component'
 import MatchOverviewComponent from '../../components/match/match-overview-component'
@@ -24,7 +24,6 @@ class MatchContainer extends Component {
     if (i > -1 && i < 4) this.setState({ state: i });
   };
 
-
   render() {
     this.props.match.mainPlayer = this.props.match.goodTeam.find(ele => {
       return ele.account.summonerName === this.props.player.name;
@@ -34,9 +33,9 @@ class MatchContainer extends Component {
     return (     
       <div className="tile is-child box is-12">
       <MatchOverviewComponent expand={this.expand} match={this.props.match} static={this.props.static}/>
-      {this.state.isExpanded && this.state.state === 0 ? <MatchItemsComponent setIndex={this.setIndex} match={this.props.match} static={this.props.static}/> : null}
-      {this.state.isExpanded && this.state.state === 1 ? <MatchScoreBoardComponent setIndex={this.setIndex} match={this.props.match} static={this.props.static}/> : null}
-      {this.state.isExpanded && this.state.state === 2 ? <MatchGraphsComponent setIndex={this.setIndex} match={this.props.match} static={this.props.static}/> : null}
+      {this.state.isExpanded && this.state.state === 0 ? <MatchItemsComponent match={this.props.match} static={this.props.static}/> : null}
+      {this.state.isExpanded && this.state.state === 1 ? <MatchScoreBoardComponent match={this.props.match} static={this.props.static}/> : null}
+      {this.state.isExpanded && this.state.state === 2 ? <MatchGraphContainer match={this.props.match} static={this.props.static}/> : null}
       {this.state.isExpanded ? <MatchMenuComponent state={this.state.state} setIndex={i => {this.setIndex(i); }}/> : null}
       </div>
        
