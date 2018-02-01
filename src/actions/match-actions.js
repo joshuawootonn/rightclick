@@ -9,12 +9,14 @@ export const getMatch = playerName => {
       const accountId = getState().player.accountId;
       return dispatch(getMatches(accountId)).then(() => {
         getState().match.matches.forEach((ele, i) => {
-          dispatch(getMatchData(ele.gameId, i)).then(()=>{
-            count+= i;
-            if(count === 190){
-              dispatch({type: types.GET_DIVISION_SUCCESS_ALL});
-            }
-          });
+          
+            dispatch(getMatchData(ele.gameId, i)).then(()=>{
+              count+= i;
+              if(count === 1){
+                dispatch({type: types.GET_DIVISION_SUCCESS_ALL});
+              }
+            });
+                    
         });
       });
     });

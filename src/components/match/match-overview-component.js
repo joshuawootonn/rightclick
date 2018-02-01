@@ -1,0 +1,49 @@
+import React from "react";
+import moment from "moment";
+
+const MatchOverviewComponent = props => {
+  console.log(props);
+  const player = props.match.mainPlayer;
+  const { champion, version, item } = props.static;
+  
+  return (
+    <div className="columns vertical-center ">
+      <div className="column">
+        <div>
+          <h1 className="title is-5">
+            {props.match.general.gameDuration}
+          </h1>
+          <h2 className="subtitle is-5">
+            {props.match.general.gameCreation}
+          </h2>
+        </div>        
+      </div>
+      <div className="column has-text-centered is-narrow">
+        <figure className="image is-96x96 champion-img">
+          <img
+            src={`http://ddragon.leagueoflegends.com/cdn/${version[0]}/img/champion/${champion
+              .data[player.championId].key}.png`}
+          />
+        </figure>
+        <figcaption>
+          {champion.data[player.championId].key}
+        </figcaption>
+      </div>
+      <div className="column">
+        <h1 className="title">
+          {player.stats.kills}/{player.stats.deaths}/{player.stats.assists}
+        </h1>
+        <h2 className="subtitle">
+          KDA:{player.stats.kda}
+        </h2>
+      </div>
+      <div className="column ">
+        <button onClick={props.expand} className="button is-pulled-right">
+          +
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default MatchOverviewComponent;

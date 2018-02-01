@@ -3,7 +3,6 @@ import * as actions from "../../actions";
 import React, { Component } from "react";
 import * as status from "../../reducers/status";
 import MatchContainer from './match-container';
-import MatchComponent from "../../components/match/match-component";
 class MatchesContainer extends Component {
   componentDidMount = () => {
     this.pullMatchData();
@@ -14,7 +13,7 @@ class MatchesContainer extends Component {
     }
   }
   componentWillUpdate = (nextProps, nextState) => {
-    if (this.props.match.status != nextProps.match.status) {
+    if (this.props.match.status !== nextProps.match.status) {
       this.forceUpdate();
     }
   }
@@ -25,11 +24,14 @@ class MatchesContainer extends Component {
     ) {
       this.props.getMatch(this.props.playerName);
     }   
+    if (this.props.static.status === status.INIT) {
+      this.props.getStatic();
+    }
   };
   generateMatchTiles = () => {
     return this.props.match.matches.map((m, i) => {
-      if (m.gameMode === "CLASSIC"){        
-        return <MatchContainer match={m}  />;
+      if (m.general && (m.general.gameMode === "CLASSIC" || m.general.gameMode === "MATCHED_GAME")){        
+        return <MatchContainer key={i} match={m}  />;
       }
       else 
         return null;
@@ -65,6 +67,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     match: state.match,
     player: state.player,
+    static: state.static,
     own: ownProps
   };
 };
