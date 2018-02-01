@@ -27,6 +27,7 @@ export const matchReducer = (state = initialState, action) => {
       return {
         ...state,
         matches: state.matches.map((match,i) =>{
+          console.log(action.payload.data);
           return i === action.index ? Object.assign({},processMatchData(match,{...action.payload.data})) : match
         })
       };
@@ -94,7 +95,13 @@ const getPlayerData = (data,lane,pos,isWinner) => {
         assists: data.participants[i].stats.assists,
         gold: data.participants[i].stats.goldEarned,
         damageDealt: data.participants[i].stats.totalDamageDealtToChampions,
+        damageDealtMagic:data.participants[i].stats.magicDamageDealtToChampions,
+        damageDealtPhysical:data.participants[i].stats.physicalDamageDealtToChampions,
+        damageDealtTrue:data.participants[i].stats.trueDamageDealtToChampions,
         damageTaken: data.participants[i].stats.totalDamageTaken,
+        damageTakenMagic: data.participants[i].stats.magicalDamageTaken,
+        damageTakenPhysical: data.participants[i].stats.physicalDamageTaken,
+        damageTakenTrue: data.participants[i].stats.trueDamageTaken,
         healing: data.participants[i].stats.totalHeal,
         level: data.participants[i].stats.champLevel,
         cs:data.participants[i].stats.totalMinionsKilled

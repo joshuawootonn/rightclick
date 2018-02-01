@@ -9,7 +9,7 @@ const MatchItemsComponent = props => {
   return (
       <div className="columns is-multiline is-12">
         Items
-        <MatchMenuComponent setIndex={(i)=>{props.setIndex(i)}} />
+        
       </div>
   );
 };

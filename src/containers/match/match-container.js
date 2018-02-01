@@ -6,7 +6,7 @@ import MatchGraphsComponent from '../../components/match/match-graphs-component'
 import MatchScoreBoardComponent from '../../components/match/match-scoreboard-component'
 import MatchItemsComponent from '../../components/match/match-items-component'
 import MatchOverviewComponent from '../../components/match/match-overview-component'
-
+import MatchMenuComponent from '../../components/match/match-menu-component'
 
 class MatchContainer extends Component {
   constructor(props) {
@@ -37,7 +37,8 @@ class MatchContainer extends Component {
       {this.state.isExpanded && this.state.state === 0 ? <MatchItemsComponent setIndex={this.setIndex} match={this.props.match} static={this.props.static}/> : null}
       {this.state.isExpanded && this.state.state === 1 ? <MatchScoreBoardComponent setIndex={this.setIndex} match={this.props.match} static={this.props.static}/> : null}
       {this.state.isExpanded && this.state.state === 2 ? <MatchGraphsComponent setIndex={this.setIndex} match={this.props.match} static={this.props.static}/> : null}
-    </div>
+      {this.state.isExpanded ? <MatchMenuComponent state={this.state.state} setIndex={i => {this.setIndex(i); }}/> : null}
+      </div>
        
     );
   }

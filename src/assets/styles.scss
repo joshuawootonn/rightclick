@@ -2,7 +2,6 @@
 @import "../../node_modules/bulma/sass/utilities/initial-variables";
 @import "../../node_modules/bulma/sass/utilities/functions";
 //Colors
-
 $slate-grey: #D6DFDE;
 $dark-slate: #214f4b;
 $dark-slate-invert: findColorInvert($dark-slate);
@@ -17,16 +16,14 @@ $gold-invert: findColorInvert($gold);
 $danger: $orange;
 //Fonts
 @import url('https://fonts.googleapis.com/css?family=Raleway');
-$roboto-slab: 'Raleway', serif;   
+$roboto-slab: 'Raleway',
+serif;
 $family-primary: $roboto-slab;
 @import "../../node_modules/bulma/sass/utilities/derived-variables.sass";
-
 //Navbar
 $navbar-dropdown-item-hover-color:$slate-grey;
-
 $navbar-item-hover-background-color:transparent;
 $navbar-dropdown-item-hover-background-color:transparent;
-
 //Rest of bulma
 @import "../../node_modules/bulma/bulma.sass";
 html,
@@ -52,16 +49,20 @@ body {
     }
 }
 
-.box{
+.box {
     border-radius: 0px;
 }
-
 
 .vertical-center {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.is-half {
+    width: 50%;
+}
+
 
 
 // .container {
@@ -77,4 +78,3 @@ body {
 //     padding-left: 10px;
 //     /* 3 */
 // }
-

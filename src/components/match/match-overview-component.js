@@ -7,8 +7,8 @@ const MatchOverviewComponent = props => {
   const { champion, version, item } = props.static;
 
   return (
-    <div className="columns vertical-center ">
-      <div className="column has-text-centered is-narrow">
+    <div className="columns has-text-centered vertical-center ">
+      <div className="column is-narrow">
         <figure className="image is-96x96 champion-img">
           <img
             src={`http://ddragon.leagueoflegends.com/cdn/${version[0]}/img/champion/${champion

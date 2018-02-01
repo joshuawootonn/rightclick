@@ -4,7 +4,7 @@ const MatchGraphsComponent = props => {
   return (
     <div className="columns is-multiline is-12 ">
       Graphs
-      <MatchMenuComponent setIndex={(i)=>{props.setIndex(i)}} />
+      
     </div>
   );
 };
