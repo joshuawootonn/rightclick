@@ -5,9 +5,8 @@ class MatchGraphContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      graphTypes: ["Gold", "Damage Dealt", "Damage Taken", "Healing"],
-      colors: [2],
-      currentGraph: 2
+      graphTypes: ["Gold", "Damage Dealt", "Damage Taken", "Healing"],      
+      currentGraph: "Gold"
     };
   }
   generateDate = () => {
@@ -15,7 +14,7 @@ class MatchGraphContainer extends Component {
     const goodTeam = this.props.match.goodTeam;
     const badTeam = this.props.match.badTeam;
     switch (this.state.currentGraph) {
-      case 0:
+      case "Gold":
         for (let i = 0; i < goodTeam.length; i++) {
           arr[i] = {
             name: goodTeam[i].account.summonerName,
@@ -27,7 +26,7 @@ class MatchGraphContainer extends Component {
           };
         }
         return arr;
-      case 1:
+      case "Damage Dealt":
         for (let i = 0; i < goodTeam.length; i++) {
           arr[i] = {
             name: goodTeam[i].account.summonerName,
@@ -43,7 +42,7 @@ class MatchGraphContainer extends Component {
           };
         }
         return arr;
-      case 2:
+      case "Damage Taken":
         for (let i = 0; i < goodTeam.length; i++) {
           arr[i] = {
             name: goodTeam[i].account.summonerName,
@@ -59,7 +58,7 @@ class MatchGraphContainer extends Component {
           };
         }        
         return arr;
-      case 3:
+      case "Healing":
         for (let i = 0; i < goodTeam.length; i++) {
           arr[i] = {
             name: goodTeam[i].account.summonerName,
@@ -70,11 +69,14 @@ class MatchGraphContainer extends Component {
             heal2: badTeam[i].stats.healing
           };
         }
-        return arr;
-      
+        return arr;      
     }
     return arr;
   };
+  changeGraph = (event) => {
+    console.log(event)
+    this.setState({currentGraph: event.target.value});
+  } 
   generateBars = () => {};
   setIndex = i => {
     this.setState({ currentGraph: i });
@@ -87,6 +89,7 @@ class MatchGraphContainer extends Component {
         }}
         type={this.state.currentGraph}
         data={this.generateDate()}
+        changeGraph={this.changeGraph}
       />
     );
   }
