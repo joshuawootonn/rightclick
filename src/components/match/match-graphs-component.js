@@ -2,6 +2,7 @@ import React from "react";
 import MatchMenuComponent from "./match-menu-component";
 import {
   BarChart,
+  
   Bar,
   XAxis,
   YAxis,
@@ -27,9 +28,12 @@ const MatchGraphsComponent = props => {
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
-        <Bar name="Healing" dataKey="heal1" stackId="a" fill="#A239CA" />
-        <Bar name="Healing" dataKey="heal2" stackId="a" fill="#4717F6" />
-      
+        <Bar name="Magic" dataKey="magic1" stackId="a" fill="#A239CA" />
+        <Bar name="Physical" dataKey="physical1" stackId="a" fill="#4717F6" />
+        <Bar name="True" dataKey="true1" stackId="a" fill="#A239CA" />
+        <Bar name="Magic" dataKey="magic2" stackId="a" fill="#A239CA" />
+        <Bar name="Physical" dataKey="physical2" stackId="a" fill="#4717F6" />
+        <Bar name="True" dataKey="true2" stackId="a" fill="#A239CA" />
         
         
       </BarChart>
@@ -46,8 +50,12 @@ export default MatchGraphsComponent;
 
 
 // Damage
-// <Bar name="Gold" dataKey="gold1" stackId="a" fill="#A239CA" />
-//         <Bar name="Gold" dataKey="gold2" stackId="a" fill="#4717F6" />
+// <Bar name="Magic" dataKey="magic1" stackId="a" fill="#A239CA" />
+//         <Bar name="Physical" dataKey="physical1" stackId="a" fill="#4717F6" />
+//         <Bar name="True" dataKey="true1" stackId="a" fill="#A239CA" />
+//         <Bar name="Magic" dataKey="magic2" stackId="a" fill="#A239CA" />
+//         <Bar name="Physical" dataKey="physical2" stackId="a" fill="#4717F6" />
+//         <Bar name="True" dataKey="true2" stackId="a" fill="#A239CA" />
 
 
 // REceived
@@ -56,5 +64,5 @@ export default MatchGraphsComponent;
 
 
 // Healing
-// <Bar name="Gold" dataKey="gold1" stackId="a" fill="#A239CA" />
-//         <Bar name="Gold" dataKey="gold2" stackId="a" fill="#4717F6" />
+// <Bar name="Healing" dataKey="heal1" stackId="a" fill="#A239CA" />
+//         <Bar name="Healing" dataKey="heal1" stackId="a" fill="#4717F6" />

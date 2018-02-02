@@ -7,7 +7,7 @@ class MatchGraphContainer extends Component {
     this.state = {
       graphTypes: ["Gold", "Damage Dealt", "Damage Taken", "Healing"],
       colors: [2],
-      currentGraph: 3
+      currentGraph: 2
     };
   }
   generateDate = () => {
