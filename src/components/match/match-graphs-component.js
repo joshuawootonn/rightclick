@@ -27,8 +27,14 @@ const MatchGraphsComponent = props => {
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
-        <Bar name="Gold" dataKey="gold1" stackId="a" fill="#A239CA" />
-        <Bar name="Gold" dataKey="gold2" stackId="a" fill="#4717F6" />
+        {()=>{
+          if(props.currentGraph === "Gold"){
+            return(this.props.children)
+          }
+            
+
+        }}
+        
         
       </BarChart>
     </ResponsiveContainer>
