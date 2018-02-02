@@ -108,7 +108,6 @@ class MatchGraphContainer extends Component {
           { name: "Healing", dataKey: "heal2", stackId: "a", fill: "#4717F6" }
         ];
       default:
-        console.log(this.state.currentGraph);
         return [];
     }
   };
@@ -116,7 +115,6 @@ class MatchGraphContainer extends Component {
     this.setState({ currentGraph: i });
   };
   render() {
-    console.log("witch craft",this.generateBars())
     return (
       <MatchGraphComponent
         setIndex={i => {

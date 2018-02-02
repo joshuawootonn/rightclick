@@ -12,7 +12,6 @@ import {
 } from "recharts";
 
 const MatchGraphsComponent = props => {
-  console.log(props.barData);
   const Bars = props.barData.map((ele,i)=>{
     return <Bar name={ele.name} dataKey={ele.dataKey} stackId={ele.stackId} fill={ele.fill} />
   })
