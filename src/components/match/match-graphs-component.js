@@ -12,6 +12,10 @@ import {
 } from "recharts";
 
 const MatchGraphsComponent = props => {
+  console.log(props.barData);
+  const Bars = props.barData.map((ele,i)=>{
+    return <Bar name={ele.name} dataKey={ele.dataKey} stackId={ele.stackId} fill={ele.fill} />
+  })
   return (
     <div>
       <ResponsiveContainer width="100%" height={500}>
@@ -25,12 +29,7 @@ const MatchGraphsComponent = props => {
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
-          <Bar name="Magic" dataKey="magic1" stackId="a" fill="#A239CA" />
-          <Bar name="Physical" dataKey="physical1" stackId="a" fill="#4717F6" />
-          <Bar name="True" dataKey="true1" stackId="a" fill="#A239CA" />
-          <Bar name="Magic" dataKey="magic2" stackId="a" fill="#A239CA" />
-          <Bar name="Physical" dataKey="physical2" stackId="a" fill="#4717F6" />
-          <Bar name="True" dataKey="true2" stackId="a" fill="#A239CA" />
+          {Bars}
         </BarChart>
       </ResponsiveContainer>
       <div className="field">
@@ -56,6 +55,7 @@ export default MatchGraphsComponent;
 // <Bar name="Gold" dataKey="gold1" stackId="a" fill="#A239CA" />
 //         <Bar name="Gold" dataKey="gold2" stackId="a" fill="#4717F6" />
 
+
 // Damage
 // <Bar name="Magic" dataKey="magic1" stackId="a" fill="#A239CA" />
 //         <Bar name="Physical" dataKey="physical1" stackId="a" fill="#4717F6" />
@@ -65,8 +65,12 @@ export default MatchGraphsComponent;
 //         <Bar name="True" dataKey="true2" stackId="a" fill="#A239CA" />
 
 // REceived
-// <Bar name="Gold" dataKey="gold1" stackId="a" fill="#A239CA" />
-//         <Bar name="Gold" dataKey="gold2" stackId="a" fill="#4717F6" />
+// <Bar name="Magic" dataKey="magic1" stackId="a" fill="#A239CA" />
+//           <Bar name="Physical" dataKey="physical1" stackId="a" fill="#4717F6" />
+//           <Bar name="True" dataKey="true1" stackId="a" fill="#A239CA" />
+//           <Bar name="Magic" dataKey="magic2" stackId="a" fill="#A239CA" />
+//           <Bar name="Physical" dataKey="physical2" stackId="a" fill="#4717F6" />
+//           <Bar name="True" dataKey="true2" stackId="a" fill="#A239CA" />       <Bar name="Gold" dataKey="gold2" stackId="a" fill="#4717F6" />
 
 // Healing
 // <Bar name="Healing" dataKey="heal1" stackId="a" fill="#A239CA" />
