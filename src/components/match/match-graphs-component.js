@@ -12,7 +12,9 @@ import {
 } from "recharts";
 
 
+
 const MatchGraphsComponent = props => {
+  console.log(props.data);
   return (
     <ResponsiveContainer width="100%" height={500}>
       <BarChart
@@ -25,12 +27,13 @@ const MatchGraphsComponent = props => {
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
-        <Legend />
-        <Bar dataKey="gold" stackId="a" fill="#8884d8" />
-        <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
+        <Bar name="Gold" dataKey="gold1" stackId="a" fill="#A239CA" />
+        <Bar name="Gold" dataKey="gold2" stackId="a" fill="#4717F6" />
+        
       </BarChart>
     </ResponsiveContainer>
   );
 };
 
 export default MatchGraphsComponent;
+//<Bar dataKey="uv" stackId="a" fill="#82ca9d" />

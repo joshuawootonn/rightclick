@@ -10,15 +10,21 @@ class MatchGraphContainer extends Component {
   }
   generateDate = () => {
     let arr = [];
-    console.log("graph", this.props);
+    const goodTeam = this.props.match.goodTeam;
+    const badTeam = this.props.match.badTeam;
     switch (this.state.currentGraph) {
       case 0:
-        this.props.match.goodTeam.forEach(element => {
-          arr.push({
-            name: element.account.summonerName,
-            gold: element.stats.gold
-          });
-        });
+      for(let i = 0; i < goodTeam.length; i++){
+        arr[i] = {
+          name: goodTeam[i].account.summonerName,
+          gold1: goodTeam[i].stats.gold
+        };
+        arr[i+goodTeam.length] = {
+          name: badTeam[i].account.summonerName,
+          gold2: badTeam[i].stats.gold
+        }
+      }
+      return arr;
       case 1:
         this.props.match.goodTeam.forEach(element => {
           arr.push({
@@ -28,7 +34,7 @@ class MatchGraphContainer extends Component {
             true: element.stats.damageDealtTrue
           });
         });
-        break;
+        return arr;
       case 2:
         this.props.match.goodTeam.forEach(element => {
           arr.push({
@@ -38,7 +44,7 @@ class MatchGraphContainer extends Component {
             true: element.stats.damageTakenTrue
           });
         });
-        break;
+        return arr;
       case 3:
         this.props.match.goodTeam.forEach(element => {
           arr.push({
@@ -46,7 +52,7 @@ class MatchGraphContainer extends Component {
             healing: element.stats.healing
           });
         });
-        break;
+        return arr;
       default:
         this.props.match.goodTeam.forEach(element => {
           arr.push({
@@ -54,9 +60,9 @@ class MatchGraphContainer extends Component {
             gold: element.stats.gold
           });
         });
-        break;
+        return arr;
     }
-    console.log('this is the array',arr);
+    console.log('this is the array 3',arr);
     return arr;
   };
   setIndex = i => {
