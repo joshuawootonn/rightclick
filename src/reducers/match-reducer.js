@@ -27,7 +27,6 @@ export const matchReducer = (state = initialState, action) => {
       return {
         ...state,
         matches: state.matches.map((match,i) =>{
-          console.log(action.payload.data);
           return i === action.index ? Object.assign({},processMatchData(match,{...action.payload.data})) : match
         })
       };

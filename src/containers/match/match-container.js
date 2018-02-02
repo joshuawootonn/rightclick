@@ -30,6 +30,7 @@ class MatchContainer extends Component {
     }) || this.props.match.badTeam.find(ele => {
       return ele.account.summonerName === this.props.player.name;
     });
+    console.log('Match container', this.props.match);
     return (     
       <div className="tile is-child box is-12">
       <MatchOverviewComponent expand={this.expand} match={this.props.match} static={this.props.static}/>

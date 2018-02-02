@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import MatchGraphComponent from "../../components/match/match-graphs-component";
-import {
-  Bar
- 
-} from "recharts";
+import { Bar } from "recharts";
 class MatchGraphContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       graphTypes: ["Gold", "Damage Dealt", "Damage Taken", "Healing"],
-      currentGraph: 0
+      colors: [2],
+      currentGraph: 3
     };
   }
   generateDate = () => {
@@ -44,45 +42,40 @@ class MatchGraphContainer extends Component {
             true2: badTeam[i].stats.damageDealtTrue
           };
         }
-        this.props.match.goodTeam.forEach(element => {
-          arr.push({
-            name: element.account.summonerName,
-            magic: element.stats.damageDealtMagic,
-            physical: element.stats.damageDealtPhysical,
-            true: element.stats.damageDealtTrue
-          });
-        });
         return arr;
       case 2:
-        this.props.match.goodTeam.forEach(element => {
-          arr.push({
-            name: element.account.summonerName,
-            magic: element.stats.damageTakenMagic,
-            physical: element.stats.damageTakenPhysical,
-            true: element.stats.damageTakenTrue
-          });
-        });
+        for (let i = 0; i < goodTeam.length; i++) {
+          arr[i] = {
+            name: goodTeam[i].account.summonerName,
+            magic1: goodTeam[i].stats.damageTakenMagic,
+            physical1: goodTeam[i].stats.damageTakenPhysical,
+            true1: goodTeam[i].stats.damageTakenTrue
+          };
+          arr[i + goodTeam.length] = {
+            name: badTeam[i].account.summonerName,
+            magic2: badTeam[i].stats.damageTakenMagic,
+            physical2: badTeam[i].stats.damageTakenPhysical,
+            true2: badTeam[i].stats.damageTakenTrue
+          };
+        }        
         return arr;
       case 3:
-        this.props.match.goodTeam.forEach(element => {
-          arr.push({
-            name: element.account.summonerName,
-            healing: element.stats.healing
-          });
-        });
+        for (let i = 0; i < goodTeam.length; i++) {
+          arr[i] = {
+            name: goodTeam[i].account.summonerName,
+            heal1: goodTeam[i].stats.healing
+          };
+          arr[i + goodTeam.length] = {
+            name: badTeam[i].account.summonerName,
+            heal2: badTeam[i].stats.healing
+          };
+        }
         return arr;
-      default:
-        this.props.match.goodTeam.forEach(element => {
-          arr.push({
-            name: element.account.summonerName,
-            gold: element.stats.gold
-          });
-        });
-        return arr;
+      
     }
-    console.log("this is the array 3", arr);
     return arr;
   };
+  generateBars = () => {};
   setIndex = i => {
     this.setState({ currentGraph: i });
   };
@@ -94,10 +87,7 @@ class MatchGraphContainer extends Component {
         }}
         type={this.state.currentGraph}
         data={this.generateDate()}
-      >
-        <Bar name="Gold" dataKey="gold1" stackId="a" fill="#A239CA" />
-        <Bar name="Gold" dataKey="gold2" stackId="a" fill="#4717F6" />
-      </MatchGraphComponent>
+      />
     );
   }
 }

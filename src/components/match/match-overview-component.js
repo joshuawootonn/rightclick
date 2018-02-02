@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 
 const MatchOverviewComponent = props => {
-  console.log(props);
+ 
   const player = props.match.mainPlayer;
   const { champion, version, item } = props.static;
 
