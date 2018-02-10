@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import MatchGraphComponent from "../../components/match/match-graphs-component";
-import { Bar } from "recharts";
 class MatchGraphContainer extends Component {
   constructor(props) {
     super(props);

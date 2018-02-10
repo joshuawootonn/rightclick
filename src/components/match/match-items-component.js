@@ -1,6 +1,4 @@
 import React from "react";
-import moment from "moment";
-import MatchMenuComponent from './match-menu-component';
 const MatchItemsComponent = props => {
   const player = props.match.mainPlayer;
   const { champion, version, item } = props.static;

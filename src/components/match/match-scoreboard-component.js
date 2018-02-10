@@ -1,5 +1,4 @@
 import React from "react";
-import MatchMenuComponent from "./match-menu-component";
 const MatchScoreBoardComponent = props => {
   console.log(props);
   const goodRows = props.match.goodTeam.map((good, i) => {
@@ -14,6 +13,7 @@ const MatchScoreBoardComponent = props => {
         <td >
           <figure className="image is-48x48 champion-img">
             <img
+              alt="Friendly champion"
               src={`http://ddragon.leagueoflegends.com/cdn/${props.static
                 .version[0]}/img/champion/${props.static.champion.data[
                 good.championId
@@ -29,7 +29,8 @@ const MatchScoreBoardComponent = props => {
       <tr>
         <td >
           <figure className="image is-48x48">
-            <img className="sadf"
+            <img 
+              alt="Enemy champion"              
               src={`http://ddragon.leagueoflegends.com/cdn/${props.static
                 .version[0]}/img/champion/${props.static.champion.data[
                 bad.championId

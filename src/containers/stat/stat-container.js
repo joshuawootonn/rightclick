@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import React, { Component } from "react";
-import * as status from "../../reducers/status";
 
 class StatContainer extends Component {
   // componentDidMount = () => {  
@@ -38,7 +37,6 @@ class StatContainer extends Component {
           Stats bitch
         </div>
       );
-    return null;
   };
 }
 

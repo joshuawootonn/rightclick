@@ -1,5 +1,4 @@
 import React from "react";
-import MatchMenuComponent from "./match-menu-component";
 import {
   BarChart,
   Bar,
@@ -7,7 +6,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer
 } from "recharts";
 

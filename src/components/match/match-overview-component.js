@@ -1,16 +1,16 @@
 import React from "react";
-import moment from "moment";
 
 const MatchOverviewComponent = props => {
  
   const player = props.match.mainPlayer;
-  const { champion, version, item } = props.static;
+  const { champion, version } = props.static;
 
   return (
     <div className="columns has-text-centered vertical-center ">
       <div className="column is-narrow">
         <figure className="image is-96x96 champion-img">
           <img
+            alt="Current player's champion"
             src={`http://ddragon.leagueoflegends.com/cdn/${version[0]}/img/champion/${champion
               .data[player.championId].key}.png`}
           />
