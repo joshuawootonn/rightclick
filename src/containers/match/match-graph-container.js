@@ -5,7 +5,7 @@ class MatchGraphContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      graphTypes: ["Gold", "Dealt", "Taken", "Healing"],      
+      graphTypes: ["Gold", "Dealt", "Taken", "Healing"],
       currentGraph: "Gold"
     };
   }
@@ -29,7 +29,7 @@ class MatchGraphContainer extends Component {
       };
       arr[i + goodTeam.length] = {
         name: badTeam[i].account.summonerName,
-        gold2: badTeam[i].stats.gold,        
+        gold2: badTeam[i].stats.gold,
         dealt2: badTeam[i].stats.damageDealt,
         magicDealt2: badTeam[i].stats.damageDealtMagic,
         physicalDealt2: badTeam[i].stats.damageDealtPhysical,
@@ -41,10 +41,10 @@ class MatchGraphContainer extends Component {
         heal2: badTeam[i].stats.healing
       };
     }
-    return arr;    
+    return arr;
   };
   changeGraph = graph => {
-    this.setState({ currentGraph: graph});
+    this.setState({ currentGraph: graph });
   };
   generateBars = () => {
     switch (this.state.currentGraph) {
@@ -58,12 +58,97 @@ class MatchGraphContainer extends Component {
           { name: "Dealt", dataKey: "dealt1", stackId: "a", fill: "#A239CA" },
           { name: "Dealt", dataKey: "dealt2", stackId: "a", fill: "#4717F6" }
         ];
+      case "DealtPhysical":
+        return [
+          {
+            name: "Physical",
+            dataKey: "physicalDealt1",
+            stackId: "a",
+            fill: "#4717F6"
+          },
+
+          {
+            name: "Physical",
+            dataKey: "physicalDealt2",
+            stackId: "a",
+            fill: "#A239CA"
+          }
+        ];
+      case "DealtMagic":
+        return [
+          {
+            name: "Magic",
+            dataKey: "magic1Dealt",
+            stackId: "a",
+            fill: "#A239CA"
+          },
+          {
+            name: "Magic",
+            dataKey: "magicDealt2",
+            stackId: "a",
+            fill: "#4717F6"
+          }
+        ];
+      case "DealtTrue":
+        return [
+          {
+            name: "True",
+            dataKey: "true1Dealt",
+            stackId: "a",
+            fill: "#A239CA"
+          },
+          { name: "True", dataKey: "trueDealt2", stackId: "a", fill: "#4717F6" }
+        ];
       case "Taken":
         return [
           { name: "Taken", dataKey: "taken1", stackId: "a", fill: "#A239CA" },
           { name: "Taken", dataKey: "taken2", stackId: "a", fill: "#4717F6" }
         ];
-      
+      case "TakenPhysical":
+        return [
+          {
+            name: "Physical",
+            dataKey: "physicalTaken1",
+            stackId: "a",
+            fill: "#4717F6"
+          },
+
+          {
+            name: "Physical",
+            dataKey: "physicalTaken2",
+            stackId: "a",
+            fill: "#A239CA"
+          }
+        ];
+      case "TakenMagic":
+        return [
+          {
+            name: "Magic",
+            dataKey: "magicTaken1",
+            stackId: "a",
+            fill: "#A239CA"
+          },
+
+          {
+            name: "Magic",
+            dataKey: "magicTaken2",
+            stackId: "a",
+            fill: "#4717F6"
+          }
+        ];
+
+      case "TakenTrue":
+        return [
+          {
+            name: "True",
+            dataKey: "trueTaken1",
+            stackId: "a",
+            fill: "#A239CA"
+          },
+
+          { name: "True", dataKey: "trueTaken2", stackId: "a", fill: "#4717F6" }
+        ];
+
       case "Healing":
         return [
           { name: "Healing", dataKey: "heal1", stackId: "a", fill: "#A239CA" },
@@ -76,17 +161,16 @@ class MatchGraphContainer extends Component {
   setIndex = i => {
     this.setState({ currentGraph: i });
   };
-  generateExtraButtons = () =>{
-    switch(this.state.currentGraph){
+  generateExtraButtons = () => {
+    switch (this.state.currentGraph) {
       case "Dealt":
-        return ["Magic","Physical","True"];
+        return ["Magic", "Physical", "True"];
       case "Taken":
-        return ["Magic","Physical","True"];
+        return ["Magic", "Physical", "True"];
       default:
         return null;
-
     }
-  }
+  };
   render() {
     return (
       <MatchGraphComponent
@@ -105,9 +189,8 @@ class MatchGraphContainer extends Component {
 
 export default MatchGraphContainer;
 
-
 // case "DealtMagic":
-      
+
 //         return [
 //           { name: "Magic", dataKey: "magic1Dealt", stackId: "a", fill: "#A239CA" },
 //           {
