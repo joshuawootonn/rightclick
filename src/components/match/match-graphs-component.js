@@ -12,9 +12,22 @@ import {
 } from "recharts";
 
 const MatchGraphsComponent = props => {
-  const Bars = props.barData.map((ele,i)=>{
-    return <Bar name={ele.name} dataKey={ele.dataKey} stackId={ele.stackId} fill={ele.fill} />
-  })
+  const Bars = props.barData.map((ele, i) => {
+    return (
+      <Bar
+        name={ele.name}
+        dataKey={ele.dataKey}
+        stackId={ele.stackId}
+        fill={ele.fill}
+      />
+    );
+  });
+  let extraButtons; 
+  if(props.extraButtons){
+    extraButtons = props.extraButtons.map((ele,i) => {
+      return <button key={i} className="button" onClick={()=>{props.changeGraph(props.type+ele)}}>{ele}</button>
+    })
+  }
   return (
     <div>
       <ResponsiveContainer width="100%" height={500}>
@@ -33,27 +46,44 @@ const MatchGraphsComponent = props => {
       </ResponsiveContainer>
       <div className="field">
         <div className="control">
-          <div className="select is-primary">
-            <select value={props.type} onChange={props.changeGraph}>
-              <option>Gold</option>
-              <option>Damage Dealt</option>
-              <option>Damage Taken</option>
-              <option>Healing</option>
-            </select>
-          </div>
+            <button onClick={()=>{props.changeGraph("Gold")}} className="button">
+              Gold
+            </button>
+            <button onClick={()=>{props.changeGraph("Dealt")}} className="button">
+              Dealt
+            </button>
+            <button onClick={()=>{props.changeGraph("Taken")}} className="button">
+              Taken
+            </button>
+            <button onClick={()=>{props.changeGraph("Healing")}} className="button">
+              Healing
+            </button>
         </div>
       </div>
+      <div className="field">
+        <div className="control">
+          {extraButtons}
+        </div>
+      </div>
+      
     </div>
   );
 };
 
 export default MatchGraphsComponent;
+
+// <select value={props.type} onChange={props.changeGraph}>
+// <option>Gold</option>
+// <option>Damage Dealt</option>
+// <option>Damage Taken</option>
+// <option>Healing</option>
+// </select>
+
 //<Bar dataKey="uv" stackId="a" fill="#82ca9d" />
 
 // Gold
 // <Bar name="Gold" dataKey="gold1" stackId="a" fill="#A239CA" />
 //         <Bar name="Gold" dataKey="gold2" stackId="a" fill="#4717F6" />
-
 
 // Damage
 // <Bar name="Magic" dataKey="magic1" stackId="a" fill="#A239CA" />

@@ -5,7 +5,7 @@ class MatchGraphContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      graphTypes: ["Gold", "Damage Dealt", "Damage Taken", "Healing"],
+      graphTypes: ["Gold", "Dealt", "Taken", "Healing"],      
       currentGraph: "Gold"
     };
   }
@@ -17,9 +17,11 @@ class MatchGraphContainer extends Component {
       arr[i] = {
         name: goodTeam[i].account.summonerName,
         gold1: goodTeam[i].stats.gold,
+        dealt1: goodTeam[i].stats.damageDealt,
         magicDealt1: goodTeam[i].stats.damageDealtMagic,
         physicalDealt1: goodTeam[i].stats.damageDealtPhysical,
         trueDealt1: goodTeam[i].stats.damageDealtTrue,
+        taken1: goodTeam[i].stats.damageTaken,
         magicTaken1: goodTeam[i].stats.damageTakenMagic,
         physicalTaken1: goodTeam[i].stats.damageTakenPhysical,
         trueTaken1: goodTeam[i].stats.damageTakenTrue,
@@ -27,10 +29,12 @@ class MatchGraphContainer extends Component {
       };
       arr[i + goodTeam.length] = {
         name: badTeam[i].account.summonerName,
-        gold2: badTeam[i].stats.gold,
+        gold2: badTeam[i].stats.gold,        
+        dealt2: badTeam[i].stats.damageDealt,
         magicDealt2: badTeam[i].stats.damageDealtMagic,
         physicalDealt2: badTeam[i].stats.damageDealtPhysical,
         trueDealt2: badTeam[i].stats.damageDealtTrue,
+        taken2: badTeam[i].stats.damageTaken,
         magicTaken2: badTeam[i].stats.damageTakenMagic,
         physicalTaken2: badTeam[i].stats.damageTakenPhysical,
         trueTaken2: badTeam[i].stats.damageTakenTrue,
@@ -39,9 +43,8 @@ class MatchGraphContainer extends Component {
     }
     return arr;    
   };
-  changeGraph = event => {
-    console.log(event);
-    this.setState({ currentGraph: event.target.value });
+  changeGraph = graph => {
+    this.setState({ currentGraph: graph});
   };
   generateBars = () => {
     switch (this.state.currentGraph) {
@@ -50,44 +53,17 @@ class MatchGraphContainer extends Component {
           { name: "Gold", dataKey: "gold1", stackId: "a", fill: "#A239CA" },
           { name: "Gold", dataKey: "gold2", stackId: "a", fill: "#4717F6" }
         ];
-      case "Damage Dealt":
+      case "Dealt":
         return [
-          { name: "Magic", dataKey: "magic1Dealt", stackId: "a", fill: "#A239CA" },
-          {
-            name: "Physical",
-            dataKey: "physicalDealt1",
-            stackId: "a",
-            fill: "#4717F6"
-          },
-          { name: "True", dataKey: "true1Dealt", stackId: "a", fill: "#A239CA" },
-          { name: "Magic", dataKey: "magicDealt2", stackId: "a", fill: "#4717F6" },
-          {
-            name: "Physical",
-            dataKey: "physicalDealt2",
-            stackId: "a",
-            fill: "#A239CA"
-          },
-          { name: "True", dataKey: "trueDealt2", stackId: "a", fill: "#4717F6" }
+          { name: "Dealt", dataKey: "dealt1", stackId: "a", fill: "#A239CA" },
+          { name: "Dealt", dataKey: "dealt2", stackId: "a", fill: "#4717F6" }
         ];
-      case "Damage Taken":
+      case "Taken":
         return [
-          { name: "Magic", dataKey: "magicTaken1", stackId: "a", fill: "#A239CA" },
-          {
-            name: "Physical",
-            dataKey: "physicalTaken1",
-            stackId: "a",
-            fill: "#4717F6"
-          },
-          { name: "True", dataKey: "trueTaken1", stackId: "a", fill: "#A239CA" },
-          { name: "Magic", dataKey: "magicTaken2", stackId: "a", fill: "#4717F6" },
-          {
-            name: "Physical",
-            dataKey: "physicalTaken2",
-            stackId: "a",
-            fill: "#A239CA"
-          },
-          { name: "True", dataKey: "trueTaken2", stackId: "a", fill: "#4717F6" }
+          { name: "Taken", dataKey: "taken1", stackId: "a", fill: "#A239CA" },
+          { name: "Taken", dataKey: "taken2", stackId: "a", fill: "#4717F6" }
         ];
+      
       case "Healing":
         return [
           { name: "Healing", dataKey: "heal1", stackId: "a", fill: "#A239CA" },
@@ -100,6 +76,17 @@ class MatchGraphContainer extends Component {
   setIndex = i => {
     this.setState({ currentGraph: i });
   };
+  generateExtraButtons = () =>{
+    switch(this.state.currentGraph){
+      case "Dealt":
+        return ["Magic","Physical","True"];
+      case "Taken":
+        return ["Magic","Physical","True"];
+      default:
+        return null;
+
+    }
+  }
   render() {
     return (
       <MatchGraphComponent
@@ -110,9 +97,51 @@ class MatchGraphContainer extends Component {
         data={this.generateData()}
         changeGraph={this.changeGraph}
         barData={this.generateBars()}
+        extraButtons={this.generateExtraButtons()}
       />
     );
   }
 }
 
 export default MatchGraphContainer;
+
+
+// case "DealtMagic":
+      
+//         return [
+//           { name: "Magic", dataKey: "magic1Dealt", stackId: "a", fill: "#A239CA" },
+//           {
+//             name: "Physical",
+//             dataKey: "physicalDealt1",
+//             stackId: "a",
+//             fill: "#4717F6"
+//           },
+//           { name: "True", dataKey: "true1Dealt", stackId: "a", fill: "#A239CA" },
+//           { name: "Magic", dataKey: "magicDealt2", stackId: "a", fill: "#4717F6" },
+//           {
+//             name: "Physical",
+//             dataKey: "physicalDealt2",
+//             stackId: "a",
+//             fill: "#A239CA"
+//           },
+//           { name: "True", dataKey: "trueDealt2", stackId: "a", fill: "#4717F6" }
+//         ];
+//       case "Taken":
+//         return [
+//           { name: "Magic", dataKey: "magicTaken1", stackId: "a", fill: "#A239CA" },
+//           {
+//             name: "Physical",
+//             dataKey: "physicalTaken1",
+//             stackId: "a",
+//             fill: "#4717F6"
+//           },
+//           { name: "True", dataKey: "trueTaken1", stackId: "a", fill: "#A239CA" },
+//           { name: "Magic", dataKey: "magicTaken2", stackId: "a", fill: "#4717F6" },
+//           {
+//             name: "Physical",
+//             dataKey: "physicalTaken2",
+//             stackId: "a",
+//             fill: "#A239CA"
+//           },
+//           { name: "True", dataKey: "trueTaken2", stackId: "a", fill: "#4717F6" }
+//         ];
