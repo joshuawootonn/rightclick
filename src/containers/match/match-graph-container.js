@@ -6,7 +6,8 @@ class MatchGraphContainer extends Component {
     super(props);
     this.state = {
       graphTypes: ["Gold", "Dealt", "Taken", "Healing"],
-      currentGraph: "Gold"
+      currentGraph: "Gold",
+      currentSubGraph: ""
     };
   }
   generateData = () => {
@@ -44,10 +45,18 @@ class MatchGraphContainer extends Component {
     return arr;
   };
   changeGraph = graph => {
-    this.setState({ currentGraph: graph });
+    this.setState({ 
+      currentGraph: graph,
+      currentSubGraph: ""
+    });
   };
+  changeSubGraph = subGraph => {
+    this.setState({
+      currentSubGraph: subGraph
+    })
+  }
   generateBars = () => {
-    switch (this.state.currentGraph) {
+    switch (this.state.currentGraph+this.state.currentSubGraph) {
       case "Gold":
         return [
           { name: "Gold", dataKey: "gold1", stackId: "a", fill: "#A239CA" },
@@ -78,7 +87,7 @@ class MatchGraphContainer extends Component {
         return [
           {
             name: "Magic",
-            dataKey: "magic1Dealt",
+            dataKey: "magicDealt1",
             stackId: "a",
             fill: "#A239CA"
           },
@@ -93,7 +102,7 @@ class MatchGraphContainer extends Component {
         return [
           {
             name: "True",
-            dataKey: "true1Dealt",
+            dataKey: "trueDealt1",
             stackId: "a",
             fill: "#A239CA"
           },
@@ -158,30 +167,14 @@ class MatchGraphContainer extends Component {
         return [];
     }
   };
-  setIndex = i => {
-    this.setState({ currentGraph: i });
-  };
-  generateExtraButtons = () => {
-    switch (this.state.currentGraph) {
-      case "Dealt":
-        return ["Magic", "Physical", "True"];
-      case "Taken":
-        return ["Magic", "Physical", "True"];
-      default:
-        return null;
-    }
-  };
   render() {
     return (
       <MatchGraphComponent
-        setIndex={i => {
-          this.setIndex(i);
-        }}
         type={this.state.currentGraph}
         data={this.generateData()}
         changeGraph={this.changeGraph}
+        changeSubGraph={this.changeSubGraph}
         barData={this.generateBars()}
-        extraButtons={this.generateExtraButtons()}
       />
     );
   }

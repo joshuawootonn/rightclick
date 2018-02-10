@@ -85,7 +85,6 @@ const getGameDuration = (time) => {
 const getPlayerData = (data,lane,pos,isWinner) => {
   const indexes = data.participants.filter((player) => (player.timeline.lane === lane && player.timeline.role ===pos && player.stats.win === isWinner)).map(a => a.participantId-1);
   let arr = [];
-  console.log("asdf",data.participants[1]);
   indexes.forEach(i => {
     arr.push({
       stats:{

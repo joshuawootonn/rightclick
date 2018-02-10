@@ -15,6 +15,7 @@ const MatchGraphsComponent = props => {
   const Bars = props.barData.map((ele, i) => {
     return (
       <Bar
+        key={i}
         name={ele.name}
         dataKey={ele.dataKey}
         stackId={ele.stackId}
@@ -22,12 +23,10 @@ const MatchGraphsComponent = props => {
       />
     );
   });
-  let extraButtons; 
-  if(props.extraButtons){
-    extraButtons = props.extraButtons.map((ele,i) => {
-      return <button key={i} className="button" onClick={()=>{props.changeGraph(props.type+ele)}}>{ele}</button>
-    })
-  }
+  const Buttons = ["Physical","Magic","True"].map((ele,i)=>{
+    return <button className="button" key={i+ele} onClick={()=>{props.changeSubGraph(ele)}}>{ele}</button>
+  })
+  
   return (
     <div>
       <ResponsiveContainer width="100%" height={500}>
@@ -52,55 +51,19 @@ const MatchGraphsComponent = props => {
             <button onClick={()=>{props.changeGraph("Dealt")}} className="button">
               Dealt
             </button>
+            { props.type.includes("Dealt") ? Buttons : null }
             <button onClick={()=>{props.changeGraph("Taken")}} className="button">
               Taken
             </button>
+            { props.type.includes("Taken") ? Buttons : null }
             <button onClick={()=>{props.changeGraph("Healing")}} className="button">
               Healing
             </button>
         </div>
-      </div>
-      <div className="field">
-        <div className="control">
-          {extraButtons}
-        </div>
-      </div>
-      
+      </div>      
     </div>
   );
 };
 
 export default MatchGraphsComponent;
 
-// <select value={props.type} onChange={props.changeGraph}>
-// <option>Gold</option>
-// <option>Damage Dealt</option>
-// <option>Damage Taken</option>
-// <option>Healing</option>
-// </select>
-
-//<Bar dataKey="uv" stackId="a" fill="#82ca9d" />
-
-// Gold
-// <Bar name="Gold" dataKey="gold1" stackId="a" fill="#A239CA" />
-//         <Bar name="Gold" dataKey="gold2" stackId="a" fill="#4717F6" />
-
-// Damage
-// <Bar name="Magic" dataKey="magic1" stackId="a" fill="#A239CA" />
-//         <Bar name="Physical" dataKey="physical1" stackId="a" fill="#4717F6" />
-//         <Bar name="True" dataKey="true1" stackId="a" fill="#A239CA" />
-//         <Bar name="Magic" dataKey="magic2" stackId="a" fill="#A239CA" />
-//         <Bar name="Physical" dataKey="physical2" stackId="a" fill="#4717F6" />
-//         <Bar name="True" dataKey="true2" stackId="a" fill="#A239CA" />
-
-// REceived
-// <Bar name="Magic" dataKey="magic1" stackId="a" fill="#A239CA" />
-//           <Bar name="Physical" dataKey="physical1" stackId="a" fill="#4717F6" />
-//           <Bar name="True" dataKey="true1" stackId="a" fill="#A239CA" />
-//           <Bar name="Magic" dataKey="magic2" stackId="a" fill="#A239CA" />
-//           <Bar name="Physical" dataKey="physical2" stackId="a" fill="#4717F6" />
-//           <Bar name="True" dataKey="true2" stackId="a" fill="#A239CA" />       <Bar name="Gold" dataKey="gold2" stackId="a" fill="#4717F6" />
-
-// Healing
-// <Bar name="Healing" dataKey="heal1" stackId="a" fill="#A239CA" />
-//         <Bar name="Healing" dataKey="heal1" stackId="a" fill="#4717F6" />
