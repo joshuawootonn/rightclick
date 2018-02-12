@@ -1,6 +1,6 @@
 import axios from 'axios';
 const PROXY = "https://cors-anywhere.herokuapp.com/";
-const API_KEY = "RGAPI-aa2cef6c-974a-44a2-93c4-a52161620362";
+const API_KEY = "RGAPI-982d56f4-fbe5-46e3-8455-0c30df757557";
 
 
 // Player

@@ -2,14 +2,7 @@ import React from 'react'
 export const MatchMenuComponent = (props) => {
   return(
     <div className="column">
-        <button
-          onClick={() => {
-            props.setIndex(0);
-          }}
-          className="button"
-        >
-          Items
-        </button>
+        
         <button
           onClick={() => {
             props.setIndex(1);
@@ -31,3 +24,12 @@ export const MatchMenuComponent = (props) => {
 }
 
 export default MatchMenuComponent
+// Maybe in the future there will be an items page
+// <button
+//           onClick={() => {
+//             props.setIndex(0);
+//           }}
+//           className="button"
+//         >
+//           Items
+//         </button>

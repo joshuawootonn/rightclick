@@ -1,9 +1,8 @@
 import React from "react";
 const MatchScoreBoardComponent = props => {
-  console.log(props);
   const goodRows = props.match.goodTeam.map((good, i) => {
     return (
-      <tr>
+      <tr key={i}>
         <td >
           {good.stats.kills}/{good.stats.deaths}/{good.stats.assists}
         </td>
@@ -26,7 +25,7 @@ const MatchScoreBoardComponent = props => {
   });
   const badRows = props.match.badTeam.map((bad, i) => {
     return (
-      <tr>
+      <tr key={i}>
         <td >
           <figure className="image is-48x48">
             <img 

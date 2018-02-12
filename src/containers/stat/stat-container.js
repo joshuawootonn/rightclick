@@ -1,48 +1,61 @@
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import React, { Component } from "react";
-
+import * as status from "../../reducers/status";
 class StatContainer extends Component {
-  // componentDidMount = () => {  
-  //   this.pullStatData();
-  // };  
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.own.playerName !== this.props.own.playerName) {
-  //     this.pullStatData();
-  //   }
-  // }
-  // pullStatData = () => {
-  //   if (
-  //     this.props.stat.status === status.INIT ||
-  //     this.props.stat.status === status.SUCCESS
-  //   ) {
-  //     this.props.getStat(this.props.playerName);
-  //   }
-  //   if (this.props.static.status === status.INIT) {
-  //     this.props.getStatic();
-  //   }
-  // }
-  
+  componentDidMount = () => {
+    this.pullMatchData();
+  };
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.own.playerName !== this.props.own.playerName) {
+      this.pullMatchData();
+    }
+  }
+  componentWillUpdate = (nextProps, nextState) => {
+    if (this.props.match.status !== nextProps.match.status) {
+      this.forceUpdate();
+    }
+  }
+  pullMatchData = () => {
+    if (
+      this.props.match.status === status.INIT ||
+      this.props.match.status === status.SUCCESS
+    ) {
+      this.props.getMatch(this.props.playerName);
+    }   
+    if (this.props.static.status === status.INIT) {
+      this.props.getStatic();
+    }
+  };
   render = () => {
     // If Loading
-    // if (this.props.stat.status === status.LOADING || this.props.player.status === status.LOADING)
-    //   return <p>loading</p>;
+    if (
+      this.props.match.status === status.LOADING ||
+      this.props.player.status === status.LOADING
+    )
+      return <p>loading</p>;
     // If Unranked
     // if (this.props.match.status === status.SUCCESS && !this.props.match)
     //   return <LeagueUnrankedComponent />;
-    // If ranked
-    // if (this.props.stat.status === status.SUCCESS)
+    // If ranked    
+    if (this.props.match.status === status.SUCCESS) { 
+      // return (
+      //   <MatchComponent />
+      // )
       return (
+        
         <div className="tile is-vertical is-ancestor">
-          Stats bitch
+          Stats
         </div>
       );
+    }
+    return null;
   };
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    stat: state.stat,
+    match: state.match,
     player: state.player,
     static: state.static,
     own: ownProps
