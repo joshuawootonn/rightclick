@@ -7,7 +7,7 @@ const LeagueOverviewComponent = props => {
     (league.wins + league.losses).toFixed(2) *
     100).toFixed(2);
   return (
-    <div className="tile box is-12 secondary">
+    <div className="tile box is-12 secondary stripper">
       <div className="parent">
         <div className="left">
           <h1 className="title ">

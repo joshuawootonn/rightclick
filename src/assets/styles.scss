@@ -23,6 +23,7 @@ $tabs-border-bottom-color: $white;
 $tabs-border-bottom-width: 0px;
 $tabs-link-active-border-bottom-color: $white;
 $control-radius: 0px;
+$menu-item-active-color: $green;
 //Rest of bulma
 @import "../../node_modules/bulma/bulma.sass";
 html,
@@ -47,17 +48,13 @@ body {
     a:hover {
         color: white;
     }
-    a.is-active {
-        text-decoration: line-through;
-    }
     a {
         color: white;
-        text-transform: uppercase;
         font-weight: 300;
         text-decoration: none;
-        font-size: 1rem;
-        letter-spacing: 5px;
+        font-size: 1.25rem;
         position: relative;
+       
         &::before,
         &::after {
             content: '';
@@ -87,44 +84,45 @@ body {
         }
     }
     input {
-        text-transform: uppercase;       
-
         background-color: transparent;
-        border:none;
+        border: none;
         color: $white;
         outline: none;
         box-shadow: none;
         padding-left: 10px;
         border-bottom: 2px solid #fff;
         position: relative;
-        
     }
-    
-    
-    input:hover,input.is-active{
-        border:none;
+    input:hover,
+    input.is-active {
+        border: none;
         border-bottom: 2px solid $yellow;
     }
-    input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-        color:$white;
+    input::-webkit-input-placeholder {
+        /* WebKit, Blink, Edge */
+        color: $white;
     }
-    input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-       color:$white;
-       opacity:  1;
+    input:-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: $white;
+        opacity: 1;
     }
-    input::-moz-placeholder { /* Mozilla Firefox 19+ */
-       color:$white;
-       opacity:  1;
+    input::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: $white;
+        opacity: 1;
     }
-    input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-       color:$white;
+    input:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: $white;
     }
-    input::-ms-input-placeholder { /* Microsoft Edge */
-       color:$white;
+    input::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: $white;
     }
-    
-    input::placeholder { /* Most modern browsers support this now. */
-       color:$white;
+    input::placeholder {
+        /* Most modern browsers support this now. */
+        color: $white;
     }
 }
 
@@ -180,37 +178,65 @@ body {
             text-align: right;
         }
     }
-    box-shadow: 0;
     .primary {
         background-color: $purple;
         color: $white;
-        th,h1{
-            color:$white;
+        border-radius: 0;
+        box-shadow: 0;
+        
+        th,
+        h1 {
+            color: $white;
         }
-        tr{
-            background: linear-gradient(to right,$purple 50%, $white 50%);
+        tr {            
+            cursor: pointer;
+            background: linear-gradient(to right, $white 50%, $purple 50%);
             background-size: 200% 100%;
-            background-position: left bottom;
-            transition: all 2s ease;
+            background-position: right bottom;
+            transition: all 250ms ease;
+            position: relative;
+            &::before,
+            &::after {
+                content: '';
+                background: $green;
+                position: absolute;
+                top: 50%;
+                height: 2px;
+                width: 0;
+            }
+            &::before {
+                left: 0;
+            }
+            &::after {
+                right: 0;
+                transition: width 500ms ease;
+            }
+            &:hover {
+                &::before {
+                    width: 100%;
+                    transition: width 500ms ease;
+                }
+                &::after {
+                    width: 100%;
+                    background: transparent;
+                    transition: 0;
+                }
+            }
         }
         tr:hover {
-             background-color: white;
-            background-position: right bottom;
-            color: $yellow;
-            }
-        
+            background-color: white;
+            background-position: left bottom;
+            color: $green;
+        }
     }
     .secondary {
         background-color: white;
         border: 1.5px solid $yellow;
+        border-radius: 0;
     }
     .width100 {
         width: 100%;
     }
-}
-
-.tile {
-    border-radius: 0;
 }
 
 @import "./loading.scss";

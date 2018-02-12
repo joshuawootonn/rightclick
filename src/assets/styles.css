@@ -3631,7 +3631,7 @@ a.dropdown-item {
       color: #363636; }
     .menu-list a.is-active {
       background-color: #ffffff;
-      color: #fff; }
+      color: #0cc6ac; }
   .menu-list li ul {
     border-left: 1px solid #dbdbdb;
     margin: 0.75em;
@@ -6443,17 +6443,12 @@ body {
   .navbar a:hover,
   .tabs a:hover {
     color: white; }
-  .navbar a.is-active,
-  .tabs a.is-active {
-    text-decoration: line-through; }
   .navbar a,
   .tabs a {
     color: white;
-    text-transform: uppercase;
     font-weight: 300;
     text-decoration: none;
-    font-size: 1rem;
-    letter-spacing: 5px;
+    font-size: 1.25rem;
     position: relative; }
     .navbar a::before, .navbar a::after,
     .tabs a::before,
@@ -6482,7 +6477,6 @@ body {
       transition: 0; }
   .navbar input,
   .tabs input {
-    text-transform: uppercase;
     background-color: transparent;
     border: none;
     color: #ffffff;
@@ -6491,7 +6485,8 @@ body {
     padding-left: 10px;
     border-bottom: 2px solid #fff;
     position: relative; }
-  .navbar input:hover, .navbar input.is-active,
+  .navbar input:hover,
+  .navbar input.is-active,
   .tabs input:hover,
   .tabs input.is-active {
     border: none;
@@ -6542,51 +6537,71 @@ body {
 .is-half {
   width: 50%; }
 
-.league {
-  box-shadow: 0; }
-  .league .parent {
+.league .parent {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between; }
+  .league .parent .rank-icon {
+    height: 10rem; }
+  .league .parent .left {
     display: flex;
-    width: 100%;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between; }
-    .league .parent .rank-icon {
-      height: 10rem; }
-    .league .parent .left {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between; }
-    .league .parent .middle {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-align: center; }
-    .league .parent .right {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-align: right; }
-  .league .primary {
-    background-color: #7a0de0;
+  .league .parent .middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center; }
+  .league .parent .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: right; }
+.league .primary {
+  background-color: #7a0de0;
+  color: #ffffff;
+  border-radius: 0;
+  box-shadow: 0; }
+  .league .primary th,
+  .league .primary h1 {
     color: #ffffff; }
-    .league .primary th, .league .primary h1 {
-      color: #ffffff; }
-    .league .primary tr {
-      background: linear-gradient(to right, #7a0de0 50%, #ffffff 50%);
-      background-size: 200% 100%;
-      background-position: left bottom;
-      transition: all 2s ease; }
-    .league .primary tr:hover {
-      background-color: white;
-      background-position: right bottom;
-      color: #ffc421; }
-  .league .secondary {
+  .league .primary tr {
+    cursor: pointer;
+    background: linear-gradient(to right, #ffffff 50%, #7a0de0 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all 250ms ease;
+    position: relative; }
+    .league .primary tr::before, .league .primary tr::after {
+      content: '';
+      background: #0cc6ac;
+      position: absolute;
+      top: 50%;
+      height: 2px;
+      width: 0; }
+    .league .primary tr::before {
+      left: 0; }
+    .league .primary tr::after {
+      right: 0;
+      transition: width 500ms ease; }
+    .league .primary tr:hover::before {
+      width: 100%;
+      transition: width 500ms ease; }
+    .league .primary tr:hover::after {
+      width: 100%;
+      background: transparent;
+      transition: 0; }
+  .league .primary tr:hover {
     background-color: white;
-    border: 1.5px solid #ffc421; }
-  .league .width100 {
-    width: 100%; }
-
-.tile {
+    background-position: left bottom;
+    color: #0cc6ac; }
+.league .secondary {
+  background-color: white;
+  border: 1.5px solid #ffc421;
   border-radius: 0; }
+.league .width100 {
+  width: 100%; }
 
 .loading {
   position: absolute;
