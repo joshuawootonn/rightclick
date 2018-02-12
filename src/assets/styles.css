@@ -6448,6 +6448,29 @@ body {
   .hero h1 {
     font-size: 6rem; }
 
+.parent {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between; }
+  .parent .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; }
+  .parent .middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center; }
+  .parent .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: right; }
+
+.rank-icon {
+  height: 12rem; }
+
 .box {
   border-radius: 0px; }
 

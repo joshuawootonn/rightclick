@@ -6,9 +6,9 @@ import LeagueOverViewComponent from "../../components/league/league-overview-com
 import LeagueUnrankedComponent from "../../components/league/league-unranked-component";
 import LeagueTableComponent from "../../components/league/league-table-component";
 class LeagueContainer extends Component {
-  componentDidMount = () => {  
+  componentDidMount = () => {
     this.pullLeagueData();
-  };  
+  };
   componentWillReceiveProps(nextProps) {
     if (nextProps.own.playerName !== this.props.own.playerName) {
       this.pullLeagueData();
@@ -24,7 +24,7 @@ class LeagueContainer extends Component {
     if (this.props.static.status === status.INIT) {
       this.props.getStatic();
     }
-  }
+  };
   getRankIcon = () => {
     return (
       `https://raw.githubusercontent.com/jose56wonton/RightClick.GG/master/src/assets/images/` +
@@ -35,7 +35,10 @@ class LeagueContainer extends Component {
   };
   render = () => {
     // If Loading
-    if (this.props.league.status === status.LOADING || this.props.player.status === status.LOADING)
+    if (
+      this.props.league.status === status.LOADING ||
+      this.props.player.status === status.LOADING
+    )
       return <p>loading</p>;
     // If Unranked
     if (this.props.league.status === status.SUCCESS && !this.props.league.tier)
@@ -43,13 +46,18 @@ class LeagueContainer extends Component {
     // If ranked
     if (this.props.league.status === status.SUCCESS)
       return (
-        <div className="tile is-vertical is-ancestor">
-          <LeagueOverViewComponent
-            player={this.props.player}
-            league={this.props.league}
-            rankIconPath={this.getRankIcon()}
-          />
-          <LeagueTableComponent league={this.props.league} />
+        <div className="columns">
+
+          <div className="column is-6">
+            <LeagueOverViewComponent
+              player={this.props.player}
+              league={this.props.league}
+              rankIconPath={this.getRankIcon()}
+            />
+          </div>
+          <div className="column is-6 is-parent">
+            <LeagueTableComponent league={this.props.league} />
+          </div>
         </div>
       );
     return null;
@@ -65,3 +73,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 export default connect(mapStateToProps, actions)(LeagueContainer);
+// 

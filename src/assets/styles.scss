@@ -49,6 +49,32 @@ body {
     }
 }
 
+.parent{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    .left{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .middle{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+    }
+    .right{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: right;
+    }
+}
+.rank-icon{
+    height: 12rem;
+}
 .box {
     border-radius: 0px;
 }

@@ -8,19 +8,31 @@ const LeagueOverviewComponent = props => {
     100).toFixed(2);
   return (
     <div className="tile box is-12">
-      <div className="columns is-vcentered">
-        <div className="column  ">
-          <img alt="rank icon" className="is-pulled-right" src={props.rankIconPath} />
-        </div>
-        <div className="column ">
+      <div className="parent">
+        <div className="left">
           <h1>
-            {player.name} - {league.tier}
+            {player.name}
           </h1>
           <h4>
-            {league.wins}w / {league.losses}l
+            {wr}WR 
           </h4>
+        </div>
+        <div className="middle">
+          <img
+            alt="rank icon"
+            className="is-pulled-right rank-icon"
+            src={props.rankIconPath}
+          />
+          <h1>
+            {league.leaguePoints}LP
+          </h1>
+        </div>
+        <div className="right">
+          <h1>
+            {league.tier+" "+league.rank} 
+          </h1>
           <h4>
-            {wr}wr {league.leaguePoints}lp
+            {league.wins}W / {league.losses}L
           </h4>
         </div>
       </div>
