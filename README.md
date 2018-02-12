@@ -5,7 +5,7 @@ RightClick.GG is a React project I have been working on. It is my first real rea
 If you have ever played League of Legends you know that there are lots of stat website like [OP.GG](na.op.gg). This is basically a simple 
 version of that.
 
-## Iteration 1
+## Iteration 1 (9/17)
 ### Things I Learned
 * Bulma CSS framework
 * Axios AJAX library
@@ -13,15 +13,15 @@ version of that.
 * Riot Games API
 * Webpack
 ### Reason for incompletion
-Webpack is confusing and I can't figure out how to deploy. 9/17
+Webpack is confusing and I can't figure out how to deploy. 
 
-## Iteration 2
+## Iteration 2 (2/18)
 ### Things I Learned
-* Recharts
-* Component/Container paradigm
-* More Redux 6 reducers and 40 actions
+* Recharts - How to map data from generic objects to graph inputs
+* Component/Container paradigm - How to decouple visual and state driven components
+* More Redux 6 reducers and 40 actions - How to organize scattered data to prevent redunancy and reduce unnecessary memory usage
 ### Reason for incompletion
-Lack of inspiration in design. 2/18
+Lack of inspiration in design.
 
 
 ~~Check out the project [here!](https://joshuawootonn.com/RightClick.GG/)~~
