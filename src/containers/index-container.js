@@ -15,7 +15,6 @@ class IndexContainer extends Component {
     this.setState({
       tab: tab
     });
-    console.log(tab);
   };
   getIndexContent = () => {
     switch (this.state.tab) {

@@ -5,7 +5,7 @@ const LeagueOverviewComponent = props => {
 
   const tableContents = league.division.map((ele, i) => {
     return (
-      <tr key={i}>
+      <tr key={i} onClick={()=>{props.rowClick(ele.playerOrTeamName)}}>
         <th>{i}</th>
         <td>
           <Link to={`/${ele.playerOrTeamName}`}>{ele.playerOrTeamName}</Link>
@@ -18,12 +18,12 @@ const LeagueOverviewComponent = props => {
   });
 
   return (
-    <div className="tile box is-12 parent">
+    <div className="tile box is-12 parent primary">
       <div className="middle width100">
       
-      <h1 className="title">{props.league.leagueName}</h1>
+      <h1 className="title ">{props.league.leagueName}</h1>
      
-      <table className="is-fullwidth table ">
+      <table className="is-fullwidth table primary">
         <thead>
           <tr>
             <th />

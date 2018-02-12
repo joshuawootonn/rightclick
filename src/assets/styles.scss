@@ -94,7 +94,7 @@ body {
         color: $white;
         outline: none;
         box-shadow: none;
-        text-align: center;
+        padding-left: 10px;
         border-bottom: 2px solid #fff;
         position: relative;
         
@@ -184,6 +184,21 @@ body {
     .primary {
         background-color: $purple;
         color: $white;
+        th,h1{
+            color:$white;
+        }
+        tr{
+            background: linear-gradient(to right,$purple 50%, $white 50%);
+            background-size: 200% 100%;
+            background-position: left bottom;
+            transition: all 2s ease;
+        }
+        tr:hover {
+             background-color: white;
+            background-position: right bottom;
+            color: $yellow;
+            }
+        
     }
     .secondary {
         background-color: white;

@@ -6488,7 +6488,7 @@ body {
     color: #ffffff;
     outline: none;
     box-shadow: none;
-    text-align: center;
+    padding-left: 10px;
     border-bottom: 2px solid #fff;
     position: relative; }
   .navbar input:hover, .navbar input.is-active,
@@ -6568,6 +6568,17 @@ body {
   .league .primary {
     background-color: #7a0de0;
     color: #ffffff; }
+    .league .primary th, .league .primary h1 {
+      color: #ffffff; }
+    .league .primary tr {
+      background: linear-gradient(to right, #7a0de0 50%, #ffffff 50%);
+      background-size: 200% 100%;
+      background-position: left bottom;
+      transition: all 2s ease; }
+    .league .primary tr:hover {
+      background-color: white;
+      background-position: right bottom;
+      color: #ffc421; }
   .league .secondary {
     background-color: white;
     border: 1.5px solid #ffc421; }

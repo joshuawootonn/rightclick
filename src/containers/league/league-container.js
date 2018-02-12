@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import React, { Component } from "react";
 import * as status from "../../reducers/status";
+import { withRouter } from "react-router";
 import LeagueOverViewComponent from "../../components/league/league-overview-component";
 import LeagueUnrankedComponent from "../../components/league/league-unranked-component";
 import LeagueTableComponent from "../../components/league/league-table-component";
@@ -33,6 +34,10 @@ class LeagueContainer extends Component {
         this.props.league.rank.toLowerCase()}.png`
     );
   };
+  rowClick = (player) => {
+    console.log(player);
+    this.props.history.push(`/${player}`);
+  }
   render = () => {
     // If Loading
     if (
@@ -56,7 +61,7 @@ class LeagueContainer extends Component {
             />
           </div>
           <div className="column is-6 is-parent">
-            <LeagueTableComponent league={this.props.league} />
+            <LeagueTableComponent rowClick={this.rowClick} league={this.props.league} />
           </div>
         </div>
       );
@@ -72,5 +77,5 @@ const mapStateToProps = (state, ownProps) => {
     own: ownProps
   };
 };
-export default connect(mapStateToProps, actions)(LeagueContainer);
+export default connect(mapStateToProps, actions)(withRouter(LeagueContainer));
 // 
