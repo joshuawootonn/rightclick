@@ -6484,7 +6484,9 @@ body {
     color: #ffffff; }
   .league .secondary {
     background-color: white;
-    border: 2.5px solid #ffc421; }
+    border: 1.5px solid #ffc421; }
+  .league .width100 {
+    width: 100%; }
 
 .tile {
   border-radius: 0; }
