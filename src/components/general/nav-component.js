@@ -2,7 +2,7 @@ import React from "react";
 import SearchContainer from "../../containers/general/search-container";
 import { Link } from "react-router-dom";
 const NavComponent = props => {
-  return (
+  return (    
     <nav className="navbar">
       <div className="navbar-brand">
         <Link className="navbar-item" to="/">
