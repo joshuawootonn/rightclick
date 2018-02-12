@@ -13,7 +13,7 @@ class MatchContainer extends Component {
     super(props);
     this.state = {
       isExpanded: false,
-      state: 0
+      state: 1
     };
   }
   expand = () => {

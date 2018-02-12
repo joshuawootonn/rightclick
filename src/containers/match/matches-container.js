@@ -3,6 +3,7 @@ import * as actions from "../../actions";
 import React, { Component } from "react";
 import * as status from "../../reducers/status";
 import MatchContainer from './match-container';
+import Loading from '../../components/general/loading';
 class MatchesContainer extends Component {
   componentDidMount = () => {
     this.pullMatchData();
@@ -43,7 +44,7 @@ class MatchesContainer extends Component {
       this.props.match.status === status.LOADING ||
       this.props.player.status === status.LOADING
     )
-      return <p>loading</p>;
+      return <Loading />
     // If Unranked
     // if (this.props.match.status === status.SUCCESS && !this.props.match)
     //   return <LeagueUnrankedComponent />;

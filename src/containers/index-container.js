@@ -8,7 +8,7 @@ class IndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tab: "Stats"
+      tab: "League"
     };
   } 
   handleTabChange = tab => {
