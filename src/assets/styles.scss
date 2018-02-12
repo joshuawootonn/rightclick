@@ -2,26 +2,21 @@
 @import "../../node_modules/bulma/sass/utilities/initial-variables";
 @import "../../node_modules/bulma/sass/utilities/functions";
 //Colors
-$slate-grey: #D6DFDE;
-$dark-slate: #214f4b;
-$dark-slate-invert: findColorInvert($dark-slate);
-$linkedin: #0077b5;
-$linkedin-invert: findColorInvert($linkedin);
-$twitter: #55acee;
-$twitter-invert: findColorInvert($twitter);
-$github: #333;
-$github-invert: findColorInvert($github);
-$gold:#F1BF98;
-$gold-invert: findColorInvert($gold);
-$danger: $orange;
+
+
+$purple: #7a0de0;
+$yellow: #ffc421;
+$green: #0cc6ac;
+$white: #ffffff;
 //Fonts
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-$roboto-slab: 'Raleway',
-serif;
-$family-primary: $roboto-slab;
+@import url('https://fonts.googleapis.com/css?family=Francois+One|Rajdhani:600');
+
+
+$font1: 'Francois One',serif;
+$font2: 'Rajdhani',serif;
+$family-primary: $font2;
 @import "../../node_modules/bulma/sass/utilities/derived-variables.sass";
 //Navbar
-$navbar-dropdown-item-hover-color:$slate-grey;
 $navbar-item-hover-background-color:transparent;
 $navbar-dropdown-item-hover-background-color:transparent;
 //Rest of bulma
@@ -30,11 +25,14 @@ html,
 body {
     margin: 0;
     height: 100%;
+    
 }
 
 .navbar-defualt {
     padding: 1rem; //box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+
+// Intro
 
 .hero {
     height: 100vh;
@@ -48,46 +46,60 @@ body {
         font-size: 6rem;
     }
 }
-
-.parent{
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-    .left{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .middle{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        text-align: center;
-    }
-    .right{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        text-align: right;
-    }
-}
-.rank-icon{
-    height: 12rem;
-}
-.box {
-    border-radius: 0px;
-}
-
 .vertical-center {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .is-half {
     width: 50%;
 }
+
+// League 
+.league{
+    .parent{
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        .rank-icon{
+            height: 10rem;
+        }
+        
+        .left{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .middle{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+        }
+        .right{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: right;
+        }
+    }
+    box-shadow: 0;
+    .primary{
+        background-color: $purple;
+        color:$white;
+    }
+    .secondary{
+        background-color: white;
+        border: 2.5px solid $yellow;        
+    }
+
+}
+
+.tile{
+    border-radius: 0;
+}
+
 
 @import "./loading.scss";
 

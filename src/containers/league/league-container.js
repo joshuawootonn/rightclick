@@ -46,7 +46,7 @@ class LeagueContainer extends Component {
     // If ranked
     if (this.props.league.status === status.SUCCESS)
       return (
-        <div className="columns">
+        <div className="columns league">
 
           <div className="column is-6">
             <LeagueOverViewComponent
