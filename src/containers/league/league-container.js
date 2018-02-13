@@ -3,10 +3,28 @@ import * as actions from "../../actions";
 import React, { Component } from "react";
 import * as status from "../../reducers/status";
 import { withRouter } from "react-router";
-import LeagueOverViewComponent from "../../components/league/league-overview-component";
+import { withStyles } from "material-ui/styles";
+import Grid from "material-ui/Grid";
+import LeagueOverviewContainer from "./league-overview-container";
 import LeagueUnrankedComponent from "../../components/league/league-unranked-component";
 import LeagueTableComponent from "../../components/league/league-table-component";
-import Loading from '../../components/general/loading';
+import Loading from "../../components/general/loading";
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    marginTop: 30,
+  },
+  container: {
+    margin: "0 auto",
+    maxWidth: 1100
+  },
+  paper: {
+    padding: 16,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+});
 class LeagueContainer extends Component {
   componentDidMount = () => {
     this.pullLeagueData();
@@ -35,10 +53,10 @@ class LeagueContainer extends Component {
         this.props.league.rank.toLowerCase()}.png`
     );
   };
-  rowClick = (player) => {
+  rowClick = player => {
     console.log(player);
     this.props.history.push(`/${player}`);
-  }
+  };
   render = () => {
     // If Loading
     if (
@@ -50,20 +68,25 @@ class LeagueContainer extends Component {
     if (this.props.league.status === status.SUCCESS && !this.props.league.tier)
       return <LeagueUnrankedComponent />;
     // If ranked
+    const { classes } = this.props;
     if (this.props.league.status === status.SUCCESS)
       return (
-        <div className="columns league">
-
-          <div className="column is-6">
-            <LeagueOverViewComponent
-              player={this.props.player}
-              league={this.props.league}
-              rankIconPath={this.getRankIcon()}
-            />
-          </div>
-          <div className="column is-6 is-parent">
-            <LeagueTableComponent rowClick={this.rowClick} league={this.props.league} />
-          </div>
+        <div className={classes.root}>
+          <Grid className={classes.container} container spacing={24}>
+            <Grid item xs={12} sm={6}>
+              <LeagueOverviewContainer
+                player={this.props.player}
+                league={this.props.league}
+                rankIconPath={this.getRankIcon()}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <LeagueTableComponent
+                rowClick={this.rowClick}
+                league={this.props.league}
+              />
+            </Grid>
+          </Grid>
         </div>
       );
     return null;
@@ -78,5 +101,7 @@ const mapStateToProps = (state, ownProps) => {
     own: ownProps
   };
 };
-export default connect(mapStateToProps, actions)(withRouter(LeagueContainer));
-// 
+export default withStyles(styles)(
+  connect(mapStateToProps, actions)(withRouter(LeagueContainer))
+);
+//
