@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TabComponent from '../../components/general/tab-component';
+import CenteredTabs from '../centered-tabs';
 class TabContainer extends Component {  
   render() {
     // "Stats"

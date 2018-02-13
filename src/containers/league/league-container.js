@@ -6,6 +6,7 @@ import { withRouter } from "react-router";
 import LeagueOverViewComponent from "../../components/league/league-overview-component";
 import LeagueUnrankedComponent from "../../components/league/league-unranked-component";
 import LeagueTableComponent from "../../components/league/league-table-component";
+import Loading from '../../components/general/loading';
 class LeagueContainer extends Component {
   componentDidMount = () => {
     this.pullLeagueData();
@@ -44,7 +45,7 @@ class LeagueContainer extends Component {
       this.props.league.status === status.LOADING ||
       this.props.player.status === status.LOADING
     )
-      return <p>loading</p>;
+      return <Loading />;
     // If Unranked
     if (this.props.league.status === status.SUCCESS && !this.props.league.tier)
       return <LeagueUnrankedComponent />;
