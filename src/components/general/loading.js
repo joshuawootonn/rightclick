@@ -1,13 +1,26 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import { LinearProgress } from 'material-ui/Progress';
 
-export const Loading = props => {
+const styles = theme => ({
+  root: {
+    width: '100%',    
+  }, 
+  
+});
+
+function LinearQuery(props) {
+  const { classes } = props;
   return (
-    <div className="loading">
-      <div className="dot" />
-      <div className="dot" />
-      <div className="dot" />
+    <div className={classes.root}>
+      <LinearProgress className={classes.color} mode="query" />      
     </div>
   );
+}
+
+LinearQuery.propTypes = {
+  classes: PropTypes.object.isRequired,
 };
 
-export default Loading;
+export default withStyles(styles)(LinearQuery);

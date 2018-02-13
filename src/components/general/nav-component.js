@@ -1,31 +1,55 @@
 import React from "react";
 import SearchContainer from "../../containers/general/search-container";
 import { Link } from "react-router-dom";
+
+import PropTypes from "prop-types";
+import { withStyles } from "material-ui/styles";
+import AppBar from "material-ui/AppBar";
+import Toolbar from "material-ui/Toolbar";
+import Typography from "material-ui/Typography";
+
+const styles = {
+  root: {
+    width: "100%"
+  },
+  flex: {
+    flex: 1
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20
+  }
+};
+
 const NavComponent = props => {
-  return (    
-    <nav className="navbar">
-      <div className="navbar-brand">
-        <Link className="navbar-item" to="/">
-          RightClick.gg
-        </Link>
-        <div
-          className="navbar-burger burger"
-          data-target="navbarExampleTransparentExample"
-        >
-          <span />
-          <span />
-          <span />
-        </div>
-      </div>
-      <div className="navbar-end">
-        <div className="navbar-item">
-          <div className="field is-grouped">
-            <SearchContainer />
-          </div>
-        </div>
-      </div>
-    </nav>
+  const { classes, handleClick } = props;
+  return (
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography
+            variant="title"
+            style={{ cursor: "pointer" }}
+            onClick={() => handleClick()}
+            color="inherit"
+            className={classes.flex}
+          >
+            RightClick.gg
+          </Typography>
+          <SearchContainer />
+        </Toolbar>
+      </AppBar>
+      
+    </div>
   );
 };
 
-export default NavComponent;
+export default withStyles(styles)(NavComponent);
+
+// <div className="navbar-end">
+//         <div className="navbar-item">
+//           <div className="field is-grouped">
+//             <SearchContainer />
+//           </div>
+//         </div>
+//       </div>

@@ -1,130 +1,130 @@
 // 1. Import the initial variables
-@import "../../node_modules/bulma/sass/utilities/initial-variables";
-@import "../../node_modules/bulma/sass/utilities/functions";
-//Colors
-$purple: #7a0de0;
-$yellow: #ffc421;
-$green: #0cc6ac;
-$white: #ffffff;
-//Fonts
-@import url('https://fonts.googleapis.com/css?family=Francois+One|Rajdhani:600');
-$font1: 'Francois One',
-serif;
-$font2: 'Rajdhani',
-serif;
-$family-primary: $font2;
-@import "../../node_modules/bulma/sass/utilities/derived-variables.sass";
-//Navbar
-$navbar-item-hover-background-color:transparent;
-$navbar-dropdown-item-hover-background-color:transparent;
-$link: $white;
-$tabs-link-active-color: $white;
-$tabs-border-bottom-color: $white;
-$tabs-border-bottom-width: 0px;
-$tabs-link-active-border-bottom-color: $white;
-$control-radius: 0px;
-$menu-item-active-color: $green;
-//Rest of bulma
-@import "../../node_modules/bulma/bulma.sass";
+// @import "../../node_modules/bulma/sass/utilities/initial-variables";
+// @import "../../node_modules/bulma/sass/utilities/functions";
+// //Colors
+// $purple: #7a0de0;
+// $yellow: #ffc421;
+// $green: #0cc6ac;
+// $white: #ffffff;
+// //Fonts
+// @import url('https://fonts.googleapis.com/css?family=Francois+One|Rajdhani:600');
+// $font1: 'Francois One',
+// serif;
+// $font2: 'Rajdhani',
+// serif;
+// $family-primary: $font2;
+// @import "../../node_modules/bulma/sass/utilities/derived-variables.sass";
+// //Navbar
+// $navbar-item-hover-background-color:transparent;
+// $navbar-dropdown-item-hover-background-color:transparent;
+// $link: $white;
+// $tabs-link-active-color: $white;
+// $tabs-border-bottom-color: $white;
+// $tabs-border-bottom-width: 0px;
+// $tabs-link-active-border-bottom-color: $white;
+// $control-radius: 0px;
+// $menu-item-active-color: $green;
+// //Rest of bulma
+// @import "../../node_modules/bulma/bulma.sass";
 html,
 body {
     margin: 0;
     height: 100%;
 }
 
-.navbar-defualt {
-    padding: 1rem; //box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
+// .navbar-defualt {
+//     padding: 1rem; //box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+// }
 
-.navbar,
-.tabs {
-    background-color: $purple; // a{
-    //     color: $white;
-    // }
-    // a:hover{
-    //     text-decoration: line-through;
-    //     color: $white;
-    // }
-    a:hover {
-        color: white;
-    }
-    a {
-        color: white;
-        font-weight: 300;
-        text-decoration: none;
-        font-size: 1.25rem;
-        position: relative;
+// .navbar,
+// .tabs {
+//     background-color: $purple; // a{
+//     //     color: $white;
+//     // }
+//     // a:hover{
+//     //     text-decoration: line-through;
+//     //     color: $white;
+//     // }
+//     a:hover {
+//         color: white;
+//     }
+//     a {
+//         color: white;
+//         font-weight: 300;
+//         text-decoration: none;
+//         font-size: 1.25rem;
+//         position: relative;
        
-        &::before,
-        &::after {
-            content: '';
-            background: $yellow;
-            position: absolute;
-            top: 50%;
-            height: 2px;
-            width: 0;
-        }
-        &::before {
-            left: 0;
-        }
-        &::after {
-            right: 0;
-            transition: width 500ms ease;
-        }
-        &:hover {
-            &::before {
-                width: 100%;
-                transition: width 500ms ease;
-            }
-            &::after {
-                width: 100%;
-                background: transparent;
-                transition: 0;
-            }
-        }
-    }
-    input {
-        background-color: transparent;
-        border: none;
-        color: $white;
-        outline: none;
-        box-shadow: none;
-        padding-left: 10px;
-        border-bottom: 2px solid #fff;
-        position: relative;
-    }
-    input:hover,
-    input.is-active {
-        border: none;
-        border-bottom: 2px solid $yellow;
-    }
-    input::-webkit-input-placeholder {
-        /* WebKit, Blink, Edge */
-        color: $white;
-    }
-    input:-moz-placeholder {
-        /* Mozilla Firefox 4 to 18 */
-        color: $white;
-        opacity: 1;
-    }
-    input::-moz-placeholder {
-        /* Mozilla Firefox 19+ */
-        color: $white;
-        opacity: 1;
-    }
-    input:-ms-input-placeholder {
-        /* Internet Explorer 10-11 */
-        color: $white;
-    }
-    input::-ms-input-placeholder {
-        /* Microsoft Edge */
-        color: $white;
-    }
-    input::placeholder {
-        /* Most modern browsers support this now. */
-        color: $white;
-    }
-}
+//         &::before,
+//         &::after {
+//             content: '';
+//             background: $yellow;
+//             position: absolute;
+//             top: 50%;
+//             height: 2px;
+//             width: 0;
+//         }
+//         &::before {
+//             left: 0;
+//         }
+//         &::after {
+//             right: 0;
+//             transition: width 500ms ease;
+//         }
+//         &:hover {
+//             &::before {
+//                 width: 100%;
+//                 transition: width 500ms ease;
+//             }
+//             &::after {
+//                 width: 100%;
+//                 background: transparent;
+//                 transition: 0;
+//             }
+//         }
+//     }
+//     input {
+//         background-color: transparent;
+//         border: none;
+//         color: $white;
+//         outline: none;
+//         box-shadow: none;
+//         padding-left: 10px;
+//         border-bottom: 2px solid #fff;
+//         position: relative;
+//     }
+//     input:hover,
+//     input.is-active {
+//         border: none;
+//         border-bottom: 2px solid $yellow;
+//     }
+//     input::-webkit-input-placeholder {
+//         /* WebKit, Blink, Edge */
+//         color: $white;
+//     }
+//     input:-moz-placeholder {
+//         /* Mozilla Firefox 4 to 18 */
+//         color: $white;
+//         opacity: 1;
+//     }
+//     input::-moz-placeholder {
+//         /* Mozilla Firefox 19+ */
+//         color: $white;
+//         opacity: 1;
+//     }
+//     input:-ms-input-placeholder {
+//         /* Internet Explorer 10-11 */
+//         color: $white;
+//     }
+//     input::-ms-input-placeholder {
+//         /* Microsoft Edge */
+//         color: $white;
+//     }
+//     input::placeholder {
+//         /* Most modern browsers support this now. */
+//         color: $white;
+//     }
+// }
 
 // Intro
 .hero {
@@ -150,96 +150,96 @@ body {
     width: 50%;
 }
 
-// League 
-.league {
-    .parent {
-        display: flex;
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-between;
-        .rank-icon {
-            height: 10rem;
-        }
-        .left {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .middle {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-align: center;
-        }
-        .right {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-align: right;
-        }
-    }
-    .primary {
-        background-color: $purple;
-        color: $white;
-        border-radius: 0;
-        box-shadow: 0;
+// // League 
+// .league {
+//     .parent {
+//         display: flex;
+//         width: 100%;
+//         flex-direction: row;
+//         justify-content: space-between;
+//         .rank-icon {
+//             height: 10rem;
+//         }
+//         .left {
+//             display: flex;
+//             flex-direction: column;
+//             justify-content: space-between;
+//         }
+//         .middle {
+//             display: flex;
+//             flex-direction: column;
+//             justify-content: space-between;
+//             text-align: center;
+//         }
+//         .right {
+//             display: flex;
+//             flex-direction: column;
+//             justify-content: space-between;
+//             text-align: right;
+//         }
+//     }
+//     .primary {
+//         background-color: $purple;
+//         color: $white;
+//         border-radius: 0;
+//         box-shadow: 0;
         
-        th,
-        h1 {
-            color: $white;
-        }
-        tr {            
-            cursor: pointer;
-            background: linear-gradient(to right, $white 50%, $purple 50%);
-            background-size: 200% 100%;
-            background-position: right bottom;
-            transition: all 250ms ease;
-            position: relative;
-            &::before,
-            &::after {
-                content: '';
-                background: $green;
-                position: absolute;
-                top: 50%;
-                height: 2px;
-                width: 0;
-            }
-            &::before {
-                left: 0;
-            }
-            &::after {
-                right: 0;
-                transition: width 500ms ease;
-            }
-            &:hover {
-                &::before {
-                    width: 100%;
-                    transition: width 500ms ease;
-                }
-                &::after {
-                    width: 100%;
-                    background: transparent;
-                    transition: 0;
-                }
-            }
-        }
-        tr:hover {
-            background-color: white;
-            background-position: left bottom;
-            color: $green;
-        }
-    }
-    .secondary {
-        background-color: white;
-        border: 1.5px solid $yellow;
-        border-radius: 0;
-    }
-    .width100 {
-        width: 100%;
-    }
-}
+//         th,
+//         h1 {
+//             color: $white;
+//         }
+//         tr {            
+//             cursor: pointer;
+//             background: linear-gradient(to right, $white 50%, $purple 50%);
+//             background-size: 200% 100%;
+//             background-position: right bottom;
+//             transition: all 250ms ease;
+//             position: relative;
+//             &::before,
+//             &::after {
+//                 content: '';
+//                 background: $green;
+//                 position: absolute;
+//                 top: 50%;
+//                 height: 2px;
+//                 width: 0;
+//             }
+//             &::before {
+//                 left: 0;
+//             }
+//             &::after {
+//                 right: 0;
+//                 transition: width 500ms ease;
+//             }
+//             &:hover {
+//                 &::before {
+//                     width: 100%;
+//                     transition: width 500ms ease;
+//                 }
+//                 &::after {
+//                     width: 100%;
+//                     background: transparent;
+//                     transition: 0;
+//                 }
+//             }
+//         }
+//         tr:hover {
+//             background-color: white;
+//             background-position: left bottom;
+//             color: $green;
+//         }
+//     }
+//     .secondary {
+//         background-color: white;
+//         border: 1.5px solid $yellow;
+//         border-radius: 0;
+//     }
+//     .width100 {
+//         width: 100%;
+//     }
+// }
 
-@import "./loading.scss";
+// @import "./loading.scss";
 // .container {
 //     position: relative;
 //     margin-right: auto;

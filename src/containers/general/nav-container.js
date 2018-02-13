@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import NavComponent from '../../components/general/nav-component';
+import { withRouter } from "react-router";
+
 class NavContainer extends Component {
-  handleSearch = event => {
-    
-  };
+  handleClick = () => {
+    this.props.history.push('/');
+  }
   render() {
     return (
-      <NavComponent />    
+      <NavComponent handleClick={this.handleClick} />    
     );
   }
 }
 
-export default NavContainer;
+export default withRouter(NavContainer);

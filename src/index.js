@@ -7,21 +7,40 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import thunk from "redux-thunk";
 //CSS
 import "./assets/styles.css";
+import { MuiThemeProvider, createMuiTheme } from "material-ui/styles";
+import purple from "material-ui/colors/purple";
+import green from "material-ui/colors/green";
+
 //JS
-import IntroContainer from './containers/intro-container';
-import IndexContainer from './containers/index-container';
-import reducers from './reducers';
-import {composeWithDevTools} from 'redux-devtools-extension'
-export const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
+import IntroContainer from "./containers/intro-container";
+import IndexContainer from "./containers/index-container";
+import reducers from "./reducers";
+import { composeWithDevTools } from "redux-devtools-extension";
+export const store = createStore(
+  reducers,
+  composeWithDevTools(applyMiddleware(thunk))
+);
+
+const theme = createMuiTheme({
+  palette: {
+    primary: green,
+    secondary: green
+  },
+  status: {
+    danger: "orange"
+  }
+});
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <Switch>       
-        <Route path="/:player" component={IndexContainer} />
-        <Route path="/" component={IntroContainer} />
-      </Switch>
-    </BrowserRouter>
-  </Provider>,
+  <MuiThemeProvider theme={theme}>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/:player" component={IndexContainer} />
+          <Route path="/" component={IntroContainer} />
+        </Switch>
+      </BrowserRouter>
+    </Provider>
+  </MuiThemeProvider>,
   document.getElementById("root")
 );
