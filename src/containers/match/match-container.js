@@ -32,7 +32,7 @@ class MatchContainer extends Component {
     });
     return (     
       <div className="tile is-child box is-12">
-      <MatchOverviewComponent expand={this.expand} match={this.props.match} static={this.props.static}/>
+      <MatchOverviewComponent isExpanded={this.state.isExpanded} expand={this.expand} match={this.props.match} static={this.props.static}/>
       {this.state.isExpanded && this.state.state === 0 ? <MatchItemsComponent match={this.props.match} static={this.props.static}/> : null}
       {this.state.isExpanded && this.state.state === 1 ? <MatchScoreBoardComponent match={this.props.match} static={this.props.static}/> : null}
       {this.state.isExpanded && this.state.state === 2 ? <MatchGraphContainer match={this.props.match} static={this.props.static}/> : null}

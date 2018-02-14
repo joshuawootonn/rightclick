@@ -1,64 +1,122 @@
 import React from "react";
+import { withStyles } from "material-ui/styles";
+import Card, {
+  CardHeader,
+  CardMedia,
+  CardContent,
+  CardActions
+} from "material-ui/Card";
+import classnames from "classnames";
+import Collapse from "material-ui/transitions/Collapse";
+import Avatar from "material-ui/Avatar";
+import Typography from "material-ui/Typography";
+import red from "material-ui/colors/red";
+import FavoriteIcon from "material-ui-icons/Favorite";
+import ShareIcon from "material-ui-icons/Share";
+import ExpandMoreIcon from "material-ui-icons/ExpandMore";
+import MoreVertIcon from "material-ui-icons/MoreVert";
+import IconButton from "material-ui/IconButton";
+import SkipPreviousIcon from "material-ui-icons/SkipPrevious";
+import PlayArrowIcon from "material-ui-icons/PlayArrow";
+import SkipNextIcon from "material-ui-icons/SkipNext";
+const styles = theme => ({
+  card: {
+    display: "flex",
+    justifyContent: "space-between"
+  },
+
+  details: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between"
+  },
+  actions: {
+    display: "flex"
+  },
+  content: {},
+  cover: {
+    width: 151,
+    height: 151
+  },
+  expand: {
+    transform: "rotate(0deg)",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest
+    }),
+    marginLeft: "auto"
+  },
+  expandOpen: {
+    transform: "rotate(180deg)"
+  },
+  controls: {
+    display: "flex",
+    alignItems: "center",
+    paddingLeft: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit
+  },
+  playIcon: {
+    height: 38,
+    width: 38
+  }
+});
 
 const MatchOverviewComponent = props => {
- 
   const player = props.match.mainPlayer;
   const { champion, version } = props.static;
-
+  const { classes, theme } = props;
   return (
-    <div className="columns has-text-centered vertical-center ">
-      <div className="column is-narrow">
-        <figure className="image is-96x96 champion-img">
-          <img
-            alt="Current player's champion"
-            src={`http://ddragon.leagueoflegends.com/cdn/${version[0]}/img/champion/${champion
-              .data[player.championId].key}.png`}
-          />
-        </figure>
-        <figcaption>
+    <Card className={classes.details}>
+      <CardMedia
+        className={classes.cover}
+        image={`http://ddragon.leagueoflegends.com/cdn/${version[0]}/img/champion/${champion
+          .data[player.championId].key}.png`}
+        title="Live from space album cover"
+      />
+      <CardContent className={classes.content}>
+        <Typography variant="headline">
+          {player.stats.win ? "Win" : "Loss"}
+        </Typography>
+        <Typography variant="subheading" color="textSecondary">
           {champion.data[player.championId].key}
-        </figcaption>
-      </div>
-      <div className="column">
-        <div>
-          <h1 className="title">
-            {player.stats.win ? "Win" : "Loss"}
-          </h1>
-        </div>
-      </div>
-      <div className="column">
-        <div>
-          <h1 className="title">
-            {props.match.general.gameDuration}
-          </h1>
-          <h2 className="subtitle">
-            {props.match.general.gameCreation}
-          </h2>
-        </div>
-      </div>
-      <div className="column">
-        <h1 className="title">
+        </Typography>
+      </CardContent>
+      <CardContent className={classes.content}>
+        <Typography variant="headline">
           {player.stats.kills}/{player.stats.deaths}/{player.stats.assists}
-        </h1>
-        <h2 className="subtitle">
+        </Typography>
+        <Typography variant="subheading" color="textSecondary">
           KDA:{player.stats.kda}
-        </h2>
-      </div>
-      <div className="column">
-        <h1 className="title">
+        </Typography>
+      </CardContent>
+      <CardContent className={classes.content}>
+        <Typography variant="headline">
           CS: {player.stats.cs}
-        </h1>
-        <h2 className="subtitle">
+        </Typography>
+        <Typography variant="subheading" color="textSecondary">
           Level: {player.stats.level}
-        </h2>
-      </div>
-      <div className="column ">
-        <button onClick={props.expand} className="button is-pulled-right">
-          +
-        </button>
-      </div>
-    </div>
+        </Typography>
+      </CardContent>
+      <CardContent className={classes.content}>
+        <Typography variant="headline">
+          {props.match.general.gameDuration}
+        </Typography>
+        <Typography variant="subheading" color="textSecondary">
+          {props.match.general.gameCreation}
+        </Typography>
+      </CardContent>
+      <CardActions className={classes.actions} disableActionSpacing>
+        <IconButton
+          onClick={props.expand}
+          className={classnames(classes.expand, {
+            [classes.expandOpen]: props.isExpanded
+          })}
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+      </CardActions>
+    </Card>
   );
 };
 
-export default MatchOverviewComponent;
+export default withStyles(styles, { withTheme: true })(MatchOverviewComponent);
