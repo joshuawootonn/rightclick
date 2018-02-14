@@ -1,95 +1,100 @@
 import React from "react";
+import { withStyles } from "material-ui/styles";
+import Grid from "material-ui/Grid";
+import Table, {
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow
+} from "material-ui/Table";
+import Paper from "material-ui/Paper";
+const styles = theme => ({
+  root: {
+    width: "100%",
+    marginTop: theme.spacing.unit * 3,
+    overflowX: "auto"
+  },
+  table: {
+  }
+});
 const MatchScoreBoardComponent = props => {
-  const goodRows = props.match.goodTeam.map((good, i) => {
-    return (
-      <tr key={i}>
-        <td >
-          {good.stats.kills}/{good.stats.deaths}/{good.stats.assists}
-        </td>
-        <td >
-          {good.account.summonerName}
-        </td>
-        <td >
-          <figure className="image is-48x48 champion-img">
-            <img
-              alt="Friendly champion"
-              src={`http://ddragon.leagueoflegends.com/cdn/${props.static
-                .version[0]}/img/champion/${props.static.champion.data[
-                good.championId
-              ].key}.png`}
-            />
-          </figure>
-        </td>
-      </tr>
-    );
-  });
-  const badRows = props.match.badTeam.map((bad, i) => {
-    return (
-      <tr key={i}>
-        <td >
-          <figure className="image is-48x48">
-            <img 
-              alt="Enemy champion"              
-              src={`http://ddragon.leagueoflegends.com/cdn/${props.static
-                .version[0]}/img/champion/${props.static.champion.data[
-                bad.championId
-              ].key}.png`}
-            />
-          </figure>
-        </td>
-        <td>
-          {bad.account.summonerName}
-        </td>
-        <td>
-          {bad.stats.kills}/{bad.stats.deaths}/{bad.stats.assists}
-        </td>
-      </tr>
-    );
-  });
+  const { classes } = props;
+
   return (
-    <div className="columns is-12">
-      <div className="columm is-half">
-        <table className="table is-hoverable  is-fullwidth">
-          <thead>
-            <tr>
-              <th >
-                <abbr>KDA</abbr>
-              </th>
-              <th >
-                <abbr>Summoner</abbr>
-              </th>
-              <th >
-                <abbr>Champion</abbr>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {goodRows}
-          </tbody>
-        </table>
-      </div>
-      <div className="columm is-half">
-        <table className="table is-hoverable is-fullwidth">
-          <thead>
-            <tr>
-              <th >
-                <abbr>Champion</abbr>
-              </th>
-              <th >
-                <abbr>Summoner</abbr>
-              </th>
-              <th >
-                <abbr>KDA</abbr>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {badRows}
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <Grid className={classes.container} container spacing={24}>
+      <Grid item xs={6}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell>Summoner</TableCell>
+              <TableCell numeric>KDA</TableCell>
+              <TableCell />
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {props.match.goodTeam.map((good, i) => {
+              return (
+                <TableRow key={i} onClick={() => {
+                  props.rowClick(good.account.summonerName);
+                }}>
+                  <TableCell>
+                    {good.account.summonerName}
+                  </TableCell>
+                  <TableCell numeric>
+                    {good.stats.kills}/{good.stats.deaths}/{good.stats.assists}
+                  </TableCell>
+
+                  <TableCell>
+                    <img
+                      alt="Friendly champion"
+                      src={`http://ddragon.leagueoflegends.com/cdn/${props
+                        .static.version[0]}/img/champion/${props.static.champion
+                        .data[good.championId].key}.png`}
+                    />
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </Grid>
+      <Grid item xs={6}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell />
+              <TableCell numeric>KDA</TableCell>
+              <TableCell>Summoner</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {props.match.badTeam.map((bad, i) => {
+              return (
+                <TableRow key={i} onClick={() => {
+                  props.rowClick(bad.account.summonerName);
+                }}>
+                  <TableCell>
+                    <img
+                      alt="Friendly champion"
+                      src={`http://ddragon.leagueoflegends.com/cdn/${props
+                        .static.version[0]}/img/champion/${props.static.champion
+                        .data[bad.championId].key}.png`}
+                    />
+                  </TableCell>
+                  <TableCell numeric>
+                    {bad.stats.kills}/{bad.stats.deaths}/{bad.stats.assists}
+                  </TableCell>
+                  <TableCell>
+                    {bad.account.summonerName}
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </Grid>
+    </Grid>
   );
 };
 
-export default MatchScoreBoardComponent;
+export default withStyles(styles)(MatchScoreBoardComponent);

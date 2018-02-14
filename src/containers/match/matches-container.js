@@ -6,6 +6,7 @@ import MatchContainer from "./match-container";
 import Loading from "../../components/general/loading";
 import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
+import { withRouter } from "react-router";
 
 const styles = theme => ({
   root: {
@@ -28,15 +29,16 @@ class MatchesContainer extends Component {
     this.pullMatchData();
   };
   componentWillReceiveProps(nextProps) {
+    console.log
     if (nextProps.own.playerName !== this.props.own.playerName) {
       this.pullMatchData();
     }
   }
-  componentWillUpdate = (nextProps, nextState) => {
-    if (this.props.match.status !== nextProps.match.status) {
-      this.forceUpdate();
-    }
-  };
+  // componentWillUpdate = (nextProps, nextState) => {
+  //   if (this.props.match.status !== nextProps.match.status) {
+  //     this.forceUpdate();
+  //   }
+  // };
   pullMatchData = () => {
     if (
       this.props.match.status === status.INIT ||
@@ -48,6 +50,10 @@ class MatchesContainer extends Component {
       this.props.getStatic();
     }
   };
+  rowClick = player => {
+    console.log(player);
+    this.props.history.push(`/${player}`);
+  };
   generateMatchTiles = () => {
     return this.props.match.matches.map((m, i) => {
       if (
@@ -57,7 +63,7 @@ class MatchesContainer extends Component {
       ) {
         return (
           <Grid item xs={12}>
-            <MatchContainer key={i} match={m} />
+            <MatchContainer key={i} rowClick={this.rowClick} match={m} />
           </Grid>
         );
       } else return null;
@@ -75,7 +81,7 @@ class MatchesContainer extends Component {
     // if (this.props.match.status === status.SUCCESS && !this.props.match)
     //   return <LeagueUnrankedComponent />;
     // If ranked
-    if (this.props.match.status === status.SUCCESS) {
+    if (this.props.match.status === status.SUCCESS && this.props.player.status === status.SUCCESS) {
       // return (
       //   <MatchComponent />
       // )
@@ -99,6 +105,6 @@ const mapStateToProps = (state, ownProps) => {
     own: ownProps
   };
 };
-export default withStyles(styles)(
-  connect(mapStateToProps, actions)(MatchesContainer)
+export default withRouter(withStyles(styles)(
+  connect(mapStateToProps, actions)(MatchesContainer))
 );

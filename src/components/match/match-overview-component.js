@@ -65,8 +65,9 @@ const MatchOverviewComponent = props => {
   const player = props.match.mainPlayer;
   const { champion, version } = props.static;
   const { classes, theme } = props;
+  //console.log(props);
   return (
-    <Card className={classes.details}>
+    <div className={classes.details}>
       <CardMedia
         className={classes.cover}
         image={`http://ddragon.leagueoflegends.com/cdn/${version[0]}/img/champion/${champion
@@ -115,7 +116,7 @@ const MatchOverviewComponent = props => {
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
-    </Card>
+    </div>
   );
 };
 
