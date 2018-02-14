@@ -20,7 +20,7 @@ Webpack is confusing and I can't figure out how to deploy.
 * Recharts - How to map data from generic objects to graph inputs
 * Component/Container paradigm - How to decouple visual and state driven components
 * More Redux 6 reducers and 40 actions - How to organize scattered data to prevent redunancy and reduce unnecessary memory usage
-### Reason for incompletion
+### Reason for incompletionnpm
 Lack of inspiration in design.
 
 

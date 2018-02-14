@@ -73,14 +73,14 @@ class LeagueContainer extends Component {
       return (
         <div className={classes.root}>
           <Grid className={classes.container} container spacing={24}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} >
               <LeagueOverviewContainer
                 player={this.props.player}
                 league={this.props.league}
                 rankIconPath={this.getRankIcon()}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} >
               <LeagueTableComponent
                 rowClick={this.rowClick}
                 league={this.props.league}

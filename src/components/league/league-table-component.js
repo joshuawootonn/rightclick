@@ -1,58 +1,69 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withStyles } from "material-ui/styles";
+import Table, {
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow
+} from "material-ui/Table";
+
+import Typography from "material-ui/Typography";
+import Paper from "material-ui/Paper";
+const styles = theme => ({
+  root: {
+    width: "100%",
+    overflowX: "auto"
+  },
+  header:{
+    paddingTop: 16,
+    paddingLeft: 16
+  },
+  table: {
+    minWidth: 700
+  }
+});
+
 const LeagueOverviewComponent = props => {
-  const league = props.league;
-
-  const tableContents = league.division.map((ele, i) => {
-    return (
-      <tr
-        key={i}
-        onClick={() => {
-          props.rowClick(ele.playerOrTeamName);
-        }}
-      >
-        <th>
-          {i+1}
-        </th>
-        <td>
-          {ele.playerOrTeamName}
-        </td>
-        <td>
-          {ele.leaguePoints}
-        </td>
-        <td>
-          {ele.wins}
-        </td>
-        <td>
-          {ele.losses}
-        </td>
-      </tr>
-    );
-  });
-
+  const { classes } = props;
   return (
-    <div className="tile box is-12 parent primary stripper">
-      <div className="middle width100">
-        <h1 className="title ">
-          {props.league.leagueName}
-        </h1>
-        <table className="is-fullwidth table primary">
-          <thead>
-            <tr>
-              <th />
-              <th>Summoner</th>
-              <th>LP</th>
-              <th>Wins</th>
-              <th>Losses</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tableContents}
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <Paper className={classes.root}>
+      
+      <Typography className={classes.header} variant="headline">{props.league.leagueName}</Typography>
+      <Table className={classes.table}>
+        <TableHead>
+          <TableRow>
+            <TableCell >Summoner</TableCell>
+            <TableCell numeric>LP</TableCell>
+            <TableCell numeric>Wins</TableCell>
+            <TableCell numeric>Losses</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {props.league.division.map((ele, i) => {
+            return (
+              <TableRow key={i} onClick={() => {
+                props.rowClick(ele.playerOrTeamName);
+              }}>                
+                <TableCell>
+                  {ele.playerOrTeamName}
+                </TableCell>
+                <TableCell numeric>
+                  {ele.leaguePoints}
+                </TableCell>
+                <TableCell numeric>
+                  {ele.wins}
+                </TableCell>
+                <TableCell numeric>
+                  {ele.losses}
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </Paper>
   );
 };
 
-export default LeagueOverviewComponent;
+export default withStyles(styles)(LeagueOverviewComponent);
