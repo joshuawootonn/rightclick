@@ -16,7 +16,8 @@ const styles = theme => ({
     overflowX: "auto"
   },
   table: {
-    cursor: "pointer"
+    cursor: "pointer",
+    width:"100%"
   },
   avatar:{
     margin:10,
@@ -29,7 +30,7 @@ const MatchScoreBoardComponent = props => {
 
   return (
     <Grid className={classes.container} container spacing={24}>
-      <Grid item xs={6}>
+      <Grid item xs={12} md={6}>
         <Table className={classes.table}>
           <TableHead>
             <TableRow>
@@ -66,7 +67,7 @@ const MatchScoreBoardComponent = props => {
           </TableBody>
         </Table>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}>
         <Table className={classes.table}>
           <TableHead>
             <TableRow>

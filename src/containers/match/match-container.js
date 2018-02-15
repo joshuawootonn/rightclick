@@ -11,12 +11,16 @@ const styles = theme => ({
   win: {
     borderStyle: "solid",
     borderWidth: "5",
-    borderColor: "#03A9F4"
+    borderColor: "#03A9F4",
+    margin: "0 auto",
+    maxWidth: 1100,
   },
   loss:{
     borderStyle: "solid",
     borderWidth: "5",
-    borderColor: "#8BC34A"
+    borderColor: "#8BC34A",
+    margin: "0 auto",
+    maxWidth: 1100,
   }
 });
 
