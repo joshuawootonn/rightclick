@@ -27,6 +27,9 @@ class MatchGraphContainer extends Component {
         trueTaken1: goodTeam[i].stats.damageTakenTrue,
         heal1: goodTeam[i].stats.healing
       };
+      
+    }
+    for (let i = 0; i < badTeam.length; i++) {
       arr[i + goodTeam.length] = {
         name: badTeam[i].account.summonerName,
         gold2: badTeam[i].stats.gold,
@@ -39,8 +42,13 @@ class MatchGraphContainer extends Component {
         physicalTaken2: badTeam[i].stats.damageTakenPhysical,
         trueTaken2: badTeam[i].stats.damageTakenTrue,
         heal2: badTeam[i].stats.healing
-      };
+      };      
     }
+    
+
+
+
+    
     return arr;
   };
   changeGraph = event => {
