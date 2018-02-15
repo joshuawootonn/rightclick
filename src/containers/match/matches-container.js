@@ -29,17 +29,13 @@ class MatchesContainer extends Component {
     this.pullMatchData();
   };
   componentWillReceiveProps(nextProps) {
-    //console.log(nextProps.own.playerName,this.props.own.playerName);
+    console.log("Will receive props",nextProps.own.playerName);
     if (nextProps.own.playerName !== this.props.own.playerName) {
       this.pullMatchData(nextProps.own.playerName);
     }
   }
-  // componentWillUpdate = (nextProps, nextState) => {
-  //   if (this.props.match.status !== nextProps.match.status) {
-  //     this.forceUpdate();
-  //   }
-  // };
   pullMatchData = (name=this.props.playerName) => {
+    console.log("pull Match Data",name);
     if (
       this.props.match.status === status.INIT ||
       this.props.match.status === status.SUCCESS
@@ -51,13 +47,10 @@ class MatchesContainer extends Component {
     }
   };
   rowClick = player => {
-    //console.log(player);
+    console.log("Row Click",player);
     this.props.history.push(`/${player}`);
   };
-  generateMatchTiles = () => {
-    
-
-    
+  generateMatchTiles = () => { 
     return this.props.match.matches.map((m, i) => {
       if (
         m.general &&
@@ -74,7 +67,6 @@ class MatchesContainer extends Component {
   };
   render = () => {
     const {classes} = this.props;
-    //console.log("matches render",this.props)
     // If Loading
     if (
       this.props.match.status === status.LOADING ||

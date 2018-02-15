@@ -29,7 +29,7 @@ class MatchContainer extends Component {
     if (i > -1 && i < 4) this.setState({ state: i });
   };
   render() {
-     //console.log("objects sent",this.props.match, this.props.own.player.name);
+     
      this.props.match.mainPlayer =
      this.props.match.goodTeam.find(ele => {
        return ele.account.summonerName === this.props.own.player.name;
@@ -37,37 +37,43 @@ class MatchContainer extends Component {
      this.props.match.badTeam.find(ele => {
        return ele.account.summonerName === this.props.own.player.name;
      });
-    return (
-      <Card>
-        <MatchOverviewComponent
-          isExpanded={this.state.isExpanded}
-          expand={this.expand}
-          match={this.props.match}
-          static={this.props.static}
-        />
-        {this.state.isExpanded && this.state.state === 1
-          ? <MatchScoreBoardComponent
-              rowClick={this.props.rowClick}
-              match={this.props.match}
-              static={this.props.static}
-            />
-          : null}
-        {this.state.isExpanded && this.state.state === 2
-          ? <MatchGraphContainer
-              match={this.props.match}
-              static={this.props.static}
-            />
-          : null}
-        {this.state.isExpanded
-          ? <MatchMenuComponent
-              state={this.state.state}
-              setIndex={i => {
-                this.setIndex(i);
-              }}
-            />
-          : null}
-      </Card>
-    );
+     
+    if(this.props.match.mainPlayer){
+      return (
+        <Card>
+          <MatchOverviewComponent
+            isExpanded={this.state.isExpanded}
+            expand={this.expand}
+            match={this.props.match}
+            static={this.props.static}
+          />
+          {this.state.isExpanded && this.state.state === 1
+            ? <MatchScoreBoardComponent
+                rowClick={this.props.rowClick}
+                match={this.props.match}
+                static={this.props.static}
+              />
+            : null}
+          {this.state.isExpanded && this.state.state === 2
+            ? <MatchGraphContainer
+                match={this.props.match}
+                static={this.props.static}
+              />
+            : null}
+          {this.state.isExpanded
+            ? <MatchMenuComponent
+                state={this.state.state}
+                setIndex={i => {
+                  this.setIndex(i);
+                }}
+              />
+            : null}
+        </Card>
+              );
+    }
+    else{
+      return null;
+    }
   }
 }
 
