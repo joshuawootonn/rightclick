@@ -1,15 +1,9 @@
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import React, { Component } from "react";
-import Card, {
-  CardHeader,
-  CardMedia,
-  CardContent,
-  CardActions
-} from "material-ui/Card";
+import Card from "material-ui/Card";
 import MatchGraphContainer from "./match-graph-container";
 import MatchScoreBoardComponent from "../../components/match/match-scoreboard-component";
-import MatchItemsComponent from "../../components/match/match-items-component";
 import MatchOverviewComponent from "../../components/match/match-overview-component";
 import MatchMenuComponent from "../../components/match/match-menu-component";
 

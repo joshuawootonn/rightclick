@@ -1,7 +1,7 @@
 import React from "react";
 const MatchItemsComponent = props => {
-  const player = props.match.mainPlayer;
-  const { champion, version, item } = props.static;
+  // const player = props.match.mainPlayer;
+  // const { champion, version, item } = props.static;
 
  
   return (

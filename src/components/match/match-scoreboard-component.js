@@ -7,7 +7,6 @@ import Table, {
   TableHead,
   TableRow
 } from "material-ui/Table";
-import Paper from "material-ui/Paper";
 const styles = theme => ({
   root: {
     width: "100%",

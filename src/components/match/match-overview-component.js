@@ -1,24 +1,14 @@
 import React from "react";
 import { withStyles } from "material-ui/styles";
-import Card, {
-  CardHeader,
+import {
   CardMedia,
   CardContent,
   CardActions
 } from "material-ui/Card";
 import classnames from "classnames";
-import Collapse from "material-ui/transitions/Collapse";
-import Avatar from "material-ui/Avatar";
 import Typography from "material-ui/Typography";
-import red from "material-ui/colors/red";
-import FavoriteIcon from "material-ui-icons/Favorite";
-import ShareIcon from "material-ui-icons/Share";
 import ExpandMoreIcon from "material-ui-icons/ExpandMore";
-import MoreVertIcon from "material-ui-icons/MoreVert";
 import IconButton from "material-ui/IconButton";
-import SkipPreviousIcon from "material-ui-icons/SkipPrevious";
-import PlayArrowIcon from "material-ui-icons/PlayArrow";
-import SkipNextIcon from "material-ui-icons/SkipNext";
 const styles = theme => ({
   card: {
     display: "flex",
@@ -62,11 +52,10 @@ const styles = theme => ({
 });
 
 const MatchOverviewComponent = props => {
-  console.log("match shit",props);
   const player = props.match.mainPlayer;
 
   const { champion, version } = props.static;
-  const { classes, theme } = props;
+  const { classes } = props;
   //console.log(props);
   return (
     <div className={classes.details}>

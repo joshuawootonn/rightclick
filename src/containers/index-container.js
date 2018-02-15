@@ -4,7 +4,6 @@ import TabContainer from "./general/tab-container";
 import LeagueContainer from "./league/league-container";
 import MatchesContainer from "./match/matches-container";
 import StatContainer from "./stat/stat-container";
-import CenteredTabs from './centered-tabs';
 class IndexContainer extends Component {
   constructor(props) {
     super(props);

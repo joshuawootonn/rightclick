@@ -2,15 +2,12 @@ import React, { Component } from "react";
 import LeagueOverviewComponent from "../../components/league/league-overview-component";
 import Grid from "material-ui/Grid";
 import LeaguePaperComponent from '../../components/league/league-paper-component';
-import Typography from "material-ui/Typography";
-import Paper from 'material-ui/Paper';
-import leaguePaperComponent from "../../components/league/league-paper-component";
+
 class LeagueOverviewContainer extends Component {
   render() {
     const wr = (this.props.league.wins.toFixed(2) /
       (this.props.league.wins + this.props.league.losses).toFixed(2) *
       100).toFixed(2);
-    const classes = this.props;
     return (
       <div>
         <Grid container spacing={24}>

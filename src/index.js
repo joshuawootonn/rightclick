@@ -23,7 +23,7 @@ export const store = createStore(
 
 const theme = createMuiTheme({
   palette: {
-    primary: green,
+    primary: purple,
     secondary: green
   },
   status: {

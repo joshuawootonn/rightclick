@@ -29,13 +29,11 @@ class MatchesContainer extends Component {
     this.pullMatchData();
   };
   componentWillReceiveProps(nextProps) {
-    console.log("Will receive props",nextProps.own.playerName);
     if (nextProps.own.playerName !== this.props.own.playerName) {
       this.pullMatchData(nextProps.own.playerName);
     }
   }
   pullMatchData = (name=this.props.playerName) => {
-    console.log("pull Match Data",name);
     if (
       this.props.match.status === status.INIT ||
       this.props.match.status === status.SUCCESS
@@ -47,7 +45,6 @@ class MatchesContainer extends Component {
     }
   };
   rowClick = player => {
-    console.log("Row Click",player);
     this.props.history.push(`/${player}`);
   };
   generateMatchTiles = () => { 
@@ -58,7 +55,7 @@ class MatchesContainer extends Component {
           m.general.gameMode === "MATCHED_GAME")
       ) {
         return (
-          <Grid item xs={12}>
+          <Grid key={i} item xs={12}>
             <MatchContainer player={this.props.player} key={i} rowClick={this.rowClick} match={m} />
           </Grid>
         );

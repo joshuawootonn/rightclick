@@ -1,8 +1,5 @@
 import React from "react";
 import SearchContainer from "../../containers/general/search-container";
-import { Link } from "react-router-dom";
-
-import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import AppBar from "material-ui/AppBar";
 import Toolbar from "material-ui/Toolbar";
