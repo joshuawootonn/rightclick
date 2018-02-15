@@ -1,10 +1,16 @@
 import React from "react";
-
+import SearchContainer from "../../containers/general/search-container";
+import Typography from "material-ui/Typography";
 const LeagueUnrankedComponent = props => {
+
   return (
-    <div className="columns">
-      <h1>GetGood.jpg</h1>
-    </div>
+    
+    <div className="hero">
+        <Typography variant="display4" gutterBottom>
+            This player is unplaced. Search Another?
+        </Typography>
+        <SearchContainer index={0}/>
+      </div>
   );
 };
 

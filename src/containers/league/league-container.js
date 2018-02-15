@@ -59,7 +59,7 @@ class LeagueContainer extends Component {
   render = () => {  
     const { classes } = this.props;
     // if unranked
-    if (this.props.league.status === status.SUCCESS && !this.props.league.tier)
+    if (this.props.league.status === status.ERROR && !this.props.league.tier)
       return <LeagueUnrankedComponent />;   
     // if ranked
     if (this.props.league.status === status.SUCCESS)

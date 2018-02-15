@@ -9,7 +9,7 @@ class IndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tab: 1
+      tab: 0
     };
   }
   handleTabChange = (event,tab) => {

@@ -1,24 +1,21 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import * as actions from "../actions";
 import SearchContainer from "./general/search-container";
 import Typography from "material-ui/Typography";
 
-class IntroContainer extends Component {
-  render() {
-    return (
+import NavContainer from "./general/nav-container";
+import LoadingContainer from './general/loading-container';
+const IntroContainer = props => {
+  return (
+    <div>
+        <LoadingContainer />
       <div className="hero">
         <Typography variant="display4" gutterBottom>
-          rightclick.gg
+          RightClick.gg
         </Typography>
-        <SearchContainer index={0}/>
+        <SearchContainer index={0} />
       </div>
-    );
-  }
-}
-const mapStateToProps = (state, ownProps) => {
-  return {
-    static: state.static
-  };
+    </div>
+  );
 };
-export default connect(mapStateToProps, actions)(IntroContainer);
+
+export default IntroContainer;
