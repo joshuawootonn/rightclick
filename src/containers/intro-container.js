@@ -11,7 +11,7 @@ class IntroContainer extends Component {
         <Typography variant="display4" gutterBottom>
           rightclick.gg
         </Typography>
-        <SearchContainer />
+        <SearchContainer index={0}/>
       </div>
     );
   }

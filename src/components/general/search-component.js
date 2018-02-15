@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import TextField from "material-ui/TextField";
 
@@ -9,21 +8,25 @@ const styles = theme => ({
     display: "flex",
     flexWrap: "wrap"
   },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
+  index: {
+    color:"white",     
   },
+  intro:{
+    color: "grey"
+  }
 });
-
 const SearchComponent = props => {
   const { classes } = props;
   return (
     <div>
       <TextField
         label="Enter Summoner"
-        className={classes.input}
-        type="text"
+        helperTextClassName={classes.textField}
+        labelClassName={props.index ? classes.index : classes.intro}
+        InputProps={{disableUnderline: false
+       }}
+        type="text"    
+        className={props.index ? classes.index : classes.intro}
         {...props.input}
       />
       
@@ -32,8 +35,5 @@ const SearchComponent = props => {
   );
 };
 
-SearchComponent.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(SearchComponent);

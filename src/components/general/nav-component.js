@@ -33,7 +33,7 @@ const NavComponent = props => {
           >
             RightClick.gg
           </Typography>
-          <SearchContainer />
+          <SearchContainer index={1} />
         </Toolbar>
       </AppBar>
       

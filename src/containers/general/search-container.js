@@ -18,7 +18,7 @@ class SearchContainer extends Component {
     const {handleSubmit} = this.props;
     return (
       <form onSubmit={handleSubmit(this.handleSearch)}>
-        <Field name="search" component={SearchComponent} />
+        <Field name="search" index={this.props.index} component={SearchComponent} />
       </form>
     );
   }

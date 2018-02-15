@@ -8,6 +8,7 @@ import Button from "material-ui/Button";
 const styles = theme => ({
   root: {
     display: "flex",
+    marginLeft: 20,
     flexWrap: "wrap"
   },
   formControl: {
