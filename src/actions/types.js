@@ -56,3 +56,7 @@ export const GET_MATCHES_FAILURE = "get_matches_failure";
 export const GET_MATCH_REQUEST = "get_match_request";
 export const GET_MATCH_SUCCESS = "get_match_success";
 export const GET_MATCH_FAILURE = "get_match_failure";
+
+// Alert
+
+export const TOGGLE_ALERT = "toggle_alert";

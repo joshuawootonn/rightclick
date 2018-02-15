@@ -13,7 +13,7 @@ export const matchReducer = (state = initialState, action) => {
     case actions.GET_MATCHES_SUCCESS:
       return {
         ...state,
-        matches: action.payload.data.matches.slice(0, 1)
+        matches: action.payload.data.matches.slice(0, 11)
       };
     case actions.GET_MATCHES_FAILURE:
       return {
