@@ -1,20 +1,22 @@
 import React from "react";
 import { withStyles } from "material-ui/styles";
-import {
-  CardMedia,
-  CardContent,
-  CardActions
-} from "material-ui/Card";
+import { CardMedia, CardContent, CardActions } from "material-ui/Card";
 import classnames from "classnames";
 import Typography from "material-ui/Typography";
 import ExpandMoreIcon from "material-ui-icons/ExpandMore";
 import IconButton from "material-ui/IconButton";
+import Avatar from "material-ui/Avatar";
+import classNames from "classnames";
 const styles = theme => ({
   card: {
     display: "flex",
     justifyContent: "space-between"
   },
-
+  avatar: {
+    margin: 10,
+    width: 90,
+    height: 90
+  },
   details: {
     display: "flex",
     flexDirection: "row",
@@ -59,12 +61,14 @@ const MatchOverviewComponent = props => {
   //console.log(props);
   return (
     <div className={classes.details}>
-      <CardMedia
-        className={classes.cover}
-        image={`http://ddragon.leagueoflegends.com/cdn/${version[0]}/img/champion/${champion
-          .data[player.championId].key}.png`}
-        title="Live from space album cover"
-      />
+      <CardContent className={classes.content}>
+        <Avatar
+          alt="Player's champion"
+          src={`http://ddragon.leagueoflegends.com/cdn/${version[0]}/img/champion/${champion
+            .data[player.championId].key}.png`}
+          className={classNames(classes.avatar)}
+        />
+      </CardContent>
       <CardContent className={classes.content}>
         <Typography variant="headline">
           {player.stats.win ? "Win" : "Loss"}

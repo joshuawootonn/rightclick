@@ -1,5 +1,6 @@
 import React from "react";
 import { withStyles } from "material-ui/styles";
+import classNames from 'classnames';
 import Grid from "material-ui/Grid";
 import Table, {
   TableBody,
@@ -7,6 +8,7 @@ import Table, {
   TableHead,
   TableRow
 } from "material-ui/Table";
+import Avatar from 'material-ui/Avatar';
 const styles = theme => ({
   root: {
     width: "100%",
@@ -15,7 +17,12 @@ const styles = theme => ({
   },
   table: {
     cursor: "pointer"
-  }
+  },
+  avatar:{
+    margin:10,
+    width: 60,
+    height: 60,
+  },
 });
 const MatchScoreBoardComponent = props => {
   const { classes } = props;
@@ -45,11 +52,12 @@ const MatchScoreBoardComponent = props => {
                   </TableCell>
 
                   <TableCell>
-                    <img
+                  <Avatar
                       alt="Friendly champion"
                       src={`http://ddragon.leagueoflegends.com/cdn/${props
                         .static.version[0]}/img/champion/${props.static.champion
                         .data[good.championId].key}.png`}
+                        className={classNames(classes.avatar)}
                     />
                   </TableCell>
                 </TableRow>
@@ -74,11 +82,12 @@ const MatchScoreBoardComponent = props => {
                   props.rowClick(bad.account.summonerName);
                 }}>
                   <TableCell>
-                    <img
+                  <Avatar
                       alt="Friendly champion"
                       src={`http://ddragon.leagueoflegends.com/cdn/${props
                         .static.version[0]}/img/champion/${props.static.champion
                         .data[bad.championId].key}.png`}
+                        className={classNames(classes.avatar)}
                     />
                   </TableCell>
                   <TableCell numeric>
