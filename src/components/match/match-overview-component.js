@@ -62,7 +62,9 @@ const styles = theme => ({
 });
 
 const MatchOverviewComponent = props => {
+  console.log("match shit",props);
   const player = props.match.mainPlayer;
+
   const { champion, version } = props.static;
   const { classes, theme } = props;
   //console.log(props);

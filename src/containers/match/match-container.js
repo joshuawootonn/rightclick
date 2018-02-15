@@ -29,14 +29,14 @@ class MatchContainer extends Component {
     if (i > -1 && i < 4) this.setState({ state: i });
   };
   render() {
-    console.log(this.props.match, this.props.player.name);
-    this.props.match.mainPlayer =
-      this.props.match.goodTeam.find(ele => {
-        return ele.account.summonerName === this.props.player.name;
-      }) ||
-      this.props.match.badTeam.find(ele => {
-        return ele.account.summonerName === this.props.player.name;
-      });
+     //console.log("objects sent",this.props.match, this.props.own.player.name);
+     this.props.match.mainPlayer =
+     this.props.match.goodTeam.find(ele => {
+       return ele.account.summonerName === this.props.own.player.name;
+     }) ||
+     this.props.match.badTeam.find(ele => {
+       return ele.account.summonerName === this.props.own.player.name;
+     });
     return (
       <Card>
         <MatchOverviewComponent
@@ -73,7 +73,6 @@ class MatchContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    player: state.player,
     static: state.static,
     own: ownProps
   };

@@ -29,9 +29,9 @@ class MatchesContainer extends Component {
     this.pullMatchData();
   };
   componentWillReceiveProps(nextProps) {
-    console.log
+    //console.log(nextProps.own.playerName,this.props.own.playerName);
     if (nextProps.own.playerName !== this.props.own.playerName) {
-      this.pullMatchData();
+      this.pullMatchData(nextProps.own.playerName);
     }
   }
   // componentWillUpdate = (nextProps, nextState) => {
@@ -39,22 +39,25 @@ class MatchesContainer extends Component {
   //     this.forceUpdate();
   //   }
   // };
-  pullMatchData = () => {
+  pullMatchData = (name=this.props.playerName) => {
     if (
       this.props.match.status === status.INIT ||
       this.props.match.status === status.SUCCESS
     ) {
-      this.props.getMatch(this.props.playerName);
+      this.props.getMatch(name);
     }
     if (this.props.static.status === status.INIT) {
       this.props.getStatic();
     }
   };
   rowClick = player => {
-    console.log(player);
+    //console.log(player);
     this.props.history.push(`/${player}`);
   };
   generateMatchTiles = () => {
+    
+
+    
     return this.props.match.matches.map((m, i) => {
       if (
         m.general &&
@@ -63,7 +66,7 @@ class MatchesContainer extends Component {
       ) {
         return (
           <Grid item xs={12}>
-            <MatchContainer key={i} rowClick={this.rowClick} match={m} />
+            <MatchContainer player={this.props.player} key={i} rowClick={this.rowClick} match={m} />
           </Grid>
         );
       } else return null;
@@ -71,6 +74,7 @@ class MatchesContainer extends Component {
   };
   render = () => {
     const {classes} = this.props;
+    //console.log("matches render",this.props)
     // If Loading
     if (
       this.props.match.status === status.LOADING ||

@@ -3,10 +3,13 @@ import * as api from "../api";
 import { getPlayer } from "./player-actions";
 
 export const getMatch = playerName => {
+  console.log("fetch match1: ",playerName);
   let count = 0;
   return (dispatch, getState) => {
+    
     return dispatch(getPlayer(playerName)).then(() => {
       const accountId = getState().player.accountId;
+      console.log("fetch match2: ",getState().player);
       return dispatch(getMatches(accountId)).then(() => {
         getState().match.matches.forEach((ele, i) => {
           
