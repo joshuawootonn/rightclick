@@ -44,7 +44,7 @@ class MatchesContainer extends Component {
     }
   };
   rowClick = player => {
-    this.props.history.push(`/${player}`);
+    this.props.history.push(`/summoner/${player}`);
   };
   generateMatchTiles = () => {
     return this.props.match.matches.map((m, i) => {

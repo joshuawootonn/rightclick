@@ -42,7 +42,7 @@ ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
-          <Route path="/:player" component={IndexContainer} />
+          <Route path="/summoner/:player" component={IndexContainer} />
           <Route path="/" component={IntroContainer} />
         </Switch>
       </BrowserRouter>

@@ -54,7 +54,7 @@ class LeagueContainer extends Component {
     );
   };
   rowClick = player => {
-    this.props.history.push(`/${player}`);
+    this.props.history.push(`/summoner/${player}`);
   };
   render = () => {  
     const { classes } = this.props;
