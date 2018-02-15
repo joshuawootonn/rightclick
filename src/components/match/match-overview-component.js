@@ -1,6 +1,6 @@
 import React from "react";
 import { withStyles } from "material-ui/styles";
-import { CardMedia, CardContent, CardActions } from "material-ui/Card";
+import {  CardContent, CardActions } from "material-ui/Card";
 import classnames from "classnames";
 import Typography from "material-ui/Typography";
 import ExpandMoreIcon from "material-ui-icons/ExpandMore";
