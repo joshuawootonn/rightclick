@@ -6,7 +6,8 @@ import { LinearProgress } from 'material-ui/Progress';
 const styles = theme => ({
   root: {
     width: '100%',    
-  }, 
+  },
+  
   
 });
 

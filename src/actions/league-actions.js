@@ -3,7 +3,6 @@ import * as api from "../api";
 import { getPlayer } from "./player-actions";
 
 export const getLeague = playerName => {
-    console.log("fetch league: ",playerName);
     return (dispatch, getState) => {
       return dispatch(getPlayer(playerName)).then(() => {
         const id = getState().player.id;

@@ -4,6 +4,7 @@ import TabContainer from "./general/tab-container";
 import LeagueContainer from "./league/league-container";
 import MatchesContainer from "./match/matches-container";
 import StatContainer from "./stat/stat-container";
+import LoadingContainer from './general/loading-container';
 class IndexContainer extends Component {
   constructor(props) {
     super(props);
@@ -32,6 +33,7 @@ class IndexContainer extends Component {
   render = () => {
     return <div>
         <NavContainer />
+        <LoadingContainer />
         <TabContainer current={this.state.tab} handleTabChange={this.handleTabChange} />
         <div className="container grid-lg">
           {this.getIndexContent()}

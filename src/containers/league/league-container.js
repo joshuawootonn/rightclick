@@ -8,7 +8,7 @@ import Grid from "material-ui/Grid";
 import LeagueOverviewContainer from "./league-overview-container";
 import LeagueUnrankedComponent from "../../components/league/league-unranked-component";
 import LeagueTableComponent from "../../components/league/league-table-component";
-import Loading from "../../components/general/loading";
+
 
 const styles = theme => ({
   root: {
@@ -31,15 +31,15 @@ class LeagueContainer extends Component {
   };
   componentWillReceiveProps(nextProps) {
     if (nextProps.own.playerName !== this.props.own.playerName) {
-      this.pullLeagueData();
+      this.pullLeagueData(nextProps.own.playerName);
     }
   }
-  pullLeagueData = () => {
+  pullLeagueData = (name=this.props.playerName) => {
     if (
       this.props.league.status === status.INIT ||
       this.props.league.status === status.SUCCESS
     ) {
-      this.props.getLeague(this.props.playerName);
+      this.props.getLeague(name);
     }
     if (this.props.static.status === status.INIT) {
       this.props.getStatic();
@@ -54,21 +54,14 @@ class LeagueContainer extends Component {
     );
   };
   rowClick = player => {
-    console.log(player);
     this.props.history.push(`/${player}`);
   };
-  render = () => {
-    // If Loading
-    if (
-      this.props.league.status === status.LOADING ||
-      this.props.player.status === status.LOADING
-    )
-      return <Loading />;
-    // If Unranked
-    if (this.props.league.status === status.SUCCESS && !this.props.league.tier)
-      return <LeagueUnrankedComponent />;
-    // If ranked
+  render = () => {  
     const { classes } = this.props;
+    // if unranked
+    if (this.props.league.status === status.SUCCESS && !this.props.league.tier)
+      return <LeagueUnrankedComponent />;   
+    // if ranked
     if (this.props.league.status === status.SUCCESS)
       return (
         <div className={classes.root}>

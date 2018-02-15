@@ -3,7 +3,6 @@ import * as actions from "../../actions";
 import React, { Component } from "react";
 import * as status from "../../reducers/status";
 import MatchContainer from "./match-container";
-import Loading from "../../components/general/loading";
 import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
 import { withRouter } from "react-router";
@@ -33,7 +32,7 @@ class MatchesContainer extends Component {
       this.pullMatchData(nextProps.own.playerName);
     }
   }
-  pullMatchData = (name=this.props.playerName) => {
+  pullMatchData = (name = this.props.playerName) => {
     if (
       this.props.match.status === status.INIT ||
       this.props.match.status === status.SUCCESS
@@ -47,7 +46,7 @@ class MatchesContainer extends Component {
   rowClick = player => {
     this.props.history.push(`/${player}`);
   };
-  generateMatchTiles = () => { 
+  generateMatchTiles = () => {
     return this.props.match.matches.map((m, i) => {
       if (
         m.general &&
@@ -56,28 +55,24 @@ class MatchesContainer extends Component {
       ) {
         return (
           <Grid key={i} item xs={12}>
-            <MatchContainer player={this.props.player} key={i} rowClick={this.rowClick} match={m} />
+            <MatchContainer
+              player={this.props.player}
+              key={i}
+              rowClick={this.rowClick}
+              match={m}
+            />
           </Grid>
         );
       } else return null;
     });
   };
   render = () => {
-    const {classes} = this.props;
-    // If Loading
+    const { classes } = this.props;
+
     if (
-      this.props.match.status === status.LOADING ||
-      this.props.player.status === status.LOADING
-    )
-      return <Loading />;
-    // If Unranked
-    // if (this.props.match.status === status.SUCCESS && !this.props.match)
-    //   return <LeagueUnrankedComponent />;
-    // If ranked
-    if (this.props.match.status === status.SUCCESS && this.props.player.status === status.SUCCESS) {
-      // return (
-      //   <MatchComponent />
-      // )
+      this.props.match.status === status.SUCCESS &&
+      this.props.player.status === status.SUCCESS
+    ) {
       return (
         <div className={classes.root}>
           <Grid className={classes.container} container spacing={24}>
@@ -98,6 +93,6 @@ const mapStateToProps = (state, ownProps) => {
     own: ownProps
   };
 };
-export default withRouter(withStyles(styles)(
-  connect(mapStateToProps, actions)(MatchesContainer))
+export default withRouter(
+  withStyles(styles)(connect(mapStateToProps, actions)(MatchesContainer))
 );
