@@ -14,6 +14,7 @@ const styles = theme => ({
     overflowX: "auto"
   },
   table: {
+    cursor: "pointer"
   }
 });
 const MatchScoreBoardComponent = props => {
@@ -33,7 +34,7 @@ const MatchScoreBoardComponent = props => {
           <TableBody>
             {props.match.goodTeam.map((good, i) => {
               return (
-                <TableRow key={i} onClick={() => {
+                <TableRow key={i} hover onClick={() => {
                   props.rowClick(good.account.summonerName);
                 }}>
                   <TableCell>
@@ -69,7 +70,7 @@ const MatchScoreBoardComponent = props => {
           <TableBody>
             {props.match.badTeam.map((bad, i) => {
               return (
-                <TableRow key={i} onClick={() => {
+                <TableRow key={i} hover onClick={() => {
                   props.rowClick(bad.account.summonerName);
                 }}>
                   <TableCell>

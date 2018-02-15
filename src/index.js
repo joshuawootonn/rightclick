@@ -9,7 +9,6 @@ import thunk from "redux-thunk";
 import "./assets/styles.css";
 import { MuiThemeProvider, createMuiTheme } from "material-ui/styles";
 import lightGreen from "material-ui/colors/lightGreen";
-import grey from "material-ui/colors/grey";
 import lightBlue from "material-ui/colors/lightBlue";
 //JS
 import IntroContainer from "./containers/intro-container";

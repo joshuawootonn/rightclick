@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import SearchContainer from "./general/search-container";
 import Typography from "material-ui/Typography";
 
-import NavContainer from "./general/nav-container";
-import LoadingContainer from './general/loading-container';
+import LoadingContainer from "./general/loading-container";
 const IntroContainer = props => {
   return (
     <div>
-        <LoadingContainer />
+      <LoadingContainer />
       <div className="hero">
         <Typography variant="display4" gutterBottom>
           RightClick.gg

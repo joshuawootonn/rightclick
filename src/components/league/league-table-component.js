@@ -19,7 +19,8 @@ const styles = theme => ({
     paddingLeft: 16
   },
   table: {
-    minWidth: 700
+    minWidth: 700,
+    cursor: "pointer"
   }
 });
 
@@ -41,7 +42,7 @@ const LeagueOverviewComponent = props => {
         <TableBody>
           {props.league.division.map((ele, i) => {
             return (
-              <TableRow key={i} onClick={() => {
+              <TableRow key={i} hover onClick={() => {
                 props.rowClick(ele.playerOrTeamName);
               }}>                
                 <TableCell>

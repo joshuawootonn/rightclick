@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import MatchGraphComponent from "../../components/match/match-graphs-component";
-import purple from "material-ui/colors/purple";
-import yellow from "material-ui/colors/yellow";
 class MatchGraphContainer extends Component {
   constructor(props) {
     super(props);

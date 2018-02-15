@@ -2,16 +2,18 @@ import * as types from "./types";
 import * as api from "../api";
 import { getPlayer } from "./player-actions";
 
+
 export const getMatch = playerName => {
   let count = 0;
   return (dispatch, getState) => {    
     return dispatch(getPlayer(playerName)).then(() => {
       const accountId = getState().player.accountId;
       return dispatch(getMatches(accountId)).then(() => {
+        const num = getState().match.matches.length-1;
         getState().match.matches.forEach((ele, i) => {          
             dispatch(getMatchData(ele.gameId, i)).then(()=>{
               count+= i;
-              if(count === 1){
+              if(count === (num * num + num)/2){
                 dispatch({type: types.GET_DIVISION_SUCCESS_ALL});
               }
             });
