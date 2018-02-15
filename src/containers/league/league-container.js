@@ -11,13 +11,11 @@ import LeagueTableComponent from "../../components/league/league-table-component
 
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
+  
+  container: {flexGrow: 1,
     marginTop: 30,
-  },
-  container: {
     margin: "0 auto",
-    maxWidth: 1100
+    width: "100%"
   },
   paper: {
     padding: 16,
@@ -64,7 +62,6 @@ class LeagueContainer extends Component {
     // if ranked
     if (this.props.league.status === status.SUCCESS)
       return (
-        <div className={classes.root}>
           <Grid className={classes.container} container spacing={24}>
             <Grid item xs={12} >
               <LeagueOverviewContainer
@@ -80,7 +77,7 @@ class LeagueContainer extends Component {
               />
             </Grid>
           </Grid>
-        </div>
+       
       );
     return null;
   };

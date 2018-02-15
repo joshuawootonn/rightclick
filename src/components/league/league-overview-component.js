@@ -5,7 +5,9 @@ import Typography from "material-ui/Typography";
 
 const styles = theme => ({
   card: {
-    display: "flex"
+    display: "flex",
+    margin: "0 auto",
+    maxWidth: 1100
   },
   details: {
     display: "flex",

@@ -8,13 +8,12 @@ import Grid from "material-ui/Grid";
 import { withRouter } from "react-router";
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    marginTop: 30
-  },
+
   container: {
+    flexGrow: 1,
+    marginTop: 30,
     margin: "0 auto",
-    maxWidth: 1100
+    width: "100%"
   },
   paper: {
     padding: 16,
@@ -74,11 +73,11 @@ class MatchesContainer extends Component {
       this.props.player.status === status.SUCCESS
     ) {
       return (
-        <div className={classes.root}>
+        
           <Grid className={classes.container} container spacing={24}>
             {this.generateMatchTiles()}
           </Grid>
-        </div>
+     
       );
     }
     return null;

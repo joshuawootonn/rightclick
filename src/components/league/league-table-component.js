@@ -11,7 +11,8 @@ import Typography from "material-ui/Typography";
 import Paper from "material-ui/Paper";
 const styles = theme => ({
   root: {
-    width: "100%",
+    margin: "0 auto",
+    maxWidth: 1100,
     overflowX: "auto"
   },
   header:{

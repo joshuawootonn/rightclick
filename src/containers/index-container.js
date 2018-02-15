@@ -4,7 +4,15 @@ import TabContainer from "./general/tab-container";
 import LeagueContainer from "./league/league-container";
 import MatchesContainer from "./match/matches-container";
 import StatContainer from "./stat/stat-container";
-import LoadingContainer from './general/loading-container';
+import LoadingContainer from "./general/loading-container";
+import Grid from "material-ui/Grid";
+import { withStyles } from "material-ui/styles";
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    height: "100vh"
+  }
+});
 class IndexContainer extends Component {
   constructor(props) {
     super(props);
@@ -12,8 +20,7 @@ class IndexContainer extends Component {
       tab: 0
     };
   }
-  handleTabChange = (event,tab) => {
-    
+  handleTabChange = (event, tab) => {
     this.setState({
       tab: tab
     });
@@ -31,15 +38,21 @@ class IndexContainer extends Component {
     }
   };
   render = () => {
-    return <div>
-        <NavContainer />
-        <LoadingContainer />
-        <TabContainer current={this.state.tab} handleTabChange={this.handleTabChange} />
-        <div className="container grid-lg">
+    const {classes} = this.props;
+    return (
+      <Grid container className={classes.root}>
+        <Grid item xs={12} >
+          <NavContainer />
+          <LoadingContainer />
+          <TabContainer
+            current={this.state.tab}
+            handleTabChange={this.handleTabChange}
+          />
           {this.getIndexContent()}
-        </div>
-      </div>;
+        </Grid>
+      </Grid>
+    );
   };
 }
 
-export default IndexContainer;
+export default withStyles(styles)(IndexContainer);

@@ -13,15 +13,7 @@ const styles = theme => ({
   },
   fullHeight:{
     height: "100%"
-  },
-  paper: {
-    height: 140,
-    width: 100
-  },
-  control: {
-    padding: theme.spacing.unit * 2
-  },
-
+  }  
 });
 class IntroContainer extends React.Component {
   handleClick = () => {
