@@ -19,8 +19,9 @@ class MatchContainer extends Component {
     const currentState = this.state.isExpanded;
     this.setState({ isExpanded: !currentState });
   };
-  setIndex = i => {
-    if (i > -1 && i < 4) this.setState({ state: i });
+ 
+  handleChange = (event, value) => {
+    this.setState({ state: value });
   };
   render() {
      
@@ -41,14 +42,14 @@ class MatchContainer extends Component {
             match={this.props.match}
             static={this.props.static}
           />
-          {this.state.isExpanded && this.state.state === 1
+          {this.state.isExpanded && this.state.state === 0
             ? <MatchScoreBoardComponent
                 rowClick={this.props.rowClick}
                 match={this.props.match}
                 static={this.props.static}
               />
             : null}
-          {this.state.isExpanded && this.state.state === 2
+          {this.state.isExpanded && this.state.state === 1
             ? <MatchGraphContainer
                 match={this.props.match}
                 static={this.props.static}
@@ -57,9 +58,7 @@ class MatchContainer extends Component {
           {this.state.isExpanded
             ? <MatchMenuComponent
                 state={this.state.state}
-                setIndex={i => {
-                  this.setIndex(i);
-                }}
+                handleChange={this.handleChange}
               />
             : null}
         </Card>

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import MatchGraphComponent from "../../components/match/match-graphs-component";
+import purple from "material-ui/colors/purple";
+import yellow from "material-ui/colors/yellow";
 class MatchGraphContainer extends Component {
   constructor(props) {
     super(props);
@@ -43,28 +45,28 @@ class MatchGraphContainer extends Component {
     }
     return arr;
   };
-  changeGraph = graph => {
+  changeGraph = event => {
     this.setState({ 
-      currentGraph: graph,
+      currentGraph: event.target.value,
       currentSubGraph: ""
     });
   };
-  changeSubGraph = subGraph => {
+  changeSubGraph = event => {
     this.setState({
-      currentSubGraph: subGraph
+      currentSubGraph: event.target.value
     })
   }
   generateBars = () => {
     switch (this.state.currentGraph+this.state.currentSubGraph) {
       case "Gold":
         return [
-          { name: "Gold", dataKey: "gold1", stackId: "a", fill: "#A239CA" },
-          { name: "Gold", dataKey: "gold2", stackId: "a", fill: "#4717F6" }
+          { name: "Gold", dataKey: "gold1", stackId: "a", fill: "#03A9F4" },
+          { name: "Gold", dataKey: "gold2", stackId: "a", fill: "#8BC34A" }
         ];
       case "Dealt":
         return [
-          { name: "Dealt", dataKey: "dealt1", stackId: "a", fill: "#A239CA" },
-          { name: "Dealt", dataKey: "dealt2", stackId: "a", fill: "#4717F6" }
+          { name: "Dealt", dataKey: "dealt1", stackId: "a", fill: "#03A9F4" },
+          { name: "Dealt", dataKey: "dealt2", stackId: "a", fill: "#8BC34A" }
         ];
       case "DealtPhysical":
         return [
@@ -72,14 +74,14 @@ class MatchGraphContainer extends Component {
             name: "Physical",
             dataKey: "physicalDealt1",
             stackId: "a",
-            fill: "#4717F6"
+            fill: "#8BC34A"
           },
 
           {
             name: "Physical",
             dataKey: "physicalDealt2",
             stackId: "a",
-            fill: "#A239CA"
+            fill: "#03A9F4"
           }
         ];
       case "DealtMagic":
@@ -88,13 +90,13 @@ class MatchGraphContainer extends Component {
             name: "Magic",
             dataKey: "magicDealt1",
             stackId: "a",
-            fill: "#A239CA"
+            fill: "#03A9F4"
           },
           {
             name: "Magic",
             dataKey: "magicDealt2",
             stackId: "a",
-            fill: "#4717F6"
+            fill: "#8BC34A"
           }
         ];
       case "DealtTrue":
@@ -103,14 +105,14 @@ class MatchGraphContainer extends Component {
             name: "True",
             dataKey: "trueDealt1",
             stackId: "a",
-            fill: "#A239CA"
+            fill: "#03A9F4"
           },
-          { name: "True", dataKey: "trueDealt2", stackId: "a", fill: "#4717F6" }
+          { name: "True", dataKey: "trueDealt2", stackId: "a", fill: "#8BC34A" }
         ];
       case "Taken":
         return [
-          { name: "Taken", dataKey: "taken1", stackId: "a", fill: "#A239CA" },
-          { name: "Taken", dataKey: "taken2", stackId: "a", fill: "#4717F6" }
+          { name: "Taken", dataKey: "taken1", stackId: "a", fill: "#03A9F4" },
+          { name: "Taken", dataKey: "taken2", stackId: "a", fill: "#8BC34A" }
         ];
       case "TakenPhysical":
         return [
@@ -118,14 +120,14 @@ class MatchGraphContainer extends Component {
             name: "Physical",
             dataKey: "physicalTaken1",
             stackId: "a",
-            fill: "#4717F6"
+            fill: "#8BC34A"
           },
 
           {
             name: "Physical",
             dataKey: "physicalTaken2",
             stackId: "a",
-            fill: "#A239CA"
+            fill: "#03A9F4"
           }
         ];
       case "TakenMagic":
@@ -134,14 +136,14 @@ class MatchGraphContainer extends Component {
             name: "Magic",
             dataKey: "magicTaken1",
             stackId: "a",
-            fill: "#A239CA"
+            fill: "#03A9F4"
           },
 
           {
             name: "Magic",
             dataKey: "magicTaken2",
             stackId: "a",
-            fill: "#4717F6"
+            fill: "#8BC34A"
           }
         ];
 
@@ -151,16 +153,16 @@ class MatchGraphContainer extends Component {
             name: "True",
             dataKey: "trueTaken1",
             stackId: "a",
-            fill: "#A239CA"
+            fill: "#03A9F4"
           },
 
-          { name: "True", dataKey: "trueTaken2", stackId: "a", fill: "#4717F6" }
+          { name: "True", dataKey: "trueTaken2", stackId: "a", fill: "#8BC34A" }
         ];
 
       case "Healing":
         return [
-          { name: "Healing", dataKey: "heal1", stackId: "a", fill: "#A239CA" },
-          { name: "Healing", dataKey: "heal2", stackId: "a", fill: "#4717F6" }
+          { name: "Healing", dataKey: "heal1", stackId: "a", fill: "#03A9F4" },
+          { name: "Healing", dataKey: "heal2", stackId: "a", fill: "#8BC34A" }
         ];
       default:
         return [];
@@ -170,6 +172,7 @@ class MatchGraphContainer extends Component {
     return (
       <MatchGraphComponent
         type={this.state.currentGraph}
+        typeSub={this.state.currentSubGraph}
         data={this.generateData()}
         changeGraph={this.changeGraph}
         changeSubGraph={this.changeSubGraph}
@@ -184,39 +187,39 @@ export default MatchGraphContainer;
 // case "DealtMagic":
 
 //         return [
-//           { name: "Magic", dataKey: "magic1Dealt", stackId: "a", fill: "#A239CA" },
+//           { name: "Magic", dataKey: "magic1Dealt", stackId: "a", fill: "#03A9F4" },
 //           {
 //             name: "Physical",
 //             dataKey: "physicalDealt1",
 //             stackId: "a",
-//             fill: "#4717F6"
+//             fill: "#8BC34A"
 //           },
-//           { name: "True", dataKey: "true1Dealt", stackId: "a", fill: "#A239CA" },
-//           { name: "Magic", dataKey: "magicDealt2", stackId: "a", fill: "#4717F6" },
+//           { name: "True", dataKey: "true1Dealt", stackId: "a", fill: "#03A9F4" },
+//           { name: "Magic", dataKey: "magicDealt2", stackId: "a", fill: "#8BC34A" },
 //           {
 //             name: "Physical",
 //             dataKey: "physicalDealt2",
 //             stackId: "a",
-//             fill: "#A239CA"
+//             fill: "#03A9F4"
 //           },
-//           { name: "True", dataKey: "trueDealt2", stackId: "a", fill: "#4717F6" }
+//           { name: "True", dataKey: "trueDealt2", stackId: "a", fill: "#8BC34A" }
 //         ];
 //       case "Taken":
 //         return [
-//           { name: "Magic", dataKey: "magicTaken1", stackId: "a", fill: "#A239CA" },
+//           { name: "Magic", dataKey: "magicTaken1", stackId: "a", fill: "#03A9F4" },
 //           {
 //             name: "Physical",
 //             dataKey: "physicalTaken1",
 //             stackId: "a",
-//             fill: "#4717F6"
+//             fill: "#8BC34A"
 //           },
-//           { name: "True", dataKey: "trueTaken1", stackId: "a", fill: "#A239CA" },
-//           { name: "Magic", dataKey: "magicTaken2", stackId: "a", fill: "#4717F6" },
+//           { name: "True", dataKey: "trueTaken1", stackId: "a", fill: "#03A9F4" },
+//           { name: "Magic", dataKey: "magicTaken2", stackId: "a", fill: "#8BC34A" },
 //           {
 //             name: "Physical",
 //             dataKey: "physicalTaken2",
 //             stackId: "a",
-//             fill: "#A239CA"
+//             fill: "#03A9F4"
 //           },
-//           { name: "True", dataKey: "trueTaken2", stackId: "a", fill: "#4717F6" }
+//           { name: "True", dataKey: "trueTaken2", stackId: "a", fill: "#8BC34A" }
 //         ];

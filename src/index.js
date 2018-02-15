@@ -8,14 +8,15 @@ import thunk from "redux-thunk";
 //CSS
 import "./assets/styles.css";
 import { MuiThemeProvider, createMuiTheme } from "material-ui/styles";
-import purple from "material-ui/colors/purple";
-import green from "material-ui/colors/green";
-
+import lightGreen from "material-ui/colors/lightGreen";
+import grey from "material-ui/colors/grey";
+import lightBlue from "material-ui/colors/lightBlue";
 //JS
 import IntroContainer from "./containers/intro-container";
 import IndexContainer from "./containers/index-container";
 import reducers from "./reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
+
 export const store = createStore(
   reducers,
   composeWithDevTools(applyMiddleware(thunk))
@@ -23,8 +24,14 @@ export const store = createStore(
 
 const theme = createMuiTheme({
   palette: {
-    primary: purple,
-    secondary: green
+    primary: {
+      main: lightBlue[500],
+      contrastText: "#fff"
+    },
+    secondary: {
+      main: lightGreen[500],
+      contrastText: "#fff"
+    }
   },
   status: {
     danger: "orange"

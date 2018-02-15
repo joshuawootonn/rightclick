@@ -1,35 +1,28 @@
-import React from 'react'
-export const MatchMenuComponent = (props) => {
-  return(
-    <div className="column">
-        
-        <button
-          onClick={() => {
-            props.setIndex(1);
-          }}
-          className="button"
-        >
-          Score Board
-        </button>
-        <button
-          onClick={() => {
-            props.setIndex(2);
-          }}
-          className="button"
-        >
-          Graphs
-        </button>
-      </div>
-  )
-}
+import React from "react";
+import { withStyles } from "material-ui/styles";
+import BottomNavigation, {
+  BottomNavigationAction
+} from "material-ui/BottomNavigation";
+import ViewListIcon from "material-ui-icons/ViewList";
+import EqualizerIcon from "material-ui-icons/Equalizer";
+const styles = {
+  root: {
+    width: "100%"
+  }
+};
+const MatchMenuComponent = props => {
+  const { classes } = props;
+  return (
+    <BottomNavigation
+      value={props.state}
+      onChange={props.handleChange}
+      showLabels
+      className={classes.root}
+    >
+      <BottomNavigationAction label="Score" icon={<ViewListIcon />} />
+      <BottomNavigationAction label="Graphs" icon={<EqualizerIcon />} />
+    </BottomNavigation>
+  );
+};
 
-export default MatchMenuComponent
-// Maybe in the future there will be an items page
-// <button
-//           onClick={() => {
-//             props.setIndex(0);
-//           }}
-//           className="button"
-//         >
-//           Items
-//         </button>
+export default withStyles(styles)(MatchMenuComponent);

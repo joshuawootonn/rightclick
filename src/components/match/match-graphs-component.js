@@ -8,6 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer
 } from "recharts";
+import MatchGraphsSelectComponent from "./match-graphs-select-component";
 
 const MatchGraphsComponent = props => {
   const Bars = props.barData.map((ele, i) => {
@@ -21,10 +22,7 @@ const MatchGraphsComponent = props => {
       />
     );
   });
-  const Buttons = ["Physical","Magic","True"].map((ele,i)=>{
-    return <button className="button" key={i+ele} onClick={()=>{props.changeSubGraph(ele)}}>{ele}</button>
-  })
-  
+
   return (
     <div>
       <ResponsiveContainer width="100%" height={500}>
@@ -41,27 +39,37 @@ const MatchGraphsComponent = props => {
           {Bars}
         </BarChart>
       </ResponsiveContainer>
-      <div className="field">
-        <div className="control">
-            <button onClick={()=>{props.changeGraph("Gold")}} className="button">
-              Gold
-            </button>
-            <button onClick={()=>{props.changeGraph("Dealt")}} className="button">
-              Dealt
-            </button>
-            { props.type.includes("Dealt") ? Buttons : null }
-            <button onClick={()=>{props.changeGraph("Taken")}} className="button">
-              Taken
-            </button>
-            { props.type.includes("Taken") ? Buttons : null }
-            <button onClick={()=>{props.changeGraph("Healing")}} className="button">
-              Healing
-            </button>
-        </div>
-      </div>      
+      <MatchGraphsSelectComponent
+        typeSub={props.typeSub}
+        changeSubGraph={props.changeSubGraph}
+        type={props.type}
+        changeGraph={props.changeGraph}
+      />
     </div>
   );
 };
 
 export default MatchGraphsComponent;
 
+// const Buttons = ["Physical","Magic","True"].map((ele,i)=>{
+//   return <button className="button" key={i+ele} onClick={()=>{props.changeSubGraph(ele)}}>{ele}</button>
+// })
+
+// <div className="field">
+//         <div className="control">
+//             <button onClick={()=>{props.changeGraph("Gold")}} className="button">
+//               Gold
+//             </button>
+//             <button onClick={()=>{props.changeGraph("Dealt")}} className="button">
+//               Dealt
+//             </button>
+//             { props.type.includes("Dealt") ? Buttons : null }
+//             <button onClick={()=>{props.changeGraph("Taken")}} className="button">
+//               Taken
+//             </button>
+//             { props.type.includes("Taken") ? Buttons : null }
+//             <button onClick={()=>{props.changeGraph("Healing")}} className="button">
+//               Healing
+//             </button>
+//         </div>
+//       </div>
