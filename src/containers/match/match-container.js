@@ -1,11 +1,24 @@
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import React, { Component } from "react";
+import { withStyles } from "material-ui/styles";
 import Card from "material-ui/Card";
 import MatchGraphContainer from "./match-graph-container";
 import MatchScoreBoardComponent from "../../components/match/match-scoreboard-component";
 import MatchOverviewComponent from "../../components/match/match-overview-component";
 import MatchMenuComponent from "../../components/match/match-menu-component";
+const styles = theme => ({
+  win: {
+    borderStyle: "solid",
+    borderWidth: "5",
+    borderColor: "#03A9F4"
+  },
+  loss:{
+    borderStyle: "solid",
+    borderWidth: "5",
+    borderColor: "#8BC34A"
+  }
+});
 
 class MatchContainer extends Component {
   constructor(props) {
@@ -34,8 +47,9 @@ class MatchContainer extends Component {
      });
      
     if(this.props.match.mainPlayer){
+      const {classes} = this.props;
       return (
-        <Card>
+        <Card className={this.props.match.mainPlayer.win ? classes.win : classes.loss}>
           <MatchOverviewComponent
             isExpanded={this.state.isExpanded}
             expand={this.expand}
@@ -76,4 +90,4 @@ const mapStateToProps = (state, ownProps) => {
     own: ownProps
   };
 };
-export default connect(mapStateToProps, actions)(MatchContainer);
+export default withStyles(styles)(connect(mapStateToProps, actions)(MatchContainer));

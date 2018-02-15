@@ -71,7 +71,7 @@ const MatchOverviewComponent = props => {
       </CardContent>
       <CardContent className={classes.content}>
         <Typography variant="headline">
-          {player.stats.win ? "Win" : "Loss"}
+          {player.win ? "Win" : "Loss"}
         </Typography>
         <Typography variant="subheading" color="textSecondary">
           {champion.data[player.championId].key}
