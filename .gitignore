@@ -1,12 +1,9 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 
-# testing
+# old project
 /coverage
 /old/node_modules
 
-# production
-/build
-
+# api
+.env
