@@ -15,7 +15,6 @@ import IntroContainer from "./containers/intro-container";
 import IndexContainer from "./containers/index-container";
 import reducers from "./reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
-require('dotenv').config();
 
 
 export const store = createStore(
