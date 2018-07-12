@@ -26,4 +26,4 @@ Webpack is confusing and I can't figure out how to deploy.
 I just submitted this project to Riot Games. We will see if I get an api key!
 
 
-Check out the project [here!](http://joshuawootonn.com/rightclick/)
+Check out the project [here!](http://joshuawootonn.github.io/rightclick/)
